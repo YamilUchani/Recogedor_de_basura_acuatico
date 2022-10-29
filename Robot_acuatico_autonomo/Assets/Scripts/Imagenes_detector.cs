@@ -17,51 +17,61 @@ public class Imagenes_detector : MonoBehaviour
     Este script se trata de un script que mandara una imagen como informacion 
     */
     //Esta variable es el subproceso en el cual se realizara el envio y recibo de datos
-    Thread mThread;
-    public string connectionIP= "127.0.0.1";
-    public int connectionPort=2530;
-    IPAddress localdd;
-    TcpClient client;
-    TcpListener listener;
+    Thread mthreaddetector;
+    public int connectionportdetectordetector=2530;
+    int confirmacion;
+    byte[] buffer;
+    IPAddress localadddetector;
+    TcpClient clientdetector;
+    TcpListener listenerdetector;
+    ThreadStart tsdetector;
     public bool envio;
     public Camera Detector;
+    string dataconfirmacion;
     Texture2D image;
+    private bool activado=true;
     byte[] bytes;
 
     
     private void Start()
     {
         //Inicio de creacion de un Detector para comunicacion para las dos camaras
-        ThreadStart ts = new ThreadStart(GetInfo);
-        mThread=new Thread(ts);
-        mThread.Start();   
+        tsdetector = new ThreadStart(GetInfodetector);
+        mthreaddetector=new Thread(tsdetector);
+        mthreaddetector.Start();   
+        activado=true;
     }
-    void GetInfo()
+    void GetInfodetector()
     {
-        localdd= IPAddress.Parse(connectionIP);
-        listener= new TcpListener(IPAddress.Any, connectionPort);
-        listener.Start();        
-        
-        client=listener.AcceptTcpClient();
+        listenerdetector= new TcpListener(IPAddress.Any, connectionportdetectordetector);
+        listenerdetector.Start();        
+        clientdetector=listenerdetector.AcceptTcpClient();
         envio=true;
         while(envio)
         {
             Enviodedatos();
         }
-        listener.Stop();
+        listenerdetector.Stop();
     }
     void Enviodedatos()
-    {   
-        NetworkStream nwStream= client.GetStream();
-        byte[] buffer=new byte[client.ReceiveBufferSize];
-        //Confirmacion del cliente
-        int confirmacion=nwStream.Read(buffer,0,client.ReceiveBufferSize);
-        string dataconfirmacion=Encoding.UTF8.GetString(buffer,0,confirmacion);
-        nwStream.Write(bytes,0,bytes.Length); 
+    {   try
+        {
+            NetworkStream nwStream= clientdetector.GetStream();
+            nwStream.Write(bytes,0,bytes.Length); 
+            buffer=new byte[clientdetector.ReceiveBufferSize];
+            confirmacion=nwStream.Read(buffer,0,clientdetector.ReceiveBufferSize);
+        }
+        catch
+        {
+            Debug.Log("El detector se ha desconectado");
+            envio=false;
+            activado=false;
+        }
+        dataconfirmacion=Encoding.UTF8.GetString(buffer,0,confirmacion);
     }  
     public void FixedUpdate()
     {
-        //Inicio de conversion de imagen de camara encargada de la deteccion
+        
         RenderTexture activeRenderTextureTwo = RenderTexture.active;
         RenderTexture.active = Detector.targetTexture;
         Detector.Render();
@@ -71,6 +81,14 @@ public class Imagenes_detector : MonoBehaviour
         RenderTexture.active = activeRenderTextureTwo;
         bytes = image.EncodeToPNG();
         Destroy(image);
+        if(!activado)
+        {
+            mthreaddetector.Abort();
+            tsdetector = new ThreadStart(GetInfodetector);
+            mthreaddetector=new Thread(tsdetector);
+            mthreaddetector.Start();
+            activado=true;
+        }
     }
     //Las funciones encargadas de enviar los datos de puerto e IP para la comunicacion de los dos Detectors Thread
    

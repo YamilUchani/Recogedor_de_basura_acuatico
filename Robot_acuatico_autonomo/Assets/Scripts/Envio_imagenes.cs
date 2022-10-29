@@ -18,30 +18,30 @@ public class Envio_imagenes : MonoBehaviour
     */
     //Esta variable es el subproceso en el cual se realizara el envio y recibo de datos
     Thread mThread;
-    public string connectionIP= "127.0.0.2";
     public int connectionPort=2500;
     IPAddress localdd;
     TcpClient client;
     TcpListener listener;
+    ThreadStart ts;
     public bool envio;
     public Camera Camino;
     Texture2D image;
+    private bool activado;
     byte[] bytes;
 
-    
+
     private void Start()
     {
         //Inicio de creacion de un camino para comunicacion para las dos camaras
-        ThreadStart ts = new ThreadStart(GetInfo);
+        ts = new ThreadStart(GetInfo);
         mThread=new Thread(ts);
-        mThread.Start();   
+        mThread.Start(); 
+        activado=true;  
     }
     void GetInfo()
     {
-        localdd= IPAddress.Parse(connectionIP);
         listener= new TcpListener(IPAddress.Any, connectionPort);
         listener.Start();        
-        
         client=listener.AcceptTcpClient();
         envio=true;
         while(envio)
@@ -51,17 +51,24 @@ public class Envio_imagenes : MonoBehaviour
         listener.Stop();
     }
     void Enviodedatos()
-    {   
-        NetworkStream nwStream= client.GetStream();
-        byte[] buffer=new byte[client.ReceiveBufferSize];
-        //Confirmacion del cliente
-        int confirmacion=nwStream.Read(buffer,0,client.ReceiveBufferSize);
-        string dataconfirmacion=Encoding.UTF8.GetString(buffer,0,confirmacion);
-        nwStream.Write(bytes,0,bytes.Length); 
+    {   try
+        {
+            NetworkStream nwStream= client.GetStream();
+            byte[] buffer=new byte[client.ReceiveBufferSize];
+            //Confirmacion del cliente
+            int confirmacion=nwStream.Read(buffer,0,client.ReceiveBufferSize);
+            string dataconfirmacion=Encoding.UTF8.GetString(buffer,0,confirmacion);
+            nwStream.Write(bytes,0,bytes.Length);
+        } 
+        catch
+        {
+            Debug.Log("El visor del camino se ha desconectado");
+            envio=false;
+            activado=false;
+        }
     }  
     public void FixedUpdate()
     {
-        //Inicio de conversion de imagen de camara encargada de la deteccion
         RenderTexture activeRenderTextureTwo = RenderTexture.active;
         RenderTexture.active = Camino.targetTexture;
         Camino.Render();
@@ -71,6 +78,14 @@ public class Envio_imagenes : MonoBehaviour
         RenderTexture.active = activeRenderTextureTwo;
         bytes = image.EncodeToPNG();
         Destroy(image);
+        if(!activado)
+        {
+            mThread.Abort();
+            ts = new ThreadStart(GetInfo);
+            mThread=new Thread(ts);
+            mThread.Start();
+            activado=true;
+        }
     }
     //Las funciones encargadas de enviar los datos de puerto e IP para la comunicacion de los dos caminos Thread
     
