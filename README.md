@@ -15,3 +15,11 @@ Pasos
 -el archivo "Detector.py" se encarga de enviar imagenes de los objetos que estan en el area dde la boca del recegedor.
 
 Por ahora, aun no se puede activar y desactivar los archivos python mientras el simulador de Unity este activado. De desactivar los archivos de Python, se necesita reiniciar el simulador de Unity para que se pueda activar de nuevo los archivos Python.
+
+Los puertos para cada servidor de Unity son los siguientes:
+
+Movimiento del bote, puerto: 2100
+Camara del camino, puerto: 2500
+Camara del detector, puerto: 2530
+
+Es necesario descargar otra vez los archivos python para añadir los cambios realizados.
