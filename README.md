@@ -23,3 +23,4 @@ Camara del camino, puerto: 2500
 Camara del detector, puerto: 2530
 
 Es necesario descargar otra vez los archivos python para añadir los cambios realizados.
+(Los archivos python tambien están en el repositorio Github)
