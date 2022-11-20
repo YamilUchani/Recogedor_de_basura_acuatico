@@ -6,8 +6,7 @@ public class Camaras : MonoBehaviour
 {
     //Estas son las variables  donde se cargan las distintas camaras que se utilizaran para ver al recogedor de basura
     public Camera Espectador;
-    public Camera Recogedor;
-    public Camera Delado;
+    public Camera Camino;
     //Esta variable se encargara de almacenar las variables de cada camara
     private Camera[] Cams;
     //Esta variable se encarga de almacenar a la camara seleccionada  
@@ -18,9 +17,9 @@ public class Camaras : MonoBehaviour
     void Start()
     {
         //Se almacenan las camaras
-        Cams=new Camera[]{Espectador,Recogedor,Delado};
+        Cams=new Camera[]{Camino,Espectador};
         //Se pone la camara por defecto
-        currentCamera=Espectador;
+        currentCamera=Camino;
         //Se hace el cambio de camara
         Cambio();
     }
@@ -31,7 +30,7 @@ public class Camaras : MonoBehaviour
         if (Input.GetKeyDown("v"))
         {
             currentCameraIndex++;
-            if(currentCameraIndex>2)
+            if(currentCameraIndex>1)
             {
                 currentCameraIndex=0;
             }
