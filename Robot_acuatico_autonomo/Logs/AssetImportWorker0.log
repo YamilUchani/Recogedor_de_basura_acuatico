@@ -1,0 +1,919 @@
+Using pre-set license
+Built from '2020.3/staging' branch; Version is '2020.3.30f1 (1fb1bf06830e) revision 2077119'; Using compiler version '192528614'; Build Type 'Release'
+OS: 'Windows 11  (10.0.22000) 64bit Professional' Language: 'es' Physical Memory: 12174 MB
+BatchMode: 1, IsHumanControllingUs: 0, StartBugReporterOnCrash: 0, Is64bit: 1, IsPro: 0
+
+COMMAND LINE ARGUMENTS:
+C:\Program Files\Unity 2020.3.30f1\Editor\Unity.exe
+-adb2
+-batchMode
+-noUpm
+-name
+AssetImportWorker0
+-projectPath
+C:/PROYECTOS/Recogedor_de_basura_acuatico/Robot_acuatico_autonomo
+-logFile
+Logs/AssetImportWorker0.log
+-srvPort
+53370
+Successfully changed project path to: C:/PROYECTOS/Recogedor_de_basura_acuatico/Robot_acuatico_autonomo
+C:/PROYECTOS/Recogedor_de_basura_acuatico/Robot_acuatico_autonomo
+Using Asset Import Pipeline V2.
+Refreshing native plugins compatible for Editor in 108.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Initialize engine version: 2020.3.30f1 (1fb1bf06830e)
+[Subsystems] Discovering subsystems at path C:/Program Files/Unity 2020.3.30f1/Editor/Data/Resources/UnitySubsystems
+[Subsystems] Discovering subsystems at path C:/PROYECTOS/Recogedor_de_basura_acuatico/Robot_acuatico_autonomo/Assets
+GfxDevice: creating device client; threaded=0
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.1]
+    Renderer: Intel(R) UHD Graphics 620 (ID=0x5917)
+    Vendor:   
+    VRAM:     6087 MB
+    Driver:   25.20.100.6615
+Initialize mono
+Mono path[0] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/Managed'
+Mono path[1] = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/lib/mono/unityjit'
+Mono config path = 'C:/Program Files/Unity 2020.3.30f1/Editor/Data/MonoBleedingEdge/etc'
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,server=y,suspend=n,address=127.0.0.1:56140
+Begin MonoManager ReloadAssembly
+Registering precompiled unity dll's ...
+Register platform support module: C:/Program Files/Unity 2020.3.30f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll
+Registered in 0.001963 seconds.
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 106.26 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.001 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1001ms)
+		BeginReloadAssembly (88ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (0ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (1ms)
+		EndReloadAssembly (830ms)
+			LoadAssemblies (86ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (260ms)
+			ReleaseScriptCaches (0ms)
+			RebuildScriptCaches (58ms)
+			SetupLoadedEditorAssemblies (337ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (8ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (106ms)
+				BeforeProcessingInitializeOnLoad (21ms)
+				ProcessInitializeOnLoadAttributes (155ms)
+				ProcessInitializeOnLoadMethodAttributes (46ms)
+				AfterProcessingInitializeOnLoad (0ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (0ms)
+Platform modules already initialized, skipping
+Registering precompiled user dll's ...
+Registered in 0.004605 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 104.57 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  1.741 seconds
+Domain Reload Profiling:
+	ReloadAssembly (1742ms)
+		BeginReloadAssembly (207ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (9ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (26ms)
+		EndReloadAssembly (1447ms)
+			LoadAssemblies (149ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (478ms)
+			ReleaseScriptCaches (1ms)
+			RebuildScriptCaches (61ms)
+			SetupLoadedEditorAssemblies (618ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (4ms)
+				SetLoadedEditorAssemblies (0ms)
+				RefreshPlugins (105ms)
+				BeforeProcessingInitializeOnLoad (161ms)
+				ProcessInitializeOnLoadAttributes (326ms)
+				ProcessInitializeOnLoadMethodAttributes (15ms)
+				AfterProcessingInitializeOnLoad (6ms)
+				EditorAssembliesLoaded (0ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (10ms)
+Platform modules already initialized, skipping
+========================================================================
+Worker process is ready to serve import requests
+Launched and connected shader compiler UnityShaderCompiler.exe after 0.07 seconds
+Refreshing native plugins compatible for Editor in 0.86 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3127 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 218.0 MB.
+System memory in use after: 218.2 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 3587.
+Total: 5.915300 ms (FindLiveObjects: 0.278900 ms CreateObjectMapping: 0.278000 ms MarkObjects: 5.006900 ms  DeleteObjects: 0.350000 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  path: Assets/Imagenes/Imagen95Angulo3,587802E-05.png
+  artifactKey: Guid(e5d616c7095a74147a0429f4d12b393b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen95Angulo3,587802E-05.png using Guid(e5d616c7095a74147a0429f4d12b393b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '9599a4429edcce09c2b0e31871c1e1a1') in 0.280667 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000345 seconds.
+  path: Assets/Imagenes/Imagen0Angulo0.png
+  artifactKey: Guid(8665e8cce8133dc4aa009f0a42b28c8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen0Angulo0.png using Guid(8665e8cce8133dc4aa009f0a42b28c8f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '91b2b99c40088b8ead2402a58a105784') in 0.016573 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000441 seconds.
+  path: Assets/Imagenes/Imagen3Angulo-4,244551E-07.png
+  artifactKey: Guid(9be3ddd750ef64b49bd38cc4abe38cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen3Angulo-4,244551E-07.png using Guid(9be3ddd750ef64b49bd38cc4abe38cd6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4b60c8902794bcbcc3d46b09c8ef8973') in 0.013515 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000351 seconds.
+  path: Assets/Imagenes/Imagen34Angulo-2,904943E-06.png
+  artifactKey: Guid(1a9a716157fae574284f6a82a6982eb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen34Angulo-2,904943E-06.png using Guid(1a9a716157fae574284f6a82a6982eb8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fcb6f1fbe58b6c7d90f38ee836f2fb93') in 0.013718 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000360 seconds.
+  path: Assets/Imagenes/Imagen0Angulo-1,230151E-05.png
+  artifactKey: Guid(0e36d4f5a1494684d88dd66cf06fe703) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen0Angulo-1,230151E-05.png using Guid(0e36d4f5a1494684d88dd66cf06fe703) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '942559b0519f84feeeb4679ac6f145c6') in 0.014277 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Imagenes/Imagen68Angulo-7,031761E-06.png
+  artifactKey: Guid(1290382561db5fa4a863ef74d44fad5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen68Angulo-7,031761E-06.png using Guid(1290382561db5fa4a863ef74d44fad5f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b0660ae167371d24498598f8f2d61a89') in 0.014244 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000318 seconds.
+  path: Assets/Imagenes/Imagen46Angulo-4,977028E-06.png
+  artifactKey: Guid(c6455fcab7bac7948afeb14a05bf8b70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen46Angulo-4,977028E-06.png using Guid(c6455fcab7bac7948afeb14a05bf8b70) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '73614c4ed0890a81b2ca362720885f56') in 0.035275 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000321 seconds.
+  path: Assets/Imagenes/Imagen53Angulo1,906271E-05.png
+  artifactKey: Guid(5b12ae54f3a40604bad764b6d7c363df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen53Angulo1,906271E-05.png using Guid(5b12ae54f3a40604bad764b6d7c363df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7ca183534e255d1f4b04b926a8cda2d4') in 0.014313 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000324 seconds.
+  path: Assets/Imagenes/Imagen1Angulo14,61094.png
+  artifactKey: Guid(81be009c47eaaa046945be4afc1b6f28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen1Angulo14,61094.png using Guid(81be009c47eaaa046945be4afc1b6f28) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf9881f8c16a50e0080ab725dece5b09') in 0.014112 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000407 seconds.
+  path: Assets/Imagenes/Imagen36Angulo-7,107158E-06.png
+  artifactKey: Guid(0c8302d8789113d40a5c26eb2f92efb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen36Angulo-7,107158E-06.png using Guid(0c8302d8789113d40a5c26eb2f92efb1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e09ea516ac4b09d53ddae4f4789e6dd3') in 0.013219 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000324 seconds.
+  path: Assets/Imagenes/Imagen49Angulo5,281373E-06.png
+  artifactKey: Guid(929c9c1007fcc74489baa4b9dda14b03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen49Angulo5,281373E-06.png using Guid(929c9c1007fcc74489baa4b9dda14b03) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '33492ffe77e2a708528dc00922dc13f7') in 0.013762 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000327 seconds.
+  path: Assets/Imagenes/Imagen4Angulo-5,255137E-07.png
+  artifactKey: Guid(d18e26b9019fff64b92bf5a94d42ebf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen4Angulo-5,255137E-07.png using Guid(d18e26b9019fff64b92bf5a94d42ebf5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'daeec706a5497076a6bf987cf9c7d81e') in 0.013272 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000346 seconds.
+  path: Assets/Imagenes/Imagen97Angulo2,853853E-05.png
+  artifactKey: Guid(5d2697313283fa4429fcea58da2df98a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen97Angulo2,853853E-05.png using Guid(5d2697313283fa4429fcea58da2df98a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '888e6b6d7c92c7873a72a725e4a1f399') in 0.014078 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000354 seconds.
+  path: Assets/Imagenes/Imagen89Angulo3,120456E-05.png
+  artifactKey: Guid(e12b74e0ff469654dabc0d60aedbac4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen89Angulo3,120456E-05.png using Guid(e12b74e0ff469654dabc0d60aedbac4e) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '93878289db9d451bc2d9b4607d83d1ff') in 0.014986 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000330 seconds.
+  path: Assets/Imagenes/Imagen23Angulo1,077108E-05.png
+  artifactKey: Guid(7c7b810730a0b564f9aa78716d21a0ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen23Angulo1,077108E-05.png using Guid(7c7b810730a0b564f9aa78716d21a0ac) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6c67951cdcce31031c4b140b0d95b7f5') in 0.014685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000306 seconds.
+  path: Assets/Imagenes/Imagen8Angulo256,4975.png
+  artifactKey: Guid(4016de5be7fcdc24fb99c6e2571ee486) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen8Angulo256,4975.png using Guid(4016de5be7fcdc24fb99c6e2571ee486) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '055524f3665e378e473ef387265b4e51') in 0.032181 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000640 seconds.
+  path: Assets/Imagenes/Imagen81Angulo-1,227301E-05.png
+  artifactKey: Guid(626457be2b4aba047a47dde0918796c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen81Angulo-1,227301E-05.png using Guid(626457be2b4aba047a47dde0918796c9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8a11eb1e3d449860e3d96f2632b601b4') in 0.014249 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000303 seconds.
+  path: Assets/Imagenes/Imagen25Angulo1,034441E-05.png
+  artifactKey: Guid(1a0e51e2ac94f8a4799e1b5bfe145050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen25Angulo1,034441E-05.png using Guid(1a0e51e2ac94f8a4799e1b5bfe145050) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c5951ab305fabdf5015002ecb144f083') in 0.014578 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000221 seconds.
+  path: Assets/Imagenes/Imagen82Angulo-6,962505E-06.png
+  artifactKey: Guid(abfb38d428ae9a044a766c7e1677b2c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen82Angulo-6,962505E-06.png using Guid(abfb38d428ae9a044a766c7e1677b2c2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f7003f4c5051337b4b2dc36d50547844') in 0.028685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000349 seconds.
+  path: Assets/Imagenes/Imagen67Angulo-1,830557E-06.png
+  artifactKey: Guid(254ab1ffadf776d479990dec314ca5c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen67Angulo-1,830557E-06.png using Guid(254ab1ffadf776d479990dec314ca5c6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8cb58ed55057d815752f7d109b209aec') in 0.013183 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Imagenes/Imagen93Angulo3,904426E-05.png
+  artifactKey: Guid(ac843d4544005ff4d86a9298730e080b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen93Angulo3,904426E-05.png using Guid(ac843d4544005ff4d86a9298730e080b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a004d2d58fbc1c6f644edefec8522673') in 0.013699 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000352 seconds.
+  path: Assets/Imagenes/Imagen91Angulo3,741966E-05.png
+  artifactKey: Guid(04025e63bf6b2064295adc3127d96424) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen91Angulo3,741966E-05.png using Guid(04025e63bf6b2064295adc3127d96424) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'aa695ff69fba6501a948fe9e431fa144') in 0.013694 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000319 seconds.
+  path: Assets/Imagenes/Imagen21Angulo1,046245E-05.png
+  artifactKey: Guid(41a596e4054916344855d39cec72427a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen21Angulo1,046245E-05.png using Guid(41a596e4054916344855d39cec72427a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b3677883a62652e1ad088129fea93001') in 0.013395 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000326 seconds.
+  path: Assets/Imagenes/Imagen79Angulo-2,094761E-05.png
+  artifactKey: Guid(32226daf927a4914bb82da6ef2198c46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen79Angulo-2,094761E-05.png using Guid(32226daf927a4914bb82da6ef2198c46) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fb072dc0bf565c6b8d9ecc9135b55592') in 0.013252 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000326 seconds.
+  path: Assets/Imagenes/Imagen30Angulo5,241033E-06.png
+  artifactKey: Guid(79017926fafd8aa4d8d29b027574a1a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen30Angulo5,241033E-06.png using Guid(79017926fafd8aa4d8d29b027574a1a8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0e46457446dd130300ee112e40483e26') in 0.013822 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000267 seconds.
+  path: Assets/Imagenes/Imagen78Angulo-2,418231E-05.png
+  artifactKey: Guid(d54229d35a55f1b4698c2374e199b092) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen78Angulo-2,418231E-05.png using Guid(d54229d35a55f1b4698c2374e199b092) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a48ed867495df6ea766a976cca726387') in 0.014007 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000264 seconds.
+  path: Assets/Imagenes/Imagen0Angulo4,694269.png
+  artifactKey: Guid(a55bc820d08c3094188fdf68bc75fbbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen0Angulo4,694269.png using Guid(a55bc820d08c3094188fdf68bc75fbbc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd036a0f63b3ecce6d4836b5e24f95d5f') in 0.013917 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000250 seconds.
+  path: Assets/Imagenes/Imagen16Angulo6,501372E-06.png
+  artifactKey: Guid(544da2ee5e390534484217071dd05318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen16Angulo6,501372E-06.png using Guid(544da2ee5e390534484217071dd05318) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bb137ac7a08435c4d9882086aa2811ba') in 0.013895 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000288 seconds.
+  path: Assets/Imagenes/Imagen84Angulo4,655076E-06.png
+  artifactKey: Guid(12bd99ae63af96448b50d843fccd4ee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen84Angulo4,655076E-06.png using Guid(12bd99ae63af96448b50d843fccd4ee1) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b73cbd1e5b0f58153e6b608e2867d52e') in 0.013528 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Imagenes/Imagen3Angulo359,7266.png
+  artifactKey: Guid(323199255cfec904dbd61542d6d1e5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen3Angulo359,7266.png using Guid(323199255cfec904dbd61542d6d1e5e4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '38a3b1eefb0636ea97d6d3b73369fc41') in 0.014043 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000231 seconds.
+  path: Assets/Imagenes/Imagen61Angulo2,373612E-05.png
+  artifactKey: Guid(5b9c92e8916f4d24185ef9f15d3956f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen61Angulo2,373612E-05.png using Guid(5b9c92e8916f4d24185ef9f15d3956f7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cfa00e48806c8c27851748093865d81e') in 0.038949 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000430 seconds.
+  path: Assets/Imagenes/Imagen90Angulo3,47699E-05.png
+  artifactKey: Guid(889919a36bef70348a595691ecb01b97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen90Angulo3,47699E-05.png using Guid(889919a36bef70348a595691ecb01b97) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '21829b83ab3a37f5833cb6c93ee98628') in 0.016769 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Imagenes/Imagen65Angulo8,477453E-06.png
+  artifactKey: Guid(cb3c65c71ce6e1948a61b4f330881a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen65Angulo8,477453E-06.png using Guid(cb3c65c71ce6e1948a61b4f330881a62) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '301fce05afb462ca2d752711d1ffafca') in 0.012858 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000276 seconds.
+  path: Assets/Imagenes/Imagen44Angulo-9,631747E-06.png
+  artifactKey: Guid(2230fb492acdd7945b2a38a3075c482c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen44Angulo-9,631747E-06.png using Guid(2230fb492acdd7945b2a38a3075c482c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd24e317ce013abdb8e015abf11e035ac') in 0.028503 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000476 seconds.
+  path: Assets/Imagenes/Imagen6Angulo286,8131.png
+  artifactKey: Guid(a9c7e4fad7a37d741ad4172912edffae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen6Angulo286,8131.png using Guid(a9c7e4fad7a37d741ad4172912edffae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1dd19fd60381a2a16eb78ef8ab622f03') in 0.014852 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000247 seconds.
+  path: Assets/Imagenes/Imagen47Angulo-1,823281E-06.png
+  artifactKey: Guid(bc7eaf1012a880f4e82c8500e72e5773) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen47Angulo-1,823281E-06.png using Guid(bc7eaf1012a880f4e82c8500e72e5773) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ad5d264b48056419e533351ccf7c626') in 0.015080 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000321 seconds.
+  path: Assets/Imagenes/Imagen9Angulo3,890081E-07.png
+  artifactKey: Guid(852ffe79979a0e640ba477121d3b175f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen9Angulo3,890081E-07.png using Guid(852ffe79979a0e640ba477121d3b175f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a63289471fc0b8199cd0b01e48b8ef15') in 0.025467 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000395 seconds.
+  path: Assets/Imagenes/Imagen14Angulo4,371144E-06.png
+  artifactKey: Guid(79f7519c9ff8aab4e9f6656c50f1cf6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen14Angulo4,371144E-06.png using Guid(79f7519c9ff8aab4e9f6656c50f1cf6b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '867bbc4b8ee68db88eefdb91d9b11246') in 0.013993 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000244 seconds.
+  path: Assets/Imagenes/Imagen2Angulo-2,781013E-07.png
+  artifactKey: Guid(2795b152362239f408438674579a1042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen2Angulo-2,781013E-07.png using Guid(2795b152362239f408438674579a1042) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c90d838629306fd71d94d2c27917734d') in 0.014373 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000249 seconds.
+  path: Assets/Imagenes/Imagen31Angulo3,35255E-06.png
+  artifactKey: Guid(95de50d6aa2ce0647afbf1e5f96a1410) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen31Angulo3,35255E-06.png using Guid(95de50d6aa2ce0647afbf1e5f96a1410) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5b7028cea4b741797d48a84f8f47d673') in 0.013581 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000242 seconds.
+  path: Assets/Imagenes/Imagen26Angulo9,851551E-06.png
+  artifactKey: Guid(d717c8a149b771d459999c4a10abbee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen26Angulo9,851551E-06.png using Guid(d717c8a149b771d459999c4a10abbee6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '977185b5a13a040186449564e5bb2964') in 0.013456 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Imagenes/Imagen69Angulo-1,198064E-05.png
+  artifactKey: Guid(37a72913a60318b40acd175dd348f411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen69Angulo-1,198064E-05.png using Guid(37a72913a60318b40acd175dd348f411) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'de05de13ad4b8b63888626b40fa2346f') in 0.018545 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/Imagenes/Imagen70Angulo-1,664876E-05.png
+  artifactKey: Guid(4101b5ef1f99d8f4ea9d752f8d4042d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen70Angulo-1,664876E-05.png using Guid(4101b5ef1f99d8f4ea9d752f8d4042d9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1de7cbe616fd25322dc92c8d3f0cd841') in 0.016943 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000314 seconds.
+  path: Assets/Imagenes/Imagen88Angulo2,675305E-05.png
+  artifactKey: Guid(7b8ddf098acafeb4c8ccc610d4674726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen88Angulo2,675305E-05.png using Guid(7b8ddf098acafeb4c8ccc610d4674726) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4737e7f50b6eff8571d3f1d82f799f31') in 0.013598 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000264 seconds.
+  path: Assets/Imagenes/Imagen86Angulo1,627816E-05.png
+  artifactKey: Guid(568a3e87579d9cc4a8b37cdfd280d287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen86Angulo1,627816E-05.png using Guid(568a3e87579d9cc4a8b37cdfd280d287) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'fc757bd300a4899ed05681660f1b9b4a') in 0.016340 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000357 seconds.
+  path: Assets/Imagenes/Imagen6Angulo-5,733402E-07.png
+  artifactKey: Guid(0f38057ea5540ab4aa8ea828e5420bcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen6Angulo-5,733402E-07.png using Guid(0f38057ea5540ab4aa8ea828e5420bcf) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bfdd2fe2baef6a93a917fa2c64fd3327') in 0.013328 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Imagenes/Imagen40Angulo-1,269331E-05.png
+  artifactKey: Guid(189c4caf586832942af89105b0f1a7a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen40Angulo-1,269331E-05.png using Guid(189c4caf586832942af89105b0f1a7a4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2ca5fb25a1fa610a215f84685dc024d1') in 0.013366 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000276 seconds.
+  path: Assets/Imagenes/Imagen96Angulo3,2722E-05.png
+  artifactKey: Guid(16c7d4f39ef20ae4fb83bc6f74af138a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen96Angulo3,2722E-05.png using Guid(16c7d4f39ef20ae4fb83bc6f74af138a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '152037c5d41ed937425d51ab7ca004b1') in 0.013939 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000224 seconds.
+  path: Assets/Imagenes/Imagen4Angulo335,4455.png
+  artifactKey: Guid(a03c253ae57d5684ebace6a5f9a4e53b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen4Angulo335,4455.png using Guid(a03c253ae57d5684ebace6a5f9a4e53b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '497520c0b94e380d4e86b089c9de0232') in 0.043875 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000563 seconds.
+  path: Assets/Imagenes/Imagen94Angulo3,805609E-05.png
+  artifactKey: Guid(bcdeeac296c87d8448d397a4d7fa9625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen94Angulo3,805609E-05.png using Guid(bcdeeac296c87d8448d397a4d7fa9625) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8d2401ffeaf208f8d3805ef274c7790b') in 0.017174 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000279 seconds.
+  path: Assets/Imagenes/Imagen72Angulo-2,416326E-05.png
+  artifactKey: Guid(643cb5e9b82097243a4e45ffbf021b2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen72Angulo-2,416326E-05.png using Guid(643cb5e9b82097243a4e45ffbf021b2d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '1e97859baa4a23b9444dfe92ecf81ebe') in 0.012905 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000341 seconds.
+  path: Assets/Imagenes/Imagen71Angulo-2,078221E-05.png
+  artifactKey: Guid(c4ddf34a84231914fb3b8e48321a5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen71Angulo-2,078221E-05.png using Guid(c4ddf34a84231914fb3b8e48321a5e66) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '13e8e522c6110976e0c0760f84320671') in 0.014665 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000240 seconds.
+  path: Assets/Imagenes/Imagen66Angulo3,386467E-06.png
+  artifactKey: Guid(3eff01cbe9ece574daad180255f3478c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen66Angulo3,386467E-06.png using Guid(3eff01cbe9ece574daad180255f3478c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8eeef51775e97616ce3aa5f02932399f') in 0.031513 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000339 seconds.
+  path: Assets/Imagenes/Imagen1Angulo-1,075998E-07.png
+  artifactKey: Guid(23ab1f9f6faba1b45b81a477f7dbc532) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen1Angulo-1,075998E-07.png using Guid(23ab1f9f6faba1b45b81a477f7dbc532) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '57cc661a785b3c460cc04d20a4f22781') in 0.013685 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000230 seconds.
+  path: Assets/Imagenes/Imagen73Angulo-2,663135E-05.png
+  artifactKey: Guid(e85f40a75817e2647abe99aae4130fbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen73Angulo-2,663135E-05.png using Guid(e85f40a75817e2647abe99aae4130fbe) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5189bc67902bb75796ab56584d13775') in 0.013590 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/Imagenes/Imagen50Angulo8,94419E-06.png
+  artifactKey: Guid(4f089a277cdbb1b44af7d26800f4d6fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen50Angulo8,94419E-06.png using Guid(4f089a277cdbb1b44af7d26800f4d6fb) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '442354d0a3179551864db37b3f4bf4c7') in 0.013554 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000266 seconds.
+  path: Assets/Imagenes/Imagen37Angulo-8,91288E-06.png
+  artifactKey: Guid(868973b4a80e2984aa3ec410916b584b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen37Angulo-8,91288E-06.png using Guid(868973b4a80e2984aa3ec410916b584b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f035a2887bce95c58ded56cbc4f6bc48') in 0.015058 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000278 seconds.
+  path: Assets/Imagenes/Imagen17Angulo7,52019E-06.png
+  artifactKey: Guid(b0d25deec2e61a44ea092181bb8c0e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen17Angulo7,52019E-06.png using Guid(b0d25deec2e61a44ea092181bb8c0e64) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '40daa4ba94c115ba2dd4cc55d48ad534') in 0.013835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000286 seconds.
+  path: Assets/Imagenes/Imagen24Angulo1,064826E-05.png
+  artifactKey: Guid(c94ba883586adb14dab3a8d1a817d60f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen24Angulo1,064826E-05.png using Guid(c94ba883586adb14dab3a8d1a817d60f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '77c6f51015e245e75a2e9b477f5868a8') in 0.014518 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000275 seconds.
+  path: Assets/Imagenes/Imagen101Angulo4,634945E-06.png
+  artifactKey: Guid(c93908458063c084cab6373cbf1a9a86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen101Angulo4,634945E-06.png using Guid(c93908458063c084cab6373cbf1a9a86) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e5143af3451a82e23365dee6cda6d789') in 0.012982 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000284 seconds.
+  path: Assets/Imagenes/Imagen39Angulo-1,175553E-05.png
+  artifactKey: Guid(e23d827a1492cf04e80ad7241b3961e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen39Angulo-1,175553E-05.png using Guid(e23d827a1492cf04e80ad7241b3961e0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ac1da89c6b6121fb2162ba5ad6005bc2') in 0.013776 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000283 seconds.
+  path: Assets/Imagenes/Imagen48Angulo1,583134E-06.png
+  artifactKey: Guid(162ad8812cd46cb4098dbbc45a8ef2b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen48Angulo1,583134E-06.png using Guid(162ad8812cd46cb4098dbbc45a8ef2b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ffe70bc0785b0a2c38c36e44f19bf403') in 0.014082 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000274 seconds.
+  path: Assets/Imagenes/Imagen7Angulo268,1181.png
+  artifactKey: Guid(2e310a51762830842a10773714ca549c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen7Angulo268,1181.png using Guid(2e310a51762830842a10773714ca549c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '765121e196ca6cd5e90325b7618a70e7') in 0.016888 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000446 seconds.
+  path: Assets/Imagenes/Imagen33Angulo-7,865342E-07.png
+  artifactKey: Guid(bc0b7dc2d328be44f84136ad072cb6b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen33Angulo-7,865342E-07.png using Guid(bc0b7dc2d328be44f84136ad072cb6b9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd276d0004357e8304b7d4993845cb12c') in 0.015342 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000381 seconds.
+  path: Assets/Imagenes/Imagen64Angulo1,330925E-05.png
+  artifactKey: Guid(ba5f94af53e272145a31ad6e75f0b2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen64Angulo1,330925E-05.png using Guid(ba5f94af53e272145a31ad6e75f0b2b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6118bd3120142b6f303d35d24be867c8') in 0.098127 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000270 seconds.
+  path: Assets/Imagenes/Imagen85Angulo1,052254E-05.png
+  artifactKey: Guid(f317fa9c0ce338a4c816abf18e0e48f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen85Angulo1,052254E-05.png using Guid(f317fa9c0ce338a4c816abf18e0e48f2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8b1706da9b8be0a238b5a180d25af417') in 0.013740 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Imagenes/Imagen5Angulo-5,604555E-07.png
+  artifactKey: Guid(b8b8446d4012e464d86d839afd1c07ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen5Angulo-5,604555E-07.png using Guid(b8b8446d4012e464d86d839afd1c07ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb8370ce510b145d20831bbc418c2a91') in 0.013777 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/Imagenes/Imagen11Angulo1,488108E-06.png
+  artifactKey: Guid(c1a2d26d20cc4374188e26ac955d1353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen11Angulo1,488108E-06.png using Guid(c1a2d26d20cc4374188e26ac955d1353) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c12998ab23db05d6ad8a0c2706d7192b') in 0.013306 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Imagenes/Imagen57Angulo2,67244E-05.png
+  artifactKey: Guid(2bda7c200419fa943bc2346aa2daf69d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen57Angulo2,67244E-05.png using Guid(2bda7c200419fa943bc2346aa2daf69d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd6077940f7bbdd10585419a39612448a') in 0.014242 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000318 seconds.
+  path: Assets/Imagenes/Imagen83Angulo-1,26043E-06.png
+  artifactKey: Guid(5a8edc7cab49af64885522ff420dfd72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen83Angulo-1,26043E-06.png using Guid(5a8edc7cab49af64885522ff420dfd72) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'b10a507cb63d8371c0af47277bc7f813') in 0.013097 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Imagenes/Imagen43Angulo-1,122494E-05.png
+  artifactKey: Guid(130f01925c5571b40a63d054a32fc99d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen43Angulo-1,122494E-05.png using Guid(130f01925c5571b40a63d054a32fc99d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '30de62c885ef4ea3a4e0cc96cf70cda8') in 0.117500 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000459 seconds.
+  path: Assets/Imagenes/Imagen63Angulo1,748436E-05.png
+  artifactKey: Guid(db45039b3f5837a49b95ea2b3df8b1a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen63Angulo1,748436E-05.png using Guid(db45039b3f5837a49b95ea2b3df8b1a6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b6fa79f931ba9e5f0d9aad0abfb8ee6') in 0.018230 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000443 seconds.
+  path: Assets/Imagenes/Imagen62Angulo2,101435E-05.png
+  artifactKey: Guid(87242ab593bb38543a08d4ee4b0c2dc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen62Angulo2,101435E-05.png using Guid(87242ab593bb38543a08d4ee4b0c2dc9) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0acbcbfcc6db08df437fe1c65354aa6c') in 0.111128 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000355 seconds.
+  path: Assets/Imagenes/Imagen13Angulo3,237524E-06.png
+  artifactKey: Guid(f3b1c534b7cb8f2429026b36cc59742f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen13Angulo3,237524E-06.png using Guid(f3b1c534b7cb8f2429026b36cc59742f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a27e50930787cd0f09f69623efcea285') in 0.014132 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000328 seconds.
+  path: Assets/Imagenes/Imagen60Angulo2,563706E-05.png
+  artifactKey: Guid(7f43c0c4209c0c849b716633b5df2fe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen60Angulo2,563706E-05.png using Guid(7f43c0c4209c0c849b716633b5df2fe2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '505cdf6a1af4f4f0e130e53eb8dda890') in 0.081028 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000515 seconds.
+  path: Assets/Imagenes/Imagen27Angulo9,075742E-06.png
+  artifactKey: Guid(574dfbe6f6698fa47925a56aa14b5bd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen27Angulo9,075742E-06.png using Guid(574dfbe6f6698fa47925a56aa14b5bd0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '972449d7782da840840237d0933012e0') in 0.014680 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000439 seconds.
+  path: Assets/Imagenes/Imagen99Angulo1,75813E-05.png
+  artifactKey: Guid(9e9b507ea6b17aa4280f0d2997e31e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen99Angulo1,75813E-05.png using Guid(9e9b507ea6b17aa4280f0d2997e31e87) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'eb87b922ed48048d6034ad0ddac480a1') in 0.013606 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000291 seconds.
+  path: Assets/Imagenes/Imagen80Angulo-1,692358E-05.png
+  artifactKey: Guid(6f3939f3eb86a3249984ab7602e254a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen80Angulo-1,692358E-05.png using Guid(6f3939f3eb86a3249984ab7602e254a7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'dc07a723b531f165cc22397a1098b7db') in 0.015072 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000331 seconds.
+  path: Assets/Imagenes/Imagen52Angulo1,590764E-05.png
+  artifactKey: Guid(5950195ab54d8fa468c00b2fb391bb3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen52Angulo1,590764E-05.png using Guid(5950195ab54d8fa468c00b2fb391bb3f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '56dc909c8cf61b931f9e9c65a83aabc5') in 0.014655 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Imagenes/Imagen54Angulo2,18465E-05.png
+  artifactKey: Guid(544939604b1a2d54ca1e4742b1cd84ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen54Angulo2,18465E-05.png using Guid(544939604b1a2d54ca1e4742b1cd84ae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ba40b812e1c25b9b8205522fd0b8deb6') in 0.012969 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000323 seconds.
+  path: Assets/Imagenes/Imagen100Angulo1,122056E-05.png
+  artifactKey: Guid(f33f45af3ef3cb649bae55b96feb039d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen100Angulo1,122056E-05.png using Guid(f33f45af3ef3cb649bae55b96feb039d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4853ce05708892d3f931f33864f45eb2') in 0.017602 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000355 seconds.
+  path: Assets/Imagenes/Imagen51Angulo1,257217E-05.png
+  artifactKey: Guid(c15350c19a4149a41981fe9e61e080e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen51Angulo1,257217E-05.png using Guid(c15350c19a4149a41981fe9e61e080e5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e04adb889b2b781cc36023a68423fa88') in 0.013007 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000331 seconds.
+  path: Assets/Imagenes/Imagen59Angulo2,668249E-05.png
+  artifactKey: Guid(c110119559257674681ccf41aa42e7df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen59Angulo2,668249E-05.png using Guid(c110119559257674681ccf41aa42e7df) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6dd7c9a255628c84cf37843002de4233') in 0.012992 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000358 seconds.
+  path: Assets/Imagenes/Imagen20Angulo9,992259E-06.png
+  artifactKey: Guid(6ae7ba2006b7e86419064282243b16f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen20Angulo9,992259E-06.png using Guid(6ae7ba2006b7e86419064282243b16f6) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5a0b1269dacad212e7b1011ce66c3258') in 0.031904 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000332 seconds.
+  path: Assets/Imagenes/Imagen22Angulo1,072097E-05.png
+  artifactKey: Guid(5aa35bcd74135f24495cb7de8a3028bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen22Angulo1,072097E-05.png using Guid(5aa35bcd74135f24495cb7de8a3028bd) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '8601357e3248485d3b779c17a10f1262') in 0.044598 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000305 seconds.
+  path: Assets/Imagenes/Imagen29Angulo6,820263E-06.png
+  artifactKey: Guid(0a54b9e9edf6aab4f9096c7ca735cb5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen29Angulo6,820263E-06.png using Guid(0a54b9e9edf6aab4f9096c7ca735cb5d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '887b1e4e91098b0928e6d14f167186a0') in 0.019934 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000334 seconds.
+  path: Assets/Imagenes/Imagen87Angulo2,177306E-05.png
+  artifactKey: Guid(d1411a2ed5715464e8367eee787da149) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen87Angulo2,177306E-05.png using Guid(d1411a2ed5715464e8367eee787da149) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b26af437deef44771183adf94889b75') in 0.014117 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000336 seconds.
+  path: Assets/Imagenes/Imagen8Angulo-4,20096E-08.png
+  artifactKey: Guid(23352254eb98b554697fb0a040d1772a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen8Angulo-4,20096E-08.png using Guid(23352254eb98b554697fb0a040d1772a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '2d28525f4dc99c91de3d56f58a7a80cb') in 0.018259 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000316 seconds.
+  path: Assets/Imagenes/Imagen55Angulo2,41356E-05.png
+  artifactKey: Guid(a67b2ea662863744393d4fb0feaf04be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen55Angulo2,41356E-05.png using Guid(a67b2ea662863744393d4fb0feaf04be) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '4d0e0068b1534f0d73dd360171cec8cf') in 0.023875 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000300 seconds.
+  path: Assets/Imagenes/Imagen75Angulo-2,862662E-05.png
+  artifactKey: Guid(3bf404266525ef448a6b09c9c36c7d29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen75Angulo-2,862662E-05.png using Guid(3bf404266525ef448a6b09c9c36c7d29) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '72ba1cefd860e7ac1534c3be0b4c5e1b') in 0.014905 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000436 seconds.
+  path: Assets/Imagenes/Imagen7Angulo-3,923548E-07.png
+  artifactKey: Guid(804b359e0e0a3f4428795969af071ba4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen7Angulo-3,923548E-07.png using Guid(804b359e0e0a3f4428795969af071ba4) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'e65d36ed5b25bd75315652c2455e880a') in 0.012643 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000287 seconds.
+  path: Assets/Imagenes/Imagen38Angulo-1,049706E-05.png
+  artifactKey: Guid(9fa1fa3729956514aa34459a9857f2fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen38Angulo-1,049706E-05.png using Guid(9fa1fa3729956514aa34459a9857f2fa) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '0b7ffcddfc8daf3a02d16fd656332a01') in 0.014223 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000340 seconds.
+  path: Assets/Imagenes/Imagen10Angulo8,994571E-07.png
+  artifactKey: Guid(34485af9b4a1de248acb7c8bdebcc933) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen10Angulo8,994571E-07.png using Guid(34485af9b4a1de248acb7c8bdebcc933) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '485f0c289208cd372e37cf2c896c115a') in 0.014136 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000349 seconds.
+  path: Assets/Imagenes/Imagen76Angulo-2,797012E-05.png
+  artifactKey: Guid(d6df4fa9205050549964ba702be0ff4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen76Angulo-2,797012E-05.png using Guid(d6df4fa9205050549964ba702be0ff4d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7f669d89650af0ea5d8ff9d394235689') in 0.013013 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000239 seconds.
+  path: Assets/Imagenes/Imagen92Angulo3,88021E-05.png
+  artifactKey: Guid(a7d37c6bd34541744b52382d6a77decc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen92Angulo3,88021E-05.png using Guid(a7d37c6bd34541744b52382d6a77decc) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'f89ff9a516ed22372e44e2b329ad92b1') in 0.029889 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000411 seconds.
+  path: Assets/Imagenes/Imagen28Angulo8,118182E-06.png
+  artifactKey: Guid(a9f034beef0728542a612a93c6c4681b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen28Angulo8,118182E-06.png using Guid(a9f034beef0728542a612a93c6c4681b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '48b0e32d7b041d490f9fd30924b7867b') in 0.013893 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000256 seconds.
+  path: Assets/Imagenes/Imagen32Angulo1,29947E-06.png
+  artifactKey: Guid(446148cc253a960469dc84b32d9ccd98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen32Angulo1,29947E-06.png using Guid(446148cc253a960469dc84b32d9ccd98) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a0f3d2257513afcb185fc6b9f1b9b559') in 0.016600 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000370 seconds.
+  path: Assets/Imagenes/Imagen56Angulo2,5787E-05.png
+  artifactKey: Guid(705f11f239f1bf940acc05c3f69ce88f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen56Angulo2,5787E-05.png using Guid(705f11f239f1bf940acc05c3f69ce88f) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '41c8b66af194a2c63fd473a183a8dda0') in 0.013641 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000252 seconds.
+  path: Assets/Imagenes/Imagen77Angulo-2,650605E-05.png
+  artifactKey: Guid(8d8c6090d91a29e40bfc7e5f2e66518c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen77Angulo-2,650605E-05.png using Guid(8d8c6090d91a29e40bfc7e5f2e66518c) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '6b3b997f7054154e52b75da52a56158f') in 0.013321 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000288 seconds.
+  path: Assets/Imagenes/Imagen41Angulo-1,292803E-05.png
+  artifactKey: Guid(26f3bdb57d69f1d47beb4dc3d8479e81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen41Angulo-1,292803E-05.png using Guid(26f3bdb57d69f1d47beb4dc3d8479e81) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cb68021a0a797b5605f284b401eec46e') in 0.015727 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000251 seconds.
+  path: Assets/Imagenes/Imagen2Angulo22,31246.png
+  artifactKey: Guid(2442fe3513e99fd4fa7dde6803233717) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen2Angulo22,31246.png using Guid(2442fe3513e99fd4fa7dde6803233717) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a91a6f6c925ea58fde2387dbde829169') in 0.015766 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000277 seconds.
+  path: Assets/Imagenes/Imagen35Angulo-5,098286E-06.png
+  artifactKey: Guid(5cd6c8dd3ee0c6b40aa1fe70986e1a51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen35Angulo-5,098286E-06.png using Guid(5cd6c8dd3ee0c6b40aa1fe70986e1a51) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd73c6185ab83a0cb9f3777e39cb40c40') in 0.013268 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000243 seconds.
+  path: Assets/Imagenes/Imagen12Angulo2,282865E-06.png
+  artifactKey: Guid(eb54826ad2ccb0240976ba2db9b98921) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen12Angulo2,282865E-06.png using Guid(eb54826ad2ccb0240976ba2db9b98921) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a3ac9ac5793b63847716fddf046a6411') in 0.014749 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000319 seconds.
+  path: Assets/Imagenes/Imagen15Angulo5,411993E-06.png
+  artifactKey: Guid(5508da398677d2e46bd02934c4fbc67b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen15Angulo5,411993E-06.png using Guid(5508da398677d2e46bd02934c4fbc67b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6c91f5db554011be5a3e24d85ad5a12') in 0.013835 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000248 seconds.
+  path: Assets/Imagenes/Imagen42Angulo-1,240598E-05.png
+  artifactKey: Guid(e2c573d38a8db5a468732b87e23024b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen42Angulo-1,240598E-05.png using Guid(e2c573d38a8db5a468732b87e23024b2) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cd0da710554aa3f23b786472cc7b123b') in 0.051276 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000280 seconds.
+  path: Assets/Imagenes/Imagen58Angulo2,704485E-05.png
+  artifactKey: Guid(6ab201ddc3816294385d3fcf4d051651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen58Angulo2,704485E-05.png using Guid(6ab201ddc3816294385d3fcf4d051651) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'bf9bd247233cc56961b34235c4b7f26f') in 0.028332 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000395 seconds.
+  path: Assets/Imagenes/Imagen98Angulo2,342949E-05.png
+  artifactKey: Guid(2cd2d54ec37042649beee3aa95b9966b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen98Angulo2,342949E-05.png using Guid(2cd2d54ec37042649beee3aa95b9966b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'acdd6fddf613a3ccafe60b80a6e46113') in 0.013126 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 56.504647 seconds.
+  path: Assets/Shader/Snap.renderTexture
+  artifactKey: Guid(a5a35d6205c33344885d003a449a826a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Shader/Snap.renderTexture using Guid(a5a35d6205c33344885d003a449a826a) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '3cd73a62b718d0c979d7c9c387313a30') in 0.213466 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 2.615847 seconds.
+  path: Assets/Modelos/lago_titicaca.mat
+  artifactKey: Guid(ce8f0efd48710d44bac18cfd2b4d2e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Modelos/lago_titicaca.mat using Guid(ce8f0efd48710d44bac18cfd2b4d2e80) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'd5a40b9919025f2b63cf11b5ff461d75') in 0.128806 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 1100.437515 seconds.
+  path: Assets/Modelos/Tierra.png
+  artifactKey: Guid(013c5021d9fcd304fb594b29f49b50d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Modelos/Tierra.png using Guid(013c5021d9fcd304fb594b29f49b50d0) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7e0c0fbffbace379999a8412f3262110') in 0.065475 seconds 
+========================================================================
+Received Prepare
+Registering precompiled user dll's ...
+Registered in 0.008010 seconds.
+Begin MonoManager ReloadAssembly
+Native extension for WindowsStandalone target not found
+Refreshing native plugins compatible for Editor in 0.95 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Mono: successfully reloaded assembly
+- Completed reload, in  2.831 seconds
+Domain Reload Profiling:
+	ReloadAssembly (2832ms)
+		BeginReloadAssembly (320ms)
+			ExecutionOrderSort (0ms)
+			DisableScriptedObjects (10ms)
+			BackupInstance (0ms)
+			ReleaseScriptingObjects (0ms)
+			CreateAndSetChildDomain (99ms)
+		EndReloadAssembly (2353ms)
+			LoadAssemblies (265ms)
+			RebuildTransferFunctionScriptingTraits (0ms)
+			SetupTypeCache (848ms)
+			ReleaseScriptCaches (3ms)
+			RebuildScriptCaches (126ms)
+			SetupLoadedEditorAssemblies (860ms)
+				LogAssemblyErrors (0ms)
+				InitializePlatformSupportModulesInManaged (10ms)
+				SetLoadedEditorAssemblies (1ms)
+				RefreshPlugins (1ms)
+				BeforeProcessingInitializeOnLoad (273ms)
+				ProcessInitializeOnLoadAttributes (534ms)
+				ProcessInitializeOnLoadMethodAttributes (26ms)
+				AfterProcessingInitializeOnLoad (13ms)
+				EditorAssembliesLoaded (1ms)
+			ExecutionOrderSort2 (0ms)
+			AwakeInstancesAfterBackupRestoration (21ms)
+Platform modules already initialized, skipping
+Refreshing native plugins compatible for Editor in 0.90 ms, found 2 plugins.
+Preloading 0 native plugins for Editor in 0.00 ms.
+Unloading 3042 Unused Serialized files (Serialized files now loaded: 0)
+System memory in use before: 213.2 MB.
+System memory in use after: 213.5 MB.
+
+Unloading 12 unused Assets to reduce memory usage. Loaded Objects now: 3634.
+Total: 7.630500 ms (FindLiveObjects: 0.542500 ms CreateObjectMapping: 0.321900 ms MarkObjects: 6.695200 ms  DeleteObjects: 0.069200 ms)
+
+AssetImportParameters requested are different than current active one (requested -> active):
+  custom:framework-win-MediaFoundation: 216162199b28c13a410421893ffa2e32 -> 
+  custom:video-decoder-ogg-theora: a1e56fd34408186e4bbccfd4996cb3dc -> 
+  custom:container-muxer-webm: aa71ff27fc2769a1b78a27578f13a17b -> 
+  custom:container-demuxer-webm: 4f35f7cbe854078d1ac9338744f61a02 -> 
+  custom:container-demuxer-ogg: 62fdf1f143b41e24485cea50d1cbac27 -> 
+  custom:video-encoder-webm-vp8: eb34c28f22e8b96e1ab97ce403110664 -> 
+  custom:video-decoder-webm-vp8: 9c59270c3fd7afecdb556c50c9e8de78 -> 
+  custom:audio-decoder-ogg-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+  custom:audio-encoder-webm-vorbis: bf7c407c2cedff20999df2af8eb42d56 -> 
+========================================================================
+Received Import Request.
+  Time since last request: 104.336919 seconds.
+  path: Assets/Imagenes/Imagen10Angulo9,017731.png
+  artifactKey: Guid(da6dfc0585c91ec4a8452a67a0729dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen10Angulo9,017731.png using Guid(da6dfc0585c91ec4a8452a67a0729dab) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5ed17921e2179bbf50c5338c339f5932') in 0.087020 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000412 seconds.
+  path: Assets/Imagenes/Imagen2Angulo-2,820059E-05.png
+  artifactKey: Guid(6d42902b81ed9f040a778a1d62cd1ce8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen2Angulo-2,820059E-05.png using Guid(6d42902b81ed9f040a778a1d62cd1ce8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7cfe14e0ddfd73ed9c5867daba6ab64c') in 0.156323 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.001096 seconds.
+  path: Assets/Imagenes/Imagen9Angulo7,076674.png
+  artifactKey: Guid(45785d5ee969116438e940881184b1d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen9Angulo7,076674.png using Guid(45785d5ee969116438e940881184b1d8) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ff62124fcd1756aa9127ac33acb0a0be') in 0.095610 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000569 seconds.
+  path: Assets/Imagenes/Imagen0Angulo1,064826E-05.png
+  artifactKey: Guid(8fc2c31eb4e92a4479aaa50fca9cc948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen0Angulo1,064826E-05.png using Guid(8fc2c31eb4e92a4479aaa50fca9cc948) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '125e53c95a919cb1c3df6ca1d34ea3de') in 0.071753 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000446 seconds.
+  path: Assets/Imagenes/Imagen8Angulo5,364325.png
+  artifactKey: Guid(dc8dbb84866408b49a30e2e58d694de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen8Angulo5,364325.png using Guid(dc8dbb84866408b49a30e2e58d694de5) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '28969285f4fce5e1608be8a3bed110f5') in 0.094130 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000395 seconds.
+  path: Assets/Imagenes/Imagen4Angulo1,295699.png
+  artifactKey: Guid(2f1edd052ccc39245a2ab9de90657880) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen4Angulo1,295699.png using Guid(2f1edd052ccc39245a2ab9de90657880) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'cdce63c262478e83b7229cbde051a3fb') in 0.064040 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000528 seconds.
+  path: Assets/Imagenes/Imagen1Angulo5,281373E-06.png
+  artifactKey: Guid(15172cbd41c300f4fb72687dc46b59ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen1Angulo5,281373E-06.png using Guid(15172cbd41c300f4fb72687dc46b59ba) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'ab03de0f5ee0f8e0eff29265e2b51a04') in 0.094371 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000503 seconds.
+  path: Assets/Imagenes/Imagen3Angulo0,3118302.png
+  artifactKey: Guid(3c32b580c373fbc4b8638c9ec23f764d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen3Angulo0,3118302.png using Guid(3c32b580c373fbc4b8638c9ec23f764d) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'c32002f7db7463904092f4c181cc00b5') in 0.061551 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000471 seconds.
+  path: Assets/Imagenes/Imagen11Angulo11,11303.png
+  artifactKey: Guid(826c080c350aa834b99f4c672e710a0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen11Angulo11,11303.png using Guid(826c080c350aa834b99f4c672e710a0b) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '059a601f5b6ef50220924694628fc6a5') in 0.108608 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000418 seconds.
+  path: Assets/Imagenes/Imagen7Angulo3,987836.png
+  artifactKey: Guid(c749b07ce57260649a14db9113dc0bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen7Angulo3,987836.png using Guid(c749b07ce57260649a14db9113dc0bae) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '5de041869d64d9b35ee4c5c42f854c80') in 0.063158 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000492 seconds.
+  path: Assets/Imagenes/Imagen6Angulo3,105935.png
+  artifactKey: Guid(dac29f5635ee54c45847d4cc8517a1d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen6Angulo3,105935.png using Guid(dac29f5635ee54c45847d4cc8517a1d7) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: '7d28437fc06fcc213c8ecc0f4b39717b') in 0.120405 seconds 
+========================================================================
+Received Import Request.
+  Time since last request: 0.000468 seconds.
+  path: Assets/Imagenes/Imagen5Angulo2,373475.png
+  artifactKey: Guid(416d746f97148ce44b5468e3c9c11023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)
+Start importing Assets/Imagenes/Imagen5Angulo2,373475.png using Guid(416d746f97148ce44b5468e3c9c11023) Importer(815301076,1909f56bfc062723c751e8b465ee728b)  -> (artifact id: 'a6398add7fe4aacc7feb6b745765997c') in 0.041874 seconds 
+AssetImportWorkerClient::OnTransportError - code=2 error=End of file
