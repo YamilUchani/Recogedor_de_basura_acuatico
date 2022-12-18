@@ -11,7 +11,7 @@ public class texto : MonoBehaviour
     void Start()
     {
         textfield=GetComponent<Text>();
-        textfield.text="Grabar";
+        textfield.text="Record";
     }
 
     // Update is called once per frame
@@ -20,12 +20,12 @@ public class texto : MonoBehaviour
         if(contador==true)
         {
             contador=false;
-            textfield.text="Grabar";
+            textfield.text="Record";
         }
         else
         {
             contador=true;
-            textfield.text="Parar";
+            textfield.text="Stop";
         }
     }
 }
