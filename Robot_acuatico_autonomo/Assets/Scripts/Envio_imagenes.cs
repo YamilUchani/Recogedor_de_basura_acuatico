@@ -38,7 +38,7 @@ public class Envio_imagenes : MonoBehaviour
                     bytes = image.EncodeToPNG();
                     Destroy(image);
                     
-                    File.WriteAllBytes(Application.dataPath + "/"+time+"/" +"Imagen" +FileCounter +"Angulo"+bote.transform.localEulerAngles.y + ".png", bytes);
+                    File.WriteAllBytes(Application.dataPath + "/"+time+"/" +"Image" +FileCounter +"Angle"+bote.transform.localEulerAngles.y + ".png", bytes);
                     FileCounter++;
                 }
             }
