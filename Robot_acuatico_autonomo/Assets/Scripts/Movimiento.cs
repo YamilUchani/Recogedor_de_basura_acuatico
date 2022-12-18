@@ -1,105 +1,75 @@
 using UnityEngine;
 using System.Net;
-//Esta clase del namespace Net se encarga de el envio y recibo de datos
-using System.Net.Sockets;
-//Esta clase se encarga de la creacion de subprocesos, los cuales permitiran el envio y recibo de datos en mas de un subproceso.
-using System.Threading;
 using System.Text;
 public class Movimiento : MonoBehaviour
 {
-    Thread mThread;
-    public int connectionPort=2100;
-    IPAddress localadd;
-    TcpClient cleint;
-    TcpListener listener;
-    ThreadStart ts;
     public GameObject cam;
+    public GameObject ang;
     public float aceleracion=500f;
     public float aceleracionangular=5f;
     public float aceleracionactual=0f;
     public float aceleracionangularactual=0f;
-    private float tiemporespuesta;
-    public float giro=0f;
     public Rigidbody rb;
-    public int movHorizontal=0;
-    public int movVertical=0;
-    private bool running;
-    private int bytesRead;
-    private byte[] mensaje;
-    private byte[] buffer;
-    private bool activo=true;
+    public Rigidbody rbw;
+    public float movHorizontal=0;
+    public float movVertical=0;
+    public float anguloreal=0;
+    public float velocidadreal=0;
+    public int region;
+    private int valorx;
+    private int valorz;
+
     private void Start()
     {
         rb=GetComponent<Rigidbody>();   
-        ts = new ThreadStart(GetInfo);
-        mThread=new Thread(ts);
-        mThread.Start(); 
-        activo=true;
-    }
-    void GetInfo()
-    {
-        listener= new TcpListener(IPAddress.Any, connectionPort);
-        listener.Start();
-        cleint=listener.AcceptTcpClient();
-        running=true;
-        while(running)
+        rbw=ang.GetComponent<Rigidbody>();
+        region=Random.Range(0,10);
+        switch (region)
         {
-            recibodedatos();
+            case 0:
+                valorx=Random.Range(-65,-8);
+                valorz=Random.Range(-170,-110);
+                
+                break;
+            case 1:
+                valorx=Random.Range(122,204);
+                valorz=Random.Range(-290,-222);
+                break;
+            case 2:
+                valorx=Random.Range(105,180);
+                valorz=Random.Range(-172,-105);
+                break;
+            case 3:
+                valorx=Random.Range(-122,-70);
+                valorz=Random.Range(-133,-87);
+                break;
         }
-        listener.Stop();
-    }
-    private void recibodedatos()
-    {
-        try
-        {
-            NetworkStream nwStream=cleint.GetStream();
-            nwStream.Write(mensaje,0,mensaje.Length); 
-            buffer=new byte[cleint.ReceiveBufferSize];
-            bytesRead=nwStream.Read(buffer,0,cleint.ReceiveBufferSize);
-        }
-        catch
-        {
-            Debug.Log("El control de movimiento se ha desconectado");
-            running=false;
-            activo=false;
-        }
-        string Dato=Encoding.UTF8.GetString(buffer,0,bytesRead);
-        if(Dato!=null)
-        {
-            switch (Dato)
-            {
-                case "derecha":
-                    movHorizontal=1;
-                    break;
-                case "izquierda":
-                     movHorizontal=-1;
-                    break;
-                case "arriba":
-                    movVertical=1;
-                    break;
-                case "abajo":
-                     movVertical=-1;
-                    break;    
-            }
-        }
-        
+        transform.position = new Vector3(valorx, 1f, valorz);
     }
     private void FixedUpdate()
     {
-        mensaje=Encoding.ASCII.GetBytes("Confirmacion"); 
+        movVertical = Input.GetAxis("Vertical");
+        movHorizontal = Input.GetAxis("Horizontal");
         aceleracionactual=aceleracion*movVertical;
         aceleracionangularactual=aceleracionangular*movHorizontal;
         rb.AddForce((transform.position-cam.transform.position)*aceleracionactual);
-        rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
-        movHorizontal=0;
-        movVertical=0;
-        if(!activo)
+        if(ang.transform.localEulerAngles.y<118 || ang.transform.localEulerAngles.y>242)
         {
-            mThread.Abort();
-            ts = new ThreadStart(GetInfo);
-            mThread=new Thread(ts);
-            mThread.Start();
-            activo=true;
+            rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
+            rbw.AddTorque(Vector3.up*aceleracionangularactual*0.21f*Time.deltaTime);
+        }
+        anguloreal=ang.transform.localEulerAngles.y;
+        velocidadreal=rb.velocity.z;
+        if(anguloreal<360 && anguloreal>200)
+        {
+            anguloreal=-360+anguloreal;
+        }
+        anguloreal= Mathf.Round(anguloreal * 100f) / 100f;
+        velocidadreal= Mathf.Round(velocidadreal * 100f) / 100f;
+        velocidadreal= Mathf.Abs(velocidadreal);
+        if (movHorizontal==0)
+        {
+            ang.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f); 
         }
     }          
 }
