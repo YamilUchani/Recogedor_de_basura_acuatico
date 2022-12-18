@@ -15,10 +15,11 @@ public class Envio_imagenes : MonoBehaviour
     public GameObject bote;
     byte[] bytes;
 
-    string time = System.DateTime.UtcNow.ToLocalTime().ToString("dd-MM-yyyy   HH:mm");
+    string time;
 
     public void FixedUpdate()
     {
+
         if(contador)
         {
             if(bote.GetComponent<Movimiento>().movHorizontal!=0 || bote.GetComponent<Movimiento>().movVertical!=0)
@@ -54,7 +55,7 @@ public class Envio_imagenes : MonoBehaviour
         }
         else
         {
-            time = System.DateTime.UtcNow.ToLocalTime().ToString("dd_MM_yyyy   HH_mm");
+            time = System.DateTime.UtcNow.ToLocalTime().ToString("dd_MM_yyyy   HH_mm_ss");
             AssetDatabase.CreateFolder("Assets", time);
             contador=true;
         }
