@@ -41,9 +41,12 @@
      <Compile Include="Assets\Scripts\flotacion.cs" />
      <Compile Include="Assets\Scripts\contador.cs" />
      <Compile Include="Assets\Scripts\Camaras.cs" />
+     <Compile Include="Assets\Scripts\Imagenes_detector.cs" />
      <Compile Include="Assets\Scripts\Envio_imagenes.cs" />
      <Compile Include="Assets\Scripts\contador_lenteja.cs" />
-     <Compile Include="Assets\Scripts\Imagenes_detector.cs" />
+     <Compile Include="Assets\Scripts\texto.cs" />
+     <Compile Include="Assets\Scripts\angulo_texto.cs" />
+     <Compile Include="Assets\Scripts\Velocity_script.cs" />
      <None Include="Assets\Shader\mascara.shader" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity 2020.3.30f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
