@@ -22,10 +22,10 @@ MonoBehaviour:
     y: 30
     width: 1350
     height: 611
-  m_MinSize: {x: 709, y: 492}
-  m_MaxSize: {x: 18004, y: 14042}
+  m_MinSize: {x: 533, y: 471}
+  m_MaxSize: {x: 18003, y: 14021}
   vertical: 0
-  controlID: 108
+  controlID: 661
 --- !u!114 &2
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -134,8 +134,8 @@ MonoBehaviour:
     y: 0
     width: 420
     height: 611
-  m_MinSize: {x: 201, y: 221}
-  m_MaxSize: {x: 4001, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 2}
   m_Panes:
   - {fileID: 4}
@@ -279,10 +279,10 @@ MonoBehaviour:
     y: 0
     width: 654
     height: 611
-  m_MinSize: {x: 232, y: 492}
-  m_MaxSize: {x: 10002, y: 14042}
+  m_MinSize: {x: 232, y: 471}
+  m_MaxSize: {x: 10002, y: 14021}
   vertical: 1
-  controlID: 109
+  controlID: 640
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -302,8 +302,8 @@ MonoBehaviour:
     y: 0
     width: 654
     height: 221
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 7}
   m_Panes:
   - {fileID: 7}
@@ -427,22 +427,34 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/18_12_2022   11_26_21
+    - Assets
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
+  - Assets/18_12_2022   17_49_18
+  - Assets/_Imagenes_18_12_2022   17_51_39
+  - Assets/18_12_2022   17_48_42
+  - Assets/18_12_2022   11_26_35
+  - Assets/18_12_2022   10_20
   - Assets/18_12_2022   11_26_21
+  - Assets/18_12_2022   11_26_31
+  - Assets/18-12-2022   10_14
+  - Assets/18-12-2022   10_14 1
+  - Assets/18-12-2022   10_14 2
+  - Assets/18_12_2022   10_18
+  - Assets/18_12_2022   10_18 1
+  - Assets/18_12_2022   10_19
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 103}
-    m_SelectedIDs: f0ea0000
-    m_LastClickedID: 60144
-    m_ExpandedIDs: 00000000daea0000dcea0000deea000000ca9a3b
+    scrollPos: {x: 0, y: 0}
+    m_SelectedIDs: daea0000
+    m_LastClickedID: 60122
+    m_ExpandedIDs: 00000000daea0000deea000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -470,7 +482,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000daea0000dcea0000deea0000
+    m_ExpandedIDs: 00000000daea0000dcea0000deea000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -536,7 +548,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: InspectorWindow
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -545,14 +557,14 @@ MonoBehaviour:
     y: 0
     width: 276
     height: 611
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
-  m_ActualView: {fileID: 11}
+  m_MinSize: {x: 101, y: 121}
+  m_MaxSize: {x: 4001, y: 4021}
+  m_ActualView: {fileID: 12}
   m_Panes:
   - {fileID: 11}
   - {fileID: 12}
-  m_Selected: 0
-  m_LastSelected: 1
+  m_Selected: 1
+  m_LastSelected: 0
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
