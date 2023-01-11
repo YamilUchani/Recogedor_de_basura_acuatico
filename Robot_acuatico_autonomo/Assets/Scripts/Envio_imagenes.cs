@@ -38,7 +38,7 @@ public class Envio_imagenes : MonoBehaviour
                     bytes = image.EncodeToPNG();
                     Destroy(image);
                     
-                    File.WriteAllBytes(Application.dataPath +"/Imagenes"+ "/"+time+"/" +"Image" +FileCounter +"Angle"+bote.transform.localEulerAngles.y + ".png", bytes);
+                    File.WriteAllBytes(Application.dataPath +"/Imagenes"+ "/"+time+"/" +"Image" +FileCounter +"angle"+bote.GetComponent<Movimiento>().anguloenvio+"velocity"+bote.GetComponent<Movimiento>().velocidadenvio +".png", bytes);
                     FileCounter++;
                 }
             }
@@ -55,7 +55,7 @@ public class Envio_imagenes : MonoBehaviour
         }
         else
         {
-            time = System.DateTime.UtcNow.ToLocalTime().ToString("dd_MM_yyyy   HH_mm_ss");
+            time = System.DateTime.UtcNow.ToLocalTime().ToString("dd_MM_yyyy_HH_mm_ss");
             AssetDatabase.CreateFolder("Assets/Imagenes",time);
             contador=true;
         }

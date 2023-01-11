@@ -15,15 +15,19 @@ public class Movimiento : MonoBehaviour
     public float movVertical=0;
     public float anguloreal=0;
     public float velocidadreal=0;
+    public float anguloUI=0;
+    public float velocidadUI=0;
     public int region;
     private int valorx;
     private int valorz;
+    public string anguloenvio;
+    public string velocidadenvio;
 
     private void Start()
     {
         rb=GetComponent<Rigidbody>();   
         rbw=ang.GetComponent<Rigidbody>();
-        region=Random.Range(0,10);
+        region=Random.Range(0,4);
         switch (region)
         {
             case 0:
@@ -60,13 +64,34 @@ public class Movimiento : MonoBehaviour
         }
         anguloreal=ang.transform.localEulerAngles.y;
         velocidadreal=rb.velocity.z;
-        if(anguloreal<360 && anguloreal>200)
+        if(anguloreal<=360 && anguloreal>200)
         {
             anguloreal=-360+anguloreal;
         }
-        anguloreal= Mathf.Round(anguloreal * 100f) / 100f;
-        velocidadreal= Mathf.Round(velocidadreal * 100f) / 100f;
+        anguloUI=Mathf.Round(anguloreal * 100f) / 100f;
+        anguloreal=Mathf.Round(anguloreal * 10000f) / 10000f;
+        velocidadreal=Mathf.Round(velocidadreal * 10000f) / 10000f;
+        velocidadUI= Mathf.Round(velocidadreal * 100f) / 100f;
+        anguloenvio=anguloreal.ToString();
+        if (anguloreal > 0)
+            anguloenvio = anguloenvio.Insert(0, "p");
+        else if (anguloreal==0)
+        {
+            anguloenvio= anguloenvio.Insert(0, "z");
+        }
+        else
+            anguloenvio = anguloenvio.Replace("-", "n");
+
+        if (anguloenvio.Contains(","))
+            anguloenvio = anguloenvio.Replace(",", "c");
         velocidadreal= Mathf.Abs(velocidadreal);
+        velocidadenvio=velocidadreal.ToString();
+        if (velocidadreal==0)
+        {
+            velocidadenvio= velocidadenvio.Insert(0, "z");
+        }
+        if (velocidadenvio.Contains(","))
+            velocidadenvio = velocidadenvio.Replace(",", "c");
         if (movHorizontal==0)
         {
             ang.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f); 
