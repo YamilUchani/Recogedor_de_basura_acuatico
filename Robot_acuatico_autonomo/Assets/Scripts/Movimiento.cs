@@ -16,6 +16,7 @@ public class Movimiento : MonoBehaviour
     public float anguloreal=0;
     public float velocidadreal=0;
     public float anguloUI=0;
+    public float aumentogiro;
     public float velocidadUI=0;
     public int region;
     private int valorx;
@@ -55,14 +56,20 @@ public class Movimiento : MonoBehaviour
         movVertical = Input.GetAxis("Vertical");
         movHorizontal = Input.GetAxis("Horizontal");
         aceleracionactual=aceleracion*movVertical;
-        aceleracionangularactual=aceleracionangular*movHorizontal;
+        aceleracionangularactual=aceleracionangular*movHorizontal*aumentogiro;
         rb.AddForce((transform.position-cam.transform.position)*aceleracionactual);
-        if(ang.transform.localEulerAngles.y<118 || ang.transform.localEulerAngles.y>242)
+        if(ang.transform.localEulerAngles.y<24 || ang.transform.localEulerAngles.y>336)
         {
-            rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
-            rbw.AddTorque(Vector3.up*aceleracionangularactual*0.21f*Time.deltaTime);
+            if(movHorizontal!=0)
+            {
+                aumentogiro+=0.01f;
+                anguloreal=ang.transform.localEulerAngles.y;
+            }
+            
         }
-        anguloreal=ang.transform.localEulerAngles.y;
+        rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
+        rbw.AddTorque(Vector3.up*aceleracionangularactual*0.21f*Time.deltaTime);
+        
         velocidadreal=rb.velocity.z;
         if(anguloreal<=360 && anguloreal>200)
         {
@@ -94,7 +101,28 @@ public class Movimiento : MonoBehaviour
             velocidadenvio = velocidadenvio.Replace(",", "c");
         if (movHorizontal==0)
         {
+            if(anguloreal>0.9f)
+            {
+                anguloreal-=0.25f;
+            }
+            else if(anguloreal<-0.9f)
+            {
+                anguloreal+=0.25f;
+            }
+            else
+            {
+                anguloreal=0;
+            }
             ang.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f); 
+            if(aumentogiro>0)
+            {
+                aumentogiro-=0.01f;
+            }
+            else
+            {
+                aumentogiro=0;
+            }
         }
+        Debug.Log(ang.transform.rotation);
     }          
 }

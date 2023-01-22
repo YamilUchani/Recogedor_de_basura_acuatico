@@ -37,15 +37,15 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Movimiento.cs" />
+     <Compile Include="Assets\Scripts\angulo_texto.cs" />
      <Compile Include="Assets\Scripts\Render.cs" />
      <Compile Include="Assets\Scripts\flotacion.cs" />
      <Compile Include="Assets\Scripts\contador.cs" />
      <Compile Include="Assets\Scripts\Camaras.cs" />
      <Compile Include="Assets\Scripts\Imagenes_detector.cs" />
      <Compile Include="Assets\Scripts\Envio_imagenes.cs" />
-     <Compile Include="Assets\Scripts\contador_lenteja.cs" />
      <Compile Include="Assets\Scripts\texto.cs" />
-     <Compile Include="Assets\Scripts\angulo_texto.cs" />
+     <Compile Include="Assets\Scripts\contador_lenteja.cs" />
      <Compile Include="Assets\Scripts\Velocity_script.cs" />
      <None Include="Assets\Shader\mascara.shader" />
     <Reference Include="UnityEngine">
