@@ -70,11 +70,12 @@ public class Movimiento : MonoBehaviour
         rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
         rbw.AddTorque(Vector3.up*aceleracionangularactual*0.21f*Time.deltaTime);
         
-        velocidadreal=rb.velocity.z;
+        velocidadreal=rb.velocity.magnitude;
         if(anguloreal<=360 && anguloreal>200)
         {
             anguloreal=-360+anguloreal;
         }
+        velocidadreal= Mathf.Abs(velocidadreal);
         anguloUI=Mathf.Round(anguloreal * 100f) / 100f;
         anguloreal=Mathf.Round(anguloreal * 10000f) / 10000f;
         velocidadreal=Mathf.Round(velocidadreal * 10000f) / 10000f;
@@ -91,7 +92,7 @@ public class Movimiento : MonoBehaviour
 
         if (anguloenvio.Contains(","))
             anguloenvio = anguloenvio.Replace(",", "c");
-        velocidadreal= Mathf.Abs(velocidadreal);
+        
         velocidadenvio=velocidadreal.ToString();
         if (velocidadreal==0)
         {
@@ -103,17 +104,18 @@ public class Movimiento : MonoBehaviour
         {
             if(anguloreal>0.9f)
             {
-                anguloreal-=0.25f;
+                anguloreal-=0.08f;
             }
             else if(anguloreal<-0.9f)
             {
-                anguloreal+=0.25f;
+                anguloreal+=0.08f;
             }
             else
             {
                 anguloreal=0;
+                
             }
-            ang.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f); 
+             
             if(aumentogiro>0)
             {
                 aumentogiro-=0.01f;
@@ -122,7 +124,9 @@ public class Movimiento : MonoBehaviour
             {
                 aumentogiro=0;
             }
+            ang.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
+            Quaternion rotacionDestino = Quaternion.Euler(transform.rotation.x, 0.0f, transform.rotation.z);
+            ang.transform.rotation = Quaternion.Lerp(transform.rotation, rotacionDestino, 0.08f * Time.deltaTime);
         }
-        Debug.Log(ang.transform.rotation);
     }          
 }
