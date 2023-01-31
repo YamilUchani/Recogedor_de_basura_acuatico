@@ -36,10 +36,10 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Packages\com.unity.shadergraph\Editor\Utilities\EnumInfo.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Utilities\GenerationAPIAttribute.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Utilities\AssemblyInfo.cs" />
      <Compile Include="Packages\com.unity.shadergraph\Editor\Utilities\StringBuilderExtensions.cs" />
-     <Compile Include="Packages\com.unity.shadergraph\Editor\Utilities\EnumInfo.cs" />
      <None Include="Packages\com.unity.shadergraph\Editor\Utilities\Unity.ShaderGraph.Utilities.asmdef" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity 2020.3.30f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -272,20 +272,20 @@
     <Reference Include="UnityEditor.WindowsStandalone.Extensions">
         <HintPath>C:\Program Files\Unity 2020.3.30f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Plastic.Newtonsoft.Json">
-        <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    <Reference Include="log4netPlastic">
+        <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Plastic.Antlr3.Runtime">
         <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\Unity.Plastic.Antlr3.Runtime.dll</HintPath>
     </Reference>
-    <Reference Include="unityplastic">
-        <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
-    </Reference>
-    <Reference Include="log4netPlastic">
-        <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\log4netPlastic.dll</HintPath>
-    </Reference>
     <Reference Include="ICSharpCode.NRefactory">
         <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.render-pipelines.core@10.8.1\Editor\ShaderGenerator\ICSharpCode.NRefactory.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Plastic.Newtonsoft.Json">
+        <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\Unity.Plastic.Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="unityplastic">
+        <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.collab-proxy@1.15.12\Lib\Editor\PlasticSCM\unityplastic.dll</HintPath>
     </Reference>
     <Reference Include="nunit.framework">
         <HintPath>C:\PROYECTOS\Recogedor_de_basura_acuatico\Robot_acuatico_autonomo\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>

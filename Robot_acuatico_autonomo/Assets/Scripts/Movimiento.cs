@@ -5,13 +5,13 @@ public class Movimiento : MonoBehaviour
 {
     public GameObject cam;
     public GameObject ang;
-    public float aceleracion=500f;
+    public float aceleracion=50f;
     public float aceleracionangular=5f;
     public float aceleracionactual=0f;
     public float aceleracionangularactual=0f;
     public Rigidbody rb;
     public Rigidbody rbw;
-    public float movHorizontal=0;
+    public int movHorizontal=0;
     public float movVertical=0;
     public float anguloreal=0;
     public float velocidadreal=0;
@@ -23,9 +23,10 @@ public class Movimiento : MonoBehaviour
     private int valorz;
     public string anguloenvio;
     public string velocidadenvio;
-
+    
     private void Start()
     {
+        
         rb=GetComponent<Rigidbody>();   
         rbw=ang.GetComponent<Rigidbody>();
         region=Random.Range(0,4);
@@ -53,10 +54,11 @@ public class Movimiento : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        Vector3 rotacionActual = ang.transform.localEulerAngles;
         movVertical = Input.GetAxis("Vertical");
-        movHorizontal = Input.GetAxis("Horizontal");
+        movHorizontal = (int)Input.GetAxis("Horizontal");
         aceleracionactual=aceleracion*movVertical;
-        aceleracionangularactual=aceleracionangular*movHorizontal*aumentogiro;
+        
         rb.AddForce((transform.position-cam.transform.position)*aceleracionactual);
         if(ang.transform.localEulerAngles.y<24 || ang.transform.localEulerAngles.y>336)
         {
@@ -67,6 +69,7 @@ public class Movimiento : MonoBehaviour
             }
             
         }
+        aceleracionangularactual=aceleracionangular*movHorizontal*aumentogiro;
         rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
         rbw.AddTorque(Vector3.up*aceleracionangularactual*0.21f*Time.deltaTime);
         
@@ -102,31 +105,40 @@ public class Movimiento : MonoBehaviour
             velocidadenvio = velocidadenvio.Replace(",", "c");
         if (movHorizontal==0)
         {
+            
+            
             if(anguloreal>0.9f)
             {
-                anguloreal-=0.08f;
+                anguloreal-=0.3f;
             }
             else if(anguloreal<-0.9f)
             {
-                anguloreal+=0.08f;
+                anguloreal+=0.3f;
             }
             else
             {
                 anguloreal=0;
                 
             }
-             
-            if(aumentogiro>0)
+            if (aumentogiro>0)
             {
-                aumentogiro-=0.01f;
+                aumentogiro-=0.05f;
             }
             else
             {
                 aumentogiro=0;
             }
-            ang.transform.rotation = Quaternion.Euler(0.0f, 0.0f, 0.0f);
-            Quaternion rotacionDestino = Quaternion.Euler(transform.rotation.x, 0.0f, transform.rotation.z);
-            ang.transform.rotation = Quaternion.Lerp(transform.rotation, rotacionDestino, 0.08f * Time.deltaTime);
+            
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+            {
+                ang.transform.localEulerAngles = new Vector3(rotacionActual.x,0,rotacionActual.z);
+                anguloreal=0;
+            }
+            else
+            {
+                ang.transform.localEulerAngles = new Vector3(rotacionActual.x,anguloreal,rotacionActual.z);
+            }
         }
+        
     }          
 }
