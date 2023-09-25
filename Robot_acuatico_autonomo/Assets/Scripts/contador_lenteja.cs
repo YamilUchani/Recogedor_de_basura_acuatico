@@ -1,19 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class contador_lenteja : MonoBehaviour
 {
-    /*Este script esta dentro del sistema de particulas que genera las lentejas de agua
-    Solo se activa cuando hay una colision con una de las particulas
-    al detectarlo, se manda una orden al script del bote, que aumenta en 1
-    el contador de las lentejas destruirdas
+    /* Este script está dentro del sistema de partículas que genera las lentejas de agua.
+       Solo se activa cuando hay una colisión con una de las partículas.
+       Al detectarlo, se manda una orden al script del bote, que aumenta en 1
+       el contador de las lentejas destruidas.
     */
+
     private void OnParticleCollision(GameObject jugador)
     {
-        if(jugador.tag=="bote")
+        Debug.Log("contacto");
+
+        if (jugador.CompareTag("bote"))
         {
-            jugador.GetComponent<contador>().conta+=1;
+            jugador.GetComponent<contador>().conta += 1;
         }
     }
 }

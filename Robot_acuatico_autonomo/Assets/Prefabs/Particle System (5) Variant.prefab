@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3146070991594905864, guid: bdb8f29c438bd37488447cdfe4fd23a1, type: 3}
       propertyPath: m_Name
-      value: Particle System (5)
+      value: Particle System (5) Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3146070991594905865, guid: bdb8f29c438bd37488447cdfe4fd23a1, type: 3}
       propertyPath: m_RenderMode
@@ -39,6 +39,10 @@ PrefabInstance:
       propertyPath: ShapeModule.m_Scale.y
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 3146070991594905870, guid: bdb8f29c438bd37488447cdfe4fd23a1, type: 3}
+      propertyPath: ShapeModule.m_Texture
+      value: 
+      objectReference: {fileID: 2800000, guid: 8b02224d1d7fb0f4095d89d97079d20a, type: 3}
     - target: {fileID: 3146070991594905870, guid: bdb8f29c438bd37488447cdfe4fd23a1, type: 3}
       propertyPath: CollisionModule.collisionMode
       value: 1

@@ -33,21 +33,21 @@ public class Movimiento : MonoBehaviour
         switch (region)
         {
             case 0:
-                valorx=Random.Range(-65,-8);
-                valorz=Random.Range(-170,-110);
+                valorx=Random.Range(0,180);
+                valorz=Random.Range(158,225);
                 
                 break;
             case 1:
-                valorx=Random.Range(122,204);
-                valorz=Random.Range(-290,-222);
+                valorx=Random.Range(0,126);
+                valorz=Random.Range(80,162);
                 break;
             case 2:
-                valorx=Random.Range(105,180);
-                valorz=Random.Range(-172,-105);
+                valorx=Random.Range(-230,0);
+                valorz=Random.Range(80,162);
                 break;
             case 3:
-                valorx=Random.Range(-122,-70);
-                valorz=Random.Range(-133,-87);
+                valorx=Random.Range(-240,-115);
+                valorz=Random.Range(158,225);
                 break;
         }
         transform.position = new Vector3(valorx, 1f, valorz);
