@@ -366,6 +366,7 @@ MonoBehaviour:
   nameScene:
   - Self-driving
   - Validation
+  - Evaluation
 --- !u!4 &762085054
 Transform:
   m_ObjectHideFlags: 0
