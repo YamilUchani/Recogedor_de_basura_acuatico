@@ -1,39 +1,57 @@
 using UnityEngine;
 using System;
 using System.IO;
-using System.Collections;
 
 public class Capture_image : MonoBehaviour
 {
-    public Camera camara;
-    private string carpetaAssets = "Assets/Images";
-    private string carpetaFecha;
+    public Camera Camino;
+    public RenderTexture renderTexture;
+    private string assetsFolder = "Assets/Images";
+    private string dateFolder;
+    private int counter = 0;
+    private int renderTextureWidth = 1920; // Nueva resolución de ancho
+    private int renderTextureHeight = 1080; // Nueva resolución de alto
 
     private void Awake()
     {
-        // Obtener la fecha actual en el formato deseado (año_mes_día)
-        string fechaActual = DateTime.Now.ToString("yyyy_MM_dd_HH_mm");
+        renderTexture = new RenderTexture(renderTextureWidth, renderTextureHeight, 24);
+        renderTexture.Create();
 
-        // Crear la ruta completa para la carpeta de la fecha
-        carpetaFecha = Path.Combine(carpetaAssets, fechaActual);
+        // Asignar el RenderTexture a la cámara
+        Camino.targetTexture = renderTexture;
+        string currentDate = DateTime.Now.ToString("yyyy_MM_dd_HH_mm");
+        dateFolder = Path.Combine(assetsFolder, currentDate);
 
-        // Verificar si la carpeta de la fecha no existe y crearla si es necesario
-        if (!Directory.Exists(carpetaFecha))
+        if (!Directory.Exists(dateFolder))
         {
-            Directory.CreateDirectory(carpetaFecha);
+            Directory.CreateDirectory(dateFolder);
         }
+
+        
     }
 
-    public void CapturarYGuardar()
+    public void CaptureAndSave()
     {
-        // Obtener la hora actual en el formato deseado (hora_minuto_segundo)
-        string horaActual = DateTime.Now.ToString("HH_mm_ss");
+        // Configure the camera to use the current lighting conditions
+        Camino.Render();
 
-        // Crear el nombre del archivo con la hora actual y la extensión ".png"
-        string nombreArchivo = horaActual + ".png";
+        string fileName = "empty" + counter.ToString() + ".png";
+        string fullPath = Path.Combine(dateFolder, fileName);
+        Texture2D screenShot = new Texture2D(renderTexture.width, renderTexture.height, TextureFormat.RGB24, false);
+        RenderTexture.active = renderTexture;
+        screenShot.ReadPixels(new Rect(0, 0, renderTexture.width, renderTexture.height), 0, 0);
+        RenderTexture.active = null;
+        byte[] bytes = screenShot.EncodeToPNG();
+        File.WriteAllBytes(fullPath, bytes);
+        Destroy(screenShot);
+        counter++;
 
-        // Capturar la imagen de la cámara y guardarla en la carpeta de la fecha
-        string rutaCompleta = Path.Combine(carpetaFecha, nombreArchivo);
-        ScreenCapture.CaptureScreenshot(rutaCompleta);
+        
+        Camino.Render();
+        
+        
+        
+        
+        
     }
 }
