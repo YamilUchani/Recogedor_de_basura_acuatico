@@ -5,7 +5,7 @@ using TMPro;
 public class time : MonoBehaviour
 {
     public TMP_Text textoCronometro;
-    private float tiempoTranscurrido = 0f;
+    public float tiempoTranscurrido = 0f;
     private void Start() {
         Time.timeScale = 1.0f;
     }
@@ -25,7 +25,7 @@ public class time : MonoBehaviour
         int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60);
 
         // Muestra el tiempo en formato de tiempo en el TextMeshPro.
-        string texto = string.Format("Tiempo: {0:D2}:{1:D2}:{2:D2}\nEscala: {3:F2}x", horas, minutos, segundos, Time.timeScale);
+        string texto = string.Format("Time: {0:D2}:{1:D2}:{2:D2}\nVelocity: {3:F2}x", horas, minutos, segundos, Time.timeScale);
         textoCronometro.text = texto;
     }
 }

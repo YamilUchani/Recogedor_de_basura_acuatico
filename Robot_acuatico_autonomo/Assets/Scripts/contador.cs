@@ -1,13 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//Este script esta dentro de Gameobject "Bote"
-/*Este script solo sirve para contar el numero de lentejas de agua 
-que han sido destruidos, el sistema de particulas manda dicha informacion 
-cada vez que una particula es destruida por el bote.
-*/
+using TMPro;
+
 public class contador : MonoBehaviour
 {
-    public int conta=0;
+    public TMP_Text textoContador;
+    public int conta = 0;
+    public string texto;
 
+    // Asegúrate de que solo se llame a count cuando sea necesario
+    public void count(int conts)
+    {
+        // Comprobar si textoContador es nulo antes de actualizarlo
+        if (textoContador != null)
+        {
+            texto = "Picked duckweed: " + conts.ToString();
+            textoContador.text = texto;
+        }
+        else
+        {
+            Debug.LogError("textoContador es nulo. Asegúrate de asignarlo en el Inspector.");
+        }
+    }
 }
