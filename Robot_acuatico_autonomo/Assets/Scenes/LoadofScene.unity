@@ -362,7 +362,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   barraProgreso: {fileID: 332362730}
   rootGameObjects: []
-  activationTimePerObject: 1
+  activationTimePerObject: 0.1
   nameScene:
   - Self-driving
   - Validation
@@ -763,7 +763,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 60
+  m_SortingOrder: 1440
   m_TargetDisplay: 0
 --- !u!224 &1394349964
 RectTransform:

@@ -7,9 +7,9 @@ public class giro_camara : MonoBehaviour
 {
     public Transform camaraTransform;
     public float velocidadGiro = 5f;
-    private float anguloActual = -90f;
-    private float anguloMinimo = -135f;
-    private float anguloMaximo = -45f;
+    private float anguloActual = 0f;
+    private float anguloMinimo = -45f;
+    private float anguloMaximo = 45f;
 
 
     public void CambiarATipo(int tipo)

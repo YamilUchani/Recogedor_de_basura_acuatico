@@ -473,10 +473,8 @@ GameObject:
   - component: {fileID: 370630899526886237}
   - component: {fileID: 2504082340318648215}
   - component: {fileID: 4161526094759605833}
-  - component: {fileID: 4161526094759605830}
   - component: {fileID: 4161526094759605831}
   - component: {fileID: 4161526094759605828}
-  - component: {fileID: 4161526094759605829}
   m_Layer: 0
   m_Name: robot
   m_TagString: Untagged
@@ -574,36 +572,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &4161526094759605830
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4161526094759605826}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f6fb3f3b7f281546a27aabe9a856a89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cam: {fileID: 968558619247011760}
-  ang: {fileID: 0}
-  aceleracion: 5
-  aceleracionangular: 60
-  aceleracionactual: 0
-  aceleracionangularactual: 0
-  rb: {fileID: 0}
-  rbw: {fileID: 0}
-  movHorizontal: 0
-  movVertical: 0
-  anguloreal: 0
-  velocidadreal: 0
-  anguloUI: 0
-  aumentogiro: 0
-  velocidadUI: 0
-  region: 0
-  anguloenvio: 
-  velocidadenvio: 
 --- !u!114 &4161526094759605831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -616,7 +584,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ceb1a80889d9f2418fce2505e4b2e6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textoContador: {fileID: 0}
   conta: 0
+  texto: 
 --- !u!114 &4161526094759605828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -629,20 +599,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9c2fa5507e6a5948b2e40cac66d0571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
   Espectador: {fileID: 968558619247011762}
   Camino: {fileID: 968558618241505007}
   Escena: {fileID: 0}
---- !u!64 &4161526094759605829
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4161526094759605826}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 1492464305144505150, guid: cfa30e60c92a27f4aa6733771961c711, type: 3}
+  currentCameraIndex: 0
