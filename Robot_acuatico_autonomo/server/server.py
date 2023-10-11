@@ -14,32 +14,41 @@ formatters = {
     'column1': '{:,.2f}'.format,
     'column2': '{:,.2f}'.format,
     # Añade más columnas según sea necesario
-}
-def handle_client(client_socket):
-    while True:
-        request = client_socket.recv(2073600)
-        if not request:
-            break
-        nparr = np.frombuffer(request, np.uint8)
-        img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-        image = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
-        results = model(image)
-        data = results.pandas().xyxy[0].to_string(formatters=formatters)
-        client_socket.send(data.encode())
-    client_socket.close()
+}    
 
-def server_program():
-    host = "localhost"
-    port = 12345
-    server = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-    server.bind((host, port))
-    server.listen(5)
-    print("Servidor iniciado.")
-    
-    while True:
-        client, addr = server.accept()
-        print(f"Conexión aceptada desde: {str(addr)}")
-        client_handler = threading.Thread(target=handle_client, args=(client,))
-        client_handler.start()
+host = "localhost"
+port = 12345
 
-server_program()
+while True:
+    # Crea un socket del servidor
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind((host, port))
+    server_socket.listen(5)
+
+    print(f"Esperando una conexión en {host}:{port}...")
+
+    try:
+        # Espera a que un cliente se conecte
+        client_socket, client_address = server_socket.accept()
+        print(f"Conexión establecida con {client_address}")
+
+        while True:
+            # Recibe datos del cliente
+            request = client_socket.recv(2073600)
+            if not request:
+                break
+            nparr = np.frombuffer(request, np.uint8)
+            img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            image = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
+            results = model(image)
+            data = results.pandas().xyxy[0].to_string(formatters=formatters)
+            client_socket.send(data.encode())
+        # Cierra la conexión con el cliente actual
+        client_socket.close()
+        print(f"Cliente en {client_address} se desconectó")
+
+    except KeyboardInterrupt:
+        # Maneja una interrupción del teclado (Ctrl+C) para cerrar el servidor
+        print("Servidor cerrado")
+        server_socket.close()
+        break

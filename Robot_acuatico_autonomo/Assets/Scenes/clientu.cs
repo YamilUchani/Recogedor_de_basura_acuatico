@@ -38,14 +38,14 @@ public class clientu : MonoBehaviour
         texture = new Texture2D(1, 1);
         texture.SetPixel(0, 0, Color.red);
         texture.Apply();
-
+        client = new TcpClient("localhost", 12345);
+        stream = client.GetStream();
         style = new GUIStyle();
         style.normal.background = texture;
     }
 
     void SetupTCP(byte[] data)
-    {   client = new TcpClient("localhost", 12345);
-        stream = client.GetStream();
+    {   
         stream.Write(data, 0, data.Length);
         data = new byte[2048];
         int bytes = stream.Read(data, 0, data.Length);
@@ -157,11 +157,7 @@ public class clientu : MonoBehaviour
        
     }
 
-    void OnApplicationQuit()
-    {
-        stream.Close();
-        client.Close();
-    }
+
 
 void OnGUI()
 {
@@ -187,22 +183,26 @@ void OnGUI()
 
 void DrawRectangle(Rect area, float thickness, Color color)
 {
-    if(draw)
-    {
-        GUI.color = color;
-        // Top
-        GUI.DrawTexture(new Rect(area.xMin, area.yMin, area.width, thickness), Texture2D.whiteTexture);
-        // Left
-        GUI.DrawTexture(new Rect(area.xMin, area.yMin, thickness, area.height), Texture2D.whiteTexture);
-        // Right
-        GUI.DrawTexture(new Rect(area.xMax - thickness, area.yMin, thickness, area.height), Texture2D.whiteTexture);
-        // Bottom
-        GUI.DrawTexture(new Rect(area.xMin, area.yMax - thickness, area.width, thickness), Texture2D.whiteTexture);
+    GUI.color = color;
+    // Top
+    GUI.DrawTexture(new Rect(area.xMin, area.yMin, area.width, thickness), Texture2D.whiteTexture);
+    // Left
+    GUI.DrawTexture(new Rect(area.xMin, area.yMin, thickness, area.height), Texture2D.whiteTexture);
+    // Right
+    GUI.DrawTexture(new Rect(area.xMax - thickness, area.yMin, thickness, area.height), Texture2D.whiteTexture);
+    // Bottom
+    GUI.DrawTexture(new Rect(area.xMin, area.yMax - thickness, area.width, thickness), Texture2D.whiteTexture);
 
-        GUI.color = Color.white;
-    }
+    GUI.color = Color.white;
 }
-
+    private void OnDestroy()
+    {
+        if (client != null)
+        {
+            stream.Close();
+            client.Close();
+        }
+    }
 
 }
 
@@ -221,7 +221,9 @@ public class Box
     public float confidence;
     public int classId;
     public string name;
+
 }
+
 
 
 
