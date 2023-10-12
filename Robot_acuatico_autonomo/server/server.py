@@ -39,10 +39,13 @@ while True:
                 break
             nparr = np.frombuffer(request, np.uint8)
             img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-            image = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
-            results = model(image)
-            data = results.pandas().xyxy[0].to_string(formatters=formatters)
-            client_socket.send(data.encode())
+            try:
+                image = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
+                results = model(image)
+                data = results.pandas().xyxy[0].to_string(formatters=formatters)
+                client_socket.send(data.encode())
+            except:
+                break
         # Cierra la conexión con el cliente actual
         client_socket.close()
         print(f"Cliente en {client_address} se desconectó")

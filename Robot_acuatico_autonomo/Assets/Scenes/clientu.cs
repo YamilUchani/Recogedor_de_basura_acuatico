@@ -31,7 +31,7 @@ public class clientu : MonoBehaviour
     private bool draw;
     private int lineCount = 0;
     
-    void Start()
+    void OnEnable()
     {
         
         InvokeRepeating("SendMessage", 0.0f, captureInterval);
@@ -54,7 +54,7 @@ public class clientu : MonoBehaviour
         draw = false;
         string[] lines = message.Split('\n');
         lineCount = 0;
-        int[] rangos = new int[5]; // Un arreglo para llevar un registro de la cantidad de puntos en cada rango
+        float[] rangos = new float[5]; // Un arreglo para llevar un registro de la cantidad de puntos en cada rango
         foreach (string line in lines)
         {
             // Saltar la primera línea
@@ -71,29 +71,30 @@ public class clientu : MonoBehaviour
                 box.ymin = float.Parse(values[2]);
                 box.xmax = float.Parse(values[3]);
                 box.ymax = float.Parse(values[4]);
+                box.confidence = float.Parse(values[5]);
                 float puntoMedioX = (box.xmin + box.xmax) / 2f;
                 // Determina en qué rango se encuentra el punto medio
                 if (puntoMedioX >= 0 && puntoMedioX <= 384)
                 {
-                    rangos[0]++;
+                    rangos[0]+=1*box.confidence;
                 }
                 else if (puntoMedioX >= 385 && puntoMedioX <= 768)
                 {
-                    rangos[1]++;
+                    rangos[1]+=1*box.confidence;
                 }
                 else if (puntoMedioX >= 769 && puntoMedioX <= 1152)
                 {
-                    rangos[2]++;
+                    rangos[2]+=1*box.confidence;
                 }
                 else if (puntoMedioX >= 1153 && puntoMedioX <= 1536)
                 {
-                    rangos[3]++;
+                    rangos[3]+=1*box.confidence;
                 }
                 else if (puntoMedioX >= 1537 && puntoMedioX <= 1920)
                 {
-                    rangos[4]++;
+                    rangos[4]+=1*box.confidence;
                 }
-                box.confidence = float.Parse(values[5]);
+                
                 box.classId = int.Parse(values[6]);
                 box.name = values[7];
                 boxes.Add(box);
@@ -148,13 +149,13 @@ public class clientu : MonoBehaviour
         RenderTexture.active = null;
         Destroy(rt);
         byte[] bytes = screenShot.EncodeToJPG(100 - quality);  // Modificar la calidad aquí
-        
+        Destroy(screenShot);
         Thread sendThread = new Thread(() =>
         {
             SetupTCP(bytes);
         });
         sendThread.Start();
-       
+
     }
 
 
@@ -223,13 +224,3 @@ public class Box
     public string name;
 
 }
-
-
-
-
-
-
-
-
-
-    
