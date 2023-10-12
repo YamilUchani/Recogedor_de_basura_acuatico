@@ -70,6 +70,7 @@ public class Movimiento_autonomo : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         rb.velocity = transform.forward*-1 * velocidadMovimiento;
+        rb.angularVelocity = transform.up * 45 * velocidadAngular;
         if (!detenido)
         {
             if (other.gameObject.CompareTag("limit"))
@@ -99,7 +100,7 @@ public class Movimiento_autonomo : MonoBehaviour
         float movimientoVertical = Input.GetAxis("Vertical");
         float movimientoHorizontal = Input.GetAxis("Horizontal");
 
-        // Calcular la dirección de movimiento y rotación
+        // Calcular la dirección de movimiento y rotación 
         Vector3 direccionMovimiento = transform.forward * movimientoVertical;
         Vector3 direccionRotacion = transform.up * movimientoHorizontal;
 

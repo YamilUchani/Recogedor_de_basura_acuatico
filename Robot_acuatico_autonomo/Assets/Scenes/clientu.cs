@@ -150,6 +150,7 @@ public class clientu : MonoBehaviour
         Destroy(rt);
         byte[] bytes = screenShot.EncodeToJPG(100 - quality);  // Modificar la calidad aquí
         Destroy(screenShot);
+        Destroy(rt);
         Thread sendThread = new Thread(() =>
         {
             SetupTCP(bytes);
