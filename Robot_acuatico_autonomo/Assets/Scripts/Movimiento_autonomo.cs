@@ -11,7 +11,7 @@ public class Movimiento_autonomo : MonoBehaviour
     public int elec;
     public float velocidadMovimiento = 5f;
     public float velocidadAngular = 5f;
-    public float rangoAnguloMinimo = 100f;
+    public float rangoAnguloMinimo = 90f;
     public float rangoAnguloMaximo = 180f;
     public float toleranciaAngular = 10f;
     public bool autonomous;
@@ -21,6 +21,7 @@ public class Movimiento_autonomo : MonoBehaviour
     private TimeSpan tiempoEspera = TimeSpan.FromSeconds(5); // Cambia el tiempo de espera según tus necesidades
     private float tiempoEspe = 1.0f; // Cambia este valor a la cantidad de segundos que desee
     private float tiempoUltimaDeteccion = 0.0f;
+    private Vector3 direccionMovimiento;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -67,10 +68,8 @@ public class Movimiento_autonomo : MonoBehaviour
         }
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnCollisionStay(Collision other) 
     {
-        rb.velocity = transform.forward*-1 * velocidadMovimiento;
-        rb.angularVelocity = transform.up * 45 * velocidadAngular;
         if (!detenido)
         {
             if (other.gameObject.CompareTag("limit"))
@@ -78,6 +77,7 @@ public class Movimiento_autonomo : MonoBehaviour
                 // Verificar si ha pasado suficiente tiempo desde la última detección
                 if (Time.time - tiempoUltimaDeteccion >= tiempoEspe)
                 {
+                    rb.velocity = transform.forward* -1 * velocidadMovimiento;
                     detenido = true;
                     tiempoUltimaDeteccion = Time.time;
                 }
@@ -101,7 +101,7 @@ public class Movimiento_autonomo : MonoBehaviour
         float movimientoHorizontal = Input.GetAxis("Horizontal");
 
         // Calcular la dirección de movimiento y rotación 
-        Vector3 direccionMovimiento = transform.forward * movimientoVertical;
+        direccionMovimiento = transform.forward * movimientoVertical;
         Vector3 direccionRotacion = transform.up * movimientoHorizontal;
 
         // Asignar la velocidad de movimiento y rotación al Rigidbody
@@ -135,7 +135,7 @@ public class Movimiento_autonomo : MonoBehaviour
         }
         else
         {
-            float direccionGiro = Mathf.Sign(anguloActual) * -1;
+            float direccionGiro = Mathf.Sign(anguloActual)*-1;
             rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
         }
     }
@@ -143,7 +143,7 @@ public class Movimiento_autonomo : MonoBehaviour
     {
         elec = numberlist;
     }
-    public async Task GirarHaciaAnguloAutonoma(int anguloconduccion)
+    public async Task GirarHaciaAnguloAutonoma(float anguloconduccion)
     {
         if (autonomous)
         {
