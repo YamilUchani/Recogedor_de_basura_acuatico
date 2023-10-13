@@ -30,7 +30,7 @@ public class clientu : MonoBehaviour
     private List<Box> boxes = new List<Box>();
     private bool draw;
     private int lineCount = 0;
-    
+    private string valorFinal;
     void OnEnable()
     {
         
@@ -47,12 +47,18 @@ public class clientu : MonoBehaviour
     void SetupTCP(byte[] data)
     {   
         stream.Write(data, 0, data.Length);
-        data = new byte[2048];
+        data = new byte[4096];
         int bytes = stream.Read(data, 0, data.Length);
         message = Encoding.ASCII.GetString(data, 0, bytes);
         boxes.Clear();
         draw = false;
         string[] lines = message.Split('\n');
+        
+        string[] parts = lines[lines.Length - 1].Split('^');
+        string valorFinal = parts[1];  // El valor deseado se encuentra en parts[1]
+        // Elimina el carácter '^' si es necesario
+        valorFinal = valorFinal.Replace("^", "");
+        lines[lines.Length - 1] = lines[lines.Length - 1].Replace("^" + valorFinal, "");
         lineCount = 0;
         float[] rangos = new float[5]; // Un arreglo para llevar un registro de la cantidad de puntos en cada rango
         foreach (string line in lines)
@@ -72,33 +78,10 @@ public class clientu : MonoBehaviour
                 box.xmax = float.Parse(values[3]);
                 box.ymax = float.Parse(values[4]);
                 box.confidence = float.Parse(values[5]);
-                float puntoMedioX = (box.xmin + box.xmax) / 2f;
-                // Determina en qué rango se encuentra el punto medio
-                if (puntoMedioX >= 0 && puntoMedioX <= 384)
-                {
-                    rangos[0]+=1*box.confidence;
-                }
-                else if (puntoMedioX >= 385 && puntoMedioX <= 768)
-                {
-                    rangos[1]+=1*box.confidence;
-                }
-                else if (puntoMedioX >= 769 && puntoMedioX <= 1152)
-                {
-                    rangos[2]+=1*box.confidence;
-                }
-                else if (puntoMedioX >= 1153 && puntoMedioX <= 1536)
-                {
-                    rangos[3]+=1*box.confidence;
-                }
-                else if (puntoMedioX >= 1537 && puntoMedioX <= 1920)
-                {
-                    rangos[4]+=1*box.confidence;
-                }
-                
                 box.classId = int.Parse(values[6]);
                 box.name = values[7];
+                
                 boxes.Add(box);
-
                 lineCount++;
             }
             catch
@@ -106,31 +89,8 @@ public class clientu : MonoBehaviour
                 Debug.Log("No se detectan lentejas");
                 continue;
             }
-            
         }
-        int rangoConMasPuntos = Array.IndexOf(rangos, rangos.Max());
-        switch (rangoConMasPuntos)
-        {
-            case 0:
-                mov_auto.GirarHaciaAnguloAutonoma(-30);
-                break;
-            case 1:
-                mov_auto.GirarHaciaAnguloAutonoma(-15);
-                break;
-            case 2:
-                mov_auto.GirarHaciaAnguloAutonoma(0);
-                break;
-            case 3:
-                mov_auto.GirarHaciaAnguloAutonoma(15);
-                break;
-            case 4:
-                mov_auto.GirarHaciaAnguloAutonoma(30);
-                break;
-            default:
-                Debug.Log("Ningún rango tiene puntos medios.");
-                break;
-        }
-
+        mov_auto.GirarHaciaAnguloAutonoma(float.Parse(valorFinal));
         draw=true;
         
     }
@@ -197,14 +157,7 @@ void DrawRectangle(Rect area, float thickness, Color color)
 
     GUI.color = Color.white;
 }
-    private void OnDestroy()
-    {
-        if (client != null)
-        {
-            stream.Close();
-            client.Close();
-        }
-    }
+    
 
 }
 
@@ -223,5 +176,6 @@ public class Box
     public float confidence;
     public int classId;
     public string name;
+    public int angle;
 
 }

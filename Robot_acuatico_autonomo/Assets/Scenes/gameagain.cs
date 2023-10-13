@@ -13,17 +13,13 @@ public class gameagain : MonoBehaviour
         bote.transform.position = new Vector3 (-22.73f,0.02f,132.43f);
         bote.transform.rotation = Quaternion.Euler(Vector3.zero);
         ParticleSystem particleSystem =duckweed.GetComponent<ParticleSystem>();
-        contador countScript = bote.GetComponent<contador>();
+   
         contador_lenteja countduck = duckweed.GetComponent<contador_lenteja>();
         time timescript= timeagain.GetComponent<time>();
         countduck.duckweed = -1;
         if(countduck.duckweed==0)
         {
             countduck.duckweed = 0;
-        }
-        if (countScript != null)
-        {
-            countScript.count(0);
         }
         Time.timeScale = 1.0f;
         particleSystem.Stop();

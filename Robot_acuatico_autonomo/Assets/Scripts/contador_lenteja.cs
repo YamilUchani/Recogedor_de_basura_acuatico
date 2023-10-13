@@ -3,6 +3,7 @@ using TMPro;
 public class contador_lenteja : MonoBehaviour
 {
     public TMP_Text textoRestante;
+    public TMP_Text textoContador;
     public string texto;
     public int duckweed=0;
     /* Este script está dentro del sistema de partículas que genera las lentejas de agua.
@@ -14,25 +15,12 @@ public class contador_lenteja : MonoBehaviour
     public int cantidadDeParticulas;
     private void Update()
     {
+        sistemaDeParticulas = GetComponent<ParticleSystem>();
         cantidadDeParticulas = sistemaDeParticulas.particleCount;
         texto = "Existing duckweed: " + cantidadDeParticulas.ToString();
         textoRestante.text = texto;
-    }
-    private void OnParticleCollision(GameObject jugador)
-    {
-        
-        if (jugador.CompareTag("bote"))
-        {   duckweed++;
-            if (jugador != null)
-            {
-                
-                contador countScript = jugador.GetComponent<contador>();
-                if (countScript != null)
-                {
-                    countScript.count(duckweed);
-                }
-            }
-        }
+        texto = "Picked duckweed: " +  (sistemaDeParticulas.main.maxParticles-cantidadDeParticulas).ToString();
+        textoContador.text = texto;
         
     }
 }
