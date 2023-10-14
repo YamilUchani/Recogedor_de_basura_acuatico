@@ -9,6 +9,7 @@ using System.Linq;
 using System;
 public class clientu : MonoBehaviour
 {
+public int contador;
     private Texture2D texture;
     private GUIStyle style;
     public Camera cam;
@@ -50,6 +51,7 @@ public class clientu : MonoBehaviour
         data = new byte[4096];
         int bytes = stream.Read(data, 0, data.Length);
         message = Encoding.ASCII.GetString(data, 0, bytes);
+        data=null;
         boxes.Clear();
         draw = false;
         string[] lines = message.Split('\n');
@@ -86,11 +88,18 @@ public class clientu : MonoBehaviour
             }
             catch
             {
-                Debug.Log("No se detectan lentejas");
                 continue;
             }
         }
-        mov_auto.GirarHaciaAnguloAutonoma(float.Parse(valorFinal));
+        if (mov_auto != null)
+        {
+            mov_auto.GirarHaciaAnguloAutonoma(float.Parse(valorFinal));
+        }
+        else
+        {
+            // Handle the case where mov_auto is null, e.g., log an error or take appropriate action.
+        }
+
         draw=true;
         
     }
@@ -109,6 +118,8 @@ public class clientu : MonoBehaviour
         RenderTexture.active = null;
         Destroy(rt);
         byte[] bytes = screenShot.EncodeToJPG(100 - quality);  // Modificar la calidad aquí
+        //string path = "Assets/Imagenes/muestra"+contador.ToString()+".png"; // Ruta del archivo de imagen en Assets
+        //System.IO.File.WriteAllBytes(path, bytes);
         Destroy(screenShot);
         Destroy(rt);
         Thread sendThread = new Thread(() =>
@@ -116,6 +127,7 @@ public class clientu : MonoBehaviour
             SetupTCP(bytes);
         });
         sendThread.Start();
+        contador++;
 
     }
 

@@ -97,7 +97,6 @@ while True:
                     inference_queue.pop(0)
                 sumangle = sum(element * (0.4 ** (i + 1)) for i, element in enumerate(inference_queue))
                 data = results.pandas().xyxy[0].to_string(formatters=formatters)
-                angulo=5
                 data = data +"^"+str(sumangle)
                 client_socket.send(data.encode()) 
             except Exception as e:
