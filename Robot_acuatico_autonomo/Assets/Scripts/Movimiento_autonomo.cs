@@ -171,7 +171,7 @@ public class Movimiento_autonomo : MonoBehaviour
                 calculando = true;
 
                 // Simular trabajo en segundo plano
-                await Task.Delay(1000); // Esperar 1 segundo (ajusta según tus necesidades)
+                await Task.Delay(100); // Esperar 1 segundo (ajusta según tus necesidades)
                 
                 calculando = false;
             }
