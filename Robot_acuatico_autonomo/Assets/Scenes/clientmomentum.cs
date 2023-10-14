@@ -59,10 +59,11 @@ public int contador;
         RenderTexture.active = null;
         Destroy(rt);
         byte[] bytes = screenShot.EncodeToJPG(100 - quality);  // Modificar la calidad aquí
-        //string path = "Assets/Imagenes/muestra"+contador.ToString()+".png"; // Ruta del archivo de imagen en Assets
-        //System.IO.File.WriteAllBytes(path, bytes);
+        string path = "Assets/Imagenes/muestra"+contador.ToString()+".png"; // Ruta del archivo de imagen en Assets
+        System.IO.File.WriteAllBytes(path, bytes);
         Destroy(screenShot);
         Destroy(rt);
+        contador++;
         Thread sendThread = new Thread(() =>
         {
             SetupTCP(bytes);

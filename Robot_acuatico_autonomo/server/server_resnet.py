@@ -68,7 +68,7 @@ CATEGORIES = ["0","1","2","3","4","5","6"]
 # Load models
 steering_estimator = torchvision.models.resnet34()
 steering_estimator.fc = torch.nn.Linear(in_features=512, out_features=7)
-state_dict = torch.load("steering_estimator.pt")
+state_dict = torch.load("steering_estimator.pt" , map_location=torch.device('cpu'))
 steering_estimator.load_state_dict(state_dict)
 steering_estimator.eval()
 duckweed_detector = torch.hub.load('ultralytics/yolov5', 'custom', 'best.pt')
@@ -131,12 +131,17 @@ while True:
                 w1 = 0.8
                 w2 = 0.4
                 final_angle = obtain_final_angle(angle_resnet, angle_yolo, w1, w2)
-                inference_queue.append(final_angle)
+                
                 if len(inference_queue) == 8:
                     inference_queue.pop(7)
                 momentum = 0.4
-                next_angle = sum(element * (momentum ** (i)) for i, element in enumerate(inference_queue))
+                next_angle =final_angle + sum(element * (momentum ** (i)) for i, element in enumerate(inference_queue))
+                if next_angle < -0.45:
+                  next_angle = -0.45
+                elif next_angle >0.45:
+                  next_angle = 0.45
                 data=next_angle
+                inference_queue.insert(0, next_angle)
                 print(str(angle_yolo)+" "+str(angle_resnet))
                 client_socket.send(str(data).encode()) 
                 final=0
