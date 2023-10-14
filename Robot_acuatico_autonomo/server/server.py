@@ -43,7 +43,7 @@ while True:
             except ConnectionAbortedError:
                 # Handle disconnection due to client abort
                 print(f"Client at {client_address} disconnected")
-                break;
+                break
             if not request:
                 print(f"Client at {client_address} disconnected")
                 break  # The client has disconnected, exit the inner loop
@@ -89,15 +89,14 @@ while True:
                     angulo=45
                 else:
                     print("Ningún rango tiene puntos medios.")
-                # Agrega el nuevo dato al final de la lista
-                inference_queue.append(angulo)
                 
                 # Si la lista tiene más de 10q elementos, elimina el más antiguo
-                if len(inference_queue) > 10:
-                    inference_queue.pop(0)
-                sumangle = sum(element * (0.4 ** (i + 1)) for i, element in enumerate(inference_queue))
-                data = results.pandas().xyxy[0].to_string(formatters=formatters)
-                data = data +"^"+str(sumangle)
+                if len(inference_queue) == 8:
+                    inference_queue.pop(7)
+                sumangle = angulo + sum(element * (0.4 ** (i + 1)) for i, element in enumerate(inference_queue))
+                inference_queue.insert(0, sumangle)
+                data = str(sumangle)
+                print(data)
                 client_socket.send(data.encode()) 
             except Exception as e:
                 print(f"Error processing image: {e}")
