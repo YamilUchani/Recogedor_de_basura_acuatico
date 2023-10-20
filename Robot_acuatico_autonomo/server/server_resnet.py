@@ -113,7 +113,7 @@ while True:
             if not request:
                 print(f"Client at {client_address} disconnected")
                 break  # The client has disconnected, exit the inner loop
-            img_pil = Image.open(io.BytesIO(request))
+            
             try:
                 img_pil = img_pil.convert('RGB')
                 image_pil_resized = img_pil.resize((224, 126))

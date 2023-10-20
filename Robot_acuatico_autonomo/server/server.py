@@ -42,15 +42,12 @@ while True:
                 request = client_socket.recv(bytes_to_receive)
             except ConnectionAbortedError:
                 # Handle disconnection due to client abort
-                print(f"Client at {client_address} disconnected")
                 break
             if not request:
-                print(f"Client at {client_address} disconnected")
                 break  # The client has disconnected, exit the inner loop
-            nparr = np.frombuffer(request, np.uint8)
-            img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+            
             try:
-                image = cv2.cvtColor(img_np, cv2.COLOR_BGR2RGB)
+                
                 results = model(image)
                 rangos = [0, 0, 0, 0, 0, 0, 0]  # Inicializa la lista de rangos con ceros
                 # Add an extra column with a value of 5 to the results
@@ -96,14 +93,12 @@ while True:
                 sumangle = angulo + sum(element * (0.4 ** (i + 1)) for i, element in enumerate(inference_queue))
                 inference_queue.insert(0, sumangle)
                 data = str(sumangle)
-                print(data)
                 client_socket.send(data.encode()) 
             except Exception as e:
-                print(f"Error processing image: {e}")
-
+                continue
     except ConnectionResetError:
         # Handle an unexpected client disconnection
-        print(f"Client at {client_address} disconnected unexpectedly")
+        continue
     
     except KeyboardInterrupt:
         # Handle a keyboard interruption (Ctrl+C) to close the server
@@ -111,4 +106,4 @@ while True:
         server_socket.close()
         break
     except Exception as e:
-        print(f"Error: {e}")
+        continue

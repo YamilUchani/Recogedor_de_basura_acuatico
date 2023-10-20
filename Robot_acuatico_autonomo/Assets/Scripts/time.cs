@@ -2,11 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System.IO;
+using UnityEngine.UI;
 public class time : MonoBehaviour
 {
-    public TMP_Text textoCronometro;
+    public contador_lenteja cont;
+    public int conta;
+    public Text textoCronometro;
     public float tiempoTranscurrido = 0f;
+    string basePath;
+    string momentumFolder;
     private void Start() {
+        basePath = Application.dataPath + "/../server/";
+
+        // Directorio de la carpeta "momentum"
+        momentumFolder = basePath + "momentum/";
         Time.timeScale = 1.0f;
     }
     public void aceleration (float acel)
@@ -27,5 +37,21 @@ public class time : MonoBehaviour
         // Muestra el tiempo en formato de tiempo en el TextMeshPro.
         string texto = string.Format("Time: {0:D2}:{1:D2}:{2:D2}\nVelocity: {3:F2}x", horas, minutos, segundos, Time.timeScale);
         textoCronometro.text = texto;
+        if(minutos ==6 && segundos>0)
+        {
+            string rutaArchivo =  momentumFolder+ "/time"+conta.ToString()+".txt";
+            File.WriteAllText(rutaArchivo, texto);
+            Debug.Log("Valor guardado en el archivo: " + texto);
+            cont.finishtime=true;
+            conta++;
+        }
+        if(cont.cantidadDeParticulas<30 && minutos >2)
+        {
+            string rutaArchivo =  momentumFolder + "/time"+conta.ToString()+".txt";
+            File.WriteAllText(rutaArchivo, texto);
+            Debug.Log("Valor guardado en el archivo: " + texto);
+            cont.cnt=true;
+            conta++;
+        }
     }
 }

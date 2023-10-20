@@ -1,11 +1,19 @@
 using UnityEngine;
 using TMPro;
+using System.IO;
+using UnityEngine.UI;
 public class contador_lenteja : MonoBehaviour
 {
-    public TMP_Text textoRestante;
-    public TMP_Text textoContador;
+    public gameagain game;
+    public int conta;
+    public bool finishtime;
+    public Text textoRestante;
+    public Text textoContador;
+    public bool cnt;
     public string texto;
     public int duckweed=0;
+    string basePath;
+    string momentumFolder;
     /* Este script está dentro del sistema de partículas que genera las lentejas de agua.
        Solo se activa cuando hay una colisión con una de las partículas.
        Al detectarlo, se manda una orden al script del bote, que aumenta en 1
@@ -13,6 +21,12 @@ public class contador_lenteja : MonoBehaviour
     */
     public ParticleSystem sistemaDeParticulas;  // Asigna el sistema de partículas en el Inspector
     public int cantidadDeParticulas;
+    private void Start() {
+        basePath = Application.dataPath + "/../server/";
+
+        // Directorio de la carpeta "momentum"
+        momentumFolder = basePath + "momentum/";
+    }
     private void Update()
     {
         sistemaDeParticulas = GetComponent<ParticleSystem>();
@@ -21,6 +35,24 @@ public class contador_lenteja : MonoBehaviour
         textoRestante.text = texto;
         texto = "Picked duckweed: " +  (sistemaDeParticulas.main.maxParticles-cantidadDeParticulas).ToString();
         textoContador.text = texto;
+        if(finishtime)
+        {
+            string rutaArchivo = momentumFolder + "/lenteja"+conta.ToString()+".txt";
+            File.WriteAllText(rutaArchivo, texto);
+            Debug.Log("Valor guardado en el archivo: " + texto);
+            finishtime=false;
+            game.Again();
+            conta++;
+        }
+        else if(cnt)
+        {
+            string rutaArchivo = momentumFolder + "/lenteja"+conta.ToString()+".txt";
+            File.WriteAllText(rutaArchivo, texto);
+            Debug.Log("Valor guardado en el archivo: " + texto);
+            cnt=false;
+            game.Again();
+            conta++;
+        }
         
     }
 }

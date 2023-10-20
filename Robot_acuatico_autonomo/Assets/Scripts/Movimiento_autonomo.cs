@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Threading.Tasks;
 using System;
+
 public class Movimiento_autonomo : MonoBehaviour
 {
     private Rigidbody rb;
@@ -22,11 +23,19 @@ public class Movimiento_autonomo : MonoBehaviour
     private float tiempoEspe = 1.0f; // Cambia este valor a la cantidad de segundos que desee
     private float tiempoUltimaDeteccion = 0.0f;
     private Vector3 direccionMovimiento;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         detenido = false;
         girando = false;
+        calculando = false; // Añadido para inicializar la variable
+        autonomous = false; // Añadido para inicializar la variable
+        angulodeseado = 0; // Añadido para inicializar la variable
+        angulorango = 0; // Añadido para inicializar la variable
+        direccionMovimiento = Vector3.zero; // Añadido para inicializar la variable
+        elec = 0; // Añadido para inicializar la variable
+        anguloObjetivo = 0; // Añadido para inicializar la variable
     }
 
     private void FixedUpdate()
@@ -108,25 +117,28 @@ public class Movimiento_autonomo : MonoBehaviour
         rb.velocity = direccionMovimiento * velocidadMovimiento;
         rb.angularVelocity = direccionRotacion * velocidadAngular;
     }
+    
     private void MoverEnDireccionAleatoria()
     {
         rb.velocity = transform.forward * velocidadMovimiento;
     }
+
     private void GirarHaciaAnguloAleatorio()
     {
         float anguloActual = transform.eulerAngles.y;
+
         if (!girando)
         {
             anguloObjetivo = UnityEngine.Random.Range(rangoAnguloMinimo, rangoAnguloMaximo);
             anguloObjetivo += anguloActual;
+
             if(anguloObjetivo>360)
             {
                 anguloObjetivo -=360;
             }
+
             girando = true;
         }
-
-        
 
         if (Mathf.Abs(anguloActual - anguloObjetivo) <= toleranciaAngular)
         {
@@ -139,44 +151,38 @@ public class Movimiento_autonomo : MonoBehaviour
             rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
         }
     }
+
     public void model_change(int numberlist)
     {
         elec = numberlist;
     }
-    public async Task GirarHaciaAnguloAutonoma(float anguloconduccion)
+
+    public void GirarHaciaAnguloAutonoma(float anguloconduccion)
     {
         if (autonomous)
         {
             // Verificar si ha pasado suficiente tiempo desde la última llamada
             DateTime ahora = DateTime.Now;
+
             if ((ahora - tiempoUltimaLlamada) < tiempoEspera)
             {
                 Console.WriteLine("Espera antes de la próxima llamada...");
                 return; // Salir de la función sin realizar nada
             }
 
-            // Actualizar el tiempo de la última llamada
-            tiempoUltimaLlamada = ahora;
+            angulorango = anguloconduccion;
 
-            // Realizar el cálculo si no se está calculando actualmente
-            if (!calculando)
+            angulorango += angulodeseado;
+
+            if (angulorango > 360)
             {
-                angulorango = anguloconduccion;
+                angulorango -= 360;
+            }
 
-                angulorango += angulodeseado;
-                if (angulorango > 360)
-                {
-                    angulorango -= 360;
-                }
-                calculando = true;
-
-                // Simular trabajo en segundo plano
-                await Task.Delay(100); // Esperar 1 segundo (ajusta según tus necesidades)
-                
-                calculando = false;
+            if (angulorango < -360)
+            {
+                angulorango += 360;
             }
         }
     }
-
 }
-
