@@ -5,7 +5,7 @@ using UnityEngine;
 public class rest : MonoBehaviour
 {
     public bool point=false;
-    public clientmomentum clientmont;
+    public depthclient clientmont;
     public float nextTime;
     void Update()
     {

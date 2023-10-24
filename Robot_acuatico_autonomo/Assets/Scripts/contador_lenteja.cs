@@ -2,6 +2,8 @@ using UnityEngine;
 using TMPro;
 using System.IO;
 using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
 public class contador_lenteja : MonoBehaviour
 {
     public gameagain game;
@@ -14,6 +16,10 @@ public class contador_lenteja : MonoBehaviour
     public int duckweed=0;
     string basePath;
     string momentumFolder;
+    public initserver inits;
+    public float intervalconnnect;
+    public Movimiento_autonomo movauto;
+    public GameObject dpclient;
     /* Este script está dentro del sistema de partículas que genera las lentejas de agua.
        Solo se activa cuando hay una colisión con una de las partículas.
        Al detectarlo, se manda una orden al script del bote, que aumenta en 1
@@ -23,7 +29,6 @@ public class contador_lenteja : MonoBehaviour
     public int cantidadDeParticulas;
     private void Start() {
         basePath = Application.dataPath + "/../server/";
-
         // Directorio de la carpeta "momentum"
         momentumFolder = basePath + "momentum/";
     }
@@ -41,8 +46,12 @@ public class contador_lenteja : MonoBehaviour
             File.WriteAllText(rutaArchivo, texto);
             Debug.Log("Valor guardado en el archivo: " + texto);
             finishtime=false;
+            dpclient.SetActive(false);
             game.Again();
             conta++;
+            intervalconnnect = Time.time + 60f;
+            inits.StopServerProcess();
+            
         }
         else if(cnt)
         {
@@ -51,8 +60,20 @@ public class contador_lenteja : MonoBehaviour
             Debug.Log("Valor guardado en el archivo: " + texto);
             cnt=false;
             game.Again();
+            dpclient.SetActive(false);
+            intervalconnnect = Time.time + 60f;
             conta++;
+            inits.StopServerProcess();
         }
-        
+        if(inits.act && movauto.elec == 2)
+        {
+            if(Time.time>=intervalconnnect)
+            {
+                inits.StartServerProcess();
+                game.Again();
+                cnt=false;
+                finishtime=false;
+            }
+        }
     }
 }

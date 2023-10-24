@@ -23,7 +23,8 @@ public class Movimiento_autonomo : MonoBehaviour
     private float tiempoEspe = 1.0f; // Cambia este valor a la cantidad de segundos que desee
     private float tiempoUltimaDeteccion = 0.0f;
     private Vector3 direccionMovimiento;
-
+    public initserver intvalid;
+    private bool modad4;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -48,14 +49,21 @@ public class Movimiento_autonomo : MonoBehaviour
                 case 0:
                     MoverEnDireccionControlada();
                     autonomous = false;
+                    modad4=false;
                     break;
                 case 1:
                     MoverEnDireccionAleatoria();
                     autonomous = false;
+                    modad4=false;
                     break;
                 case 2:
                     MoverEnDireccionAleatoria();
                     autonomous = true;
+                    if(!modad4)
+                    {
+                        intvalid.enabled = true;
+                        modad4=true;
+                    }
                     if (Mathf.Abs(angulodeseado- angulorango) <= toleranciaAngular)
                     {
                         calculando = false;

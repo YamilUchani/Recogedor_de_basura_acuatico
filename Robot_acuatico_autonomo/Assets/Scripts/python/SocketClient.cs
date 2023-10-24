@@ -29,13 +29,13 @@ public class SocketClient : MonoBehaviour
     {
         print("pip");
         // Captura la imagen en el hilo principal
-        RenderTexture rt = new RenderTexture(screenWidth, screenHeight, 24); // Usar las variables
+        RenderTexture rt = new RenderTexture(480, 270, 24); // Usar las variables
         
-        Texture2D screenShot = new Texture2D(screenWidth, screenHeight, TextureFormat.RGB24, false); // Usar las variables
+        Texture2D screenShot = new Texture2D(480, 270, TextureFormat.RGB24, false); // Usar las variables
         cam.targetTexture = rt;
         cam.Render();
         RenderTexture.active = rt;
-        screenShot.ReadPixels(new Rect(0, 0, screenWidth, screenHeight), 0, 0); // Usar las variables
+        screenShot.ReadPixels(new Rect(0, 0,480, 270), 0, 0); // Usar las variables
         cam.targetTexture = null;
         RenderTexture.active = null;
         Destroy(rt);
@@ -54,7 +54,7 @@ public class SocketClient : MonoBehaviour
         try
         {
             // Enviar los datos de la imagen a Python
-            TcpClient client = new TcpClient("localhost", 12345);
+            TcpClient client = new TcpClient("localhost", 5000);
             NetworkStream nwStream = client.GetStream();
             nwStream.Write(data, 0, data.Length);
 

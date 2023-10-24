@@ -1,5 +1,5 @@
 import socket
-import cv2
+import cv2 as cv
 import numpy as np
 
 # Crea variables para almacenar las imágenes
@@ -35,7 +35,7 @@ while True:
 
                 # Convierte los datos en una imagen
                 nparr = np.frombuffer(img_chunk, np.uint8)
-                img_np = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+                img_np = cv.imdecode(nparr, cv.IMREAD_COLOR)
 
                 # Comprueba si la imagen es en color o en blanco y negro
                 if img_np is not None:
@@ -44,36 +44,13 @@ while True:
                         filename = f'color{1}.png'
 
                     else:
-                        img_np = cv2.cvtColor(img_np, cv2.COLOR_BGR2GRAY)
+                        img_np = cv.cvtColor(img_np, cv.COLOR_BGR2GRAY)
                         filename = f'bicolor{bicolor_count % 2 + 1}.png'
                         bicolor_count += 1
 
-                    cv2.imwrite(filename, img_np)
+                    cv.imwrite(filename, img_np)
 
             data = b''  # Reinicia el búfer de datos
-    img1 = cv2.imread('bicolor1.png', cv2.IMREAD_GRAYSCALE)
-    img2 = cv2.imread('bicolor2.png', cv2.IMREAD_GRAYSCALE)
-
-    # Asegurarse de que las imágenes tienen el mismo tamaño
-    if img1.shape != img2.shape:
-        print("Las imágenes deben tener el mismo tamaño")
-        exit()
-
-    # Calcular la matriz de distancia
-    distancia = np.abs(img1.astype(int) - img2.astype(int))
-
-    # Normalizar la matriz de distancia para que los valores estén entre 0 y 1
-    distancia_normalizada = cv2.normalize(distancia, None, alpha=0, beta=1, norm_type=cv2.NORM_MINMAX, dtype=cv2.CV_32F)
-
-    # Crear una imagen en color para visualizar la profundidad
-    profundidad_color = np.zeros((img1.shape[0], img1.shape[1], 3), dtype=np.uint8)
-
-    # Mapear los valores de profundidad a colores en el espectro del rojo al violeta
-    profundidad_color[:, :, 0] = 255 * distancia_normalizada  # canal azul
-    profundidad_color[:, :, 1] = 255 * (1 - distancia_normalizada)  # canal verde
-    profundidad_color[:, :, 2] = 255 * distancia_normalizada  # canal rojo
-    filename = f'profcolor{1}.png'
-    cv2.imwrite(filename, profundidad_color)
 
 
 

@@ -147,15 +147,6 @@ while True:
             if not request:
                 print(f"Client at {client_address} disconnected")
                 break
-            try:
-                request = b''
-                request = client_socket.recv(bytes_to_receive)
-            except ConnectionAbortedError:
-                print(f"Client at {client_address} disconnected")
-                break
-            if not request:
-                print(f"Client at {client_address} disconnected")
-                break
            
             try:
                 img_pil = Image.open(io.BytesIO(request))
