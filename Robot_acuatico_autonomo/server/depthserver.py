@@ -17,6 +17,43 @@ from ultralytics import YOLO
 import requests
 import select  # Importa la biblioteca select
 import random
+
+contant = 0
+cont = 0
+client_socket = None
+client_address = None
+server_socket = None
+initserver = False
+def timer():
+    global contant
+    global cont
+    global server_socket
+    global client_socket
+    global initserver
+    # Este es el bucle que se repetirá cada 3 segundos
+    while True:
+        time.sleep(20)
+        print(cont)
+        print(contant)
+        if contant+1  <= cont:
+            
+            print("El servidor está conectado")
+            contant = cont
+        else:
+            print("Reconnecting with the client...")
+            if(initserver == False):
+                print("hol")
+                server_socket.close()
+                client_socket.close()
+                initserver = True
+            continue
+    
+        
+
+# Esta es la creación del thread con la función timer
+t = threading.Thread(target=timer)
+# Este es el inicio del thread
+t.start()
 def calcule_weigth(number):
     # Ruta actual del script
     script_directory = os.path.dirname(os.path.realpath(__file__))
@@ -146,8 +183,7 @@ angle_yolo = 0
 host = "localhost"
 port = 12345
 contclear = 0
-contant = 0
-cont = 0
+
 nextContTime = time.time() +10.0
 # Main loop
 # Main loop
@@ -166,19 +202,10 @@ while True:
 
         while True:
             if contclear >= 30:
-              contclear = 0
-              print("hola pew")
-              clear_console()
+                contclear = 0
+                clear_console()
             chunk = client_socket.recv(bytes_to_receive)
-            if time.time() >= nextContTime:
-                nextContTime = time.time() + 10.0
-                if contant  <= cont:
-                    print("El servidor está conectado")
-                    contant = cont
-                else:
-                    print("Reconnecting with the client...")
-                    server_socket.close()
-                    break
+            initserver = False
             if not chunk:
                 break
             data += chunk

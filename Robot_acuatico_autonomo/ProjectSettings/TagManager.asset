@@ -8,6 +8,11 @@ TagManager:
   - bote
   - aparicion
   - limit
+  - stereo1
+  - stereo2
+  - camprin
+  - client
+  - MovimientoAutonomo
   layers:
   - Default
   - TransparentFX

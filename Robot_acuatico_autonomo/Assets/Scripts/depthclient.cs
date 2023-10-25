@@ -22,19 +22,25 @@ public class depthclient : MonoBehaviour
     public float clearinter;
     private int bytes;
     public string message;
-    private bool binary;
+    public bool binary;
     private float nextContTime;
     private int contant;
     private int cont;
     public rest reseting;
     void OnEnable()
     {
+        GameObject objWithMovimientoAutonomo = GameObject.FindGameObjectWithTag("MovimientoAutonomo");
+        mov_auto = objWithMovimientoAutonomo.GetComponent<Movimiento_autonomo>();
+        cameras[0] = GameObject.FindWithTag("stereo1").GetComponent<Camera>();
+        cameras[1] = GameObject.FindWithTag("stereo2").GetComponent<Camera>();
+        cameras[2] = GameObject.FindWithTag("camprin").GetComponent<Camera>();
         client = new TcpClient("localhost", 12345);
         stream = client.GetStream();
         lastSendTime = Time.time; 
         contant =  cont;
         nextContTime = Time.time + 15f;
         clearinter = Time.time +100;
+        binary = false;
     }
 
     void SetupTCP(byte[] data)
@@ -52,7 +58,6 @@ public class depthclient : MonoBehaviour
             mov_auto.GirarHaciaAnguloAutonoma(float.Parse(message));
             data = null;
             i=0;
-            Debug.Log("Hola we");
         }
         cont++;
     }
@@ -72,7 +77,6 @@ public class depthclient : MonoBehaviour
         i = 0;
         angle = "";
         message = "";
-        binary = false;
         nextContTime = 0;
         contant = 0;
         cont = 0;
@@ -102,19 +106,10 @@ public class depthclient : MonoBehaviour
             SendMessage();
 
         }
-        if (Time.time >= nextContTime)
+        if(binary)
         {
-            nextContTime = Time.time + 50f;
-            if(contant+1<=cont)
-            {
-                Debug.Log("El servidor esta conectado");
-                contant=cont;
-            }
-            else
-            {
-                Debug.Log("El servidor esta desconectado");
-                reseting.point=true;
-            }
+            stream.Close();
+            client.Close();
         }
     }
 
@@ -122,12 +117,12 @@ public class depthclient : MonoBehaviour
     {
         if(i<=2)
         {
-            RenderTexture rt = new RenderTexture(480,270, 24);
-            Texture2D screenShot = new Texture2D(480,270, TextureFormat.RGB24, false);
+            RenderTexture rt = new RenderTexture(192,108, 24);
+            Texture2D screenShot = new Texture2D(192,108, TextureFormat.RGB24, false);
             cameras[i].targetTexture = rt;
             cameras[i].Render();
             RenderTexture.active = rt;
-            screenShot.ReadPixels(new Rect(0, 0, 480,270), 0, 0);
+            screenShot.ReadPixels(new Rect(0, 0, 192,108), 0, 0);
             byte[] data = screenShot.EncodeToPNG();
             imageQueue.Enqueue(data);
             cameras[i].targetTexture = null;

@@ -16,6 +16,7 @@ public class Movimiento_autonomo : MonoBehaviour
     public float rangoAnguloMaximo = 180f;
     public float toleranciaAngular = 10f;
     public bool autonomous;
+    private float intelreset;
     private float angulodeseado;
     private float angulorango;
     private DateTime tiempoUltimaLlamada = DateTime.MinValue;
@@ -25,7 +26,7 @@ public class Movimiento_autonomo : MonoBehaviour
     private Vector3 direccionMovimiento;
     public initserver intvalid;
     private bool modad4;
-    private void Start()
+    private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
         detenido = false;
@@ -58,6 +59,7 @@ public class Movimiento_autonomo : MonoBehaviour
                     break;
                 case 2:
                     MoverEnDireccionAleatoria();
+
                     autonomous = true;
                     if(!modad4)
                     {
@@ -81,7 +83,19 @@ public class Movimiento_autonomo : MonoBehaviour
         }
         else
         {
+            
             GirarHaciaAnguloAleatorio();
+        }
+        if (!IsInvoking("GirarHaciaAnguloAutonoma"))
+        {
+            Debug.Log("No se esta mandando un angulo de conduccion al vehiculo");
+            if(Time.time>=intelreset)
+            {
+                intvalid.servercomplete = false;
+                intelreset = Time.time + 10f;
+            }
+
+
         }
     }
 
@@ -94,6 +108,7 @@ public class Movimiento_autonomo : MonoBehaviour
                 // Verificar si ha pasado suficiente tiempo desde la última detección
                 if (Time.time - tiempoUltimaDeteccion >= tiempoEspe)
                 {
+                    
                     rb.velocity = transform.forward* -1 * velocidadMovimiento;
                     detenido = true;
                     tiempoUltimaDeteccion = Time.time;
@@ -134,12 +149,12 @@ public class Movimiento_autonomo : MonoBehaviour
     private void GirarHaciaAnguloAleatorio()
     {
         float anguloActual = transform.eulerAngles.y;
-
+        
         if (!girando)
         {
             anguloObjetivo = UnityEngine.Random.Range(rangoAnguloMinimo, rangoAnguloMaximo);
             anguloObjetivo += anguloActual;
-
+            
             if(anguloObjetivo>360)
             {
                 anguloObjetivo -=360;
@@ -155,8 +170,10 @@ public class Movimiento_autonomo : MonoBehaviour
         }
         else
         {
-            float direccionGiro = Mathf.Sign(anguloActual)*-1;
+            
+            float direccionGiro = 1;
             rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
+            Debug.Log(rb.angularVelocity);
         }
     }
 
@@ -169,6 +186,7 @@ public class Movimiento_autonomo : MonoBehaviour
     {
         if (autonomous)
         {
+            intelreset = Time.time + 10f;
             // Verificar si ha pasado suficiente tiempo desde la última llamada
             DateTime ahora = DateTime.Now;
 

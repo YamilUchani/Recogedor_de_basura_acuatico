@@ -18,7 +18,7 @@ public class rest : MonoBehaviour
         }
         if (Time.time >= nextTime)
         {
-            clientmont.enabled = true;
+            //clientmont.enabled = true;
         }
     }
 }
