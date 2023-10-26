@@ -11,7 +11,7 @@ public class initserver : MonoBehaviour
     public bool instaserver;
     private void OnEnable() 
     {
-        Process.Start("cmd.exe", "/K cd /D E:\\Repositorios\\Simulation_aquatic\\Recogedor_de_basura_acuatico\\Robot_acuatico_autonomo\\server && python .\\depthserver.py");
+        Process.Start("cmd.exe", "/K cd /D C:\\Repositorio\\Recogedor_de_basura_acuatico\\Robot_acuatico_autonomo\\server && python .\\effnetserver.py");
         servercomplete = true;
         intcontac = Time.time +10f;
     }
