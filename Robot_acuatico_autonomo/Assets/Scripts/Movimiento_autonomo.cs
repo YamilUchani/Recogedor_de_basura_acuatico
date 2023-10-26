@@ -38,6 +38,7 @@ public class Movimiento_autonomo : MonoBehaviour
         direccionMovimiento = Vector3.zero; // Añadido para inicializar la variable
         elec = 0; // Añadido para inicializar la variable
         anguloObjetivo = 0; // Añadido para inicializar la variable
+        intelreset = Time.time + 25f;
     }
 
     private void FixedUpdate()
@@ -85,17 +86,6 @@ public class Movimiento_autonomo : MonoBehaviour
         {
             
             GirarHaciaAnguloAleatorio();
-        }
-        if (!IsInvoking("GirarHaciaAnguloAutonoma"))
-        {
-            Debug.Log("No se esta mandando un angulo de conduccion al vehiculo");
-            if(Time.time>=intelreset)
-            {
-                intvalid.servercomplete = false;
-                intelreset = Time.time + 10f;
-            }
-
-
         }
     }
 
@@ -173,7 +163,6 @@ public class Movimiento_autonomo : MonoBehaviour
             
             float direccionGiro = 1;
             rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
-            Debug.Log(rb.angularVelocity);
         }
     }
 
@@ -186,20 +175,7 @@ public class Movimiento_autonomo : MonoBehaviour
     {
         if (autonomous)
         {
-            intelreset = Time.time + 10f;
-            // Verificar si ha pasado suficiente tiempo desde la última llamada
-            DateTime ahora = DateTime.Now;
-
-            if ((ahora - tiempoUltimaLlamada) < tiempoEspera)
-            {
-                Console.WriteLine("Espera antes de la próxima llamada...");
-                return; // Salir de la función sin realizar nada
-            }
-
-            angulorango = anguloconduccion;
-
-            angulorango += angulodeseado;
-
+            angulorango = angulodeseado + anguloconduccion; 
             if (angulorango > 360)
             {
                 angulorango -= 360;

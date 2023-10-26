@@ -17,7 +17,7 @@ from ultralytics import YOLO
 import requests
 import select  # Importa la biblioteca select
 import random
-
+import gc
 contant = 0
 cont = 0
 client_socket = None
@@ -32,7 +32,7 @@ def timer():
     global initserver
     # Este es el bucle que se repetirá cada 3 segundos
     while True:
-        time.sleep(20)
+        time.sleep(5)
         print(cont)
         print(contant)
         if contant+1  <= cont:
@@ -41,19 +41,16 @@ def timer():
             contant = cont
         else:
             print("Reconnecting with the client...")
-            if(initserver == False):
-                print("hol")
-                server_socket.close()
-                client_socket.close()
-                initserver = True
-            continue
+            server_socket.close()
+            client_socket.close()
+
     
         
 
-# Esta es la creación del thread con la función timer
-t = threading.Thread(target=timer)
-# Este es el inicio del thread
-t.start()
+    # Esta es la creación del thread con la función timer
+    t = threading.Thread(target=timer)
+    # Este es el inicio del thread
+    t.start()
 def calcule_weigth(number):
     # Ruta actual del script
     script_directory = os.path.dirname(os.path.realpath(__file__))
@@ -63,9 +60,9 @@ def calcule_weigth(number):
     archivos_en_carpeta = os.listdir(carpeta_momentum)
 
     if(number == 1):
-        weigth = 0.1 + len(archivos_en_carpeta) //20 * 0.1
+        weigth = 0.1 + len(archivos_en_carpeta) //25 * 0.1
     elif(number == 2):
-        weigth = 0.9 + len(archivos_en_carpeta) //20 * 0.1
+        weigth = 0.9 + len(archivos_en_carpeta) //25 * 0.1
     return weigth
 # Useful functions
 def clear_console():
@@ -103,28 +100,30 @@ def obtain_angle_from_stereo(img1, img2):
         # Recortar la disparidad y realizar el procesamiento para obtener el resultado
         border_size = 140
         disparity_SGBM_cropped = disparity_SGBM[:, border_size:-border_size]
-        thresh = 220
+        thresh = 240
         _, disparity_SGBM_cropped = cv.threshold(disparity_SGBM_cropped, thresh, 255, cv.THRESH_BINARY)
         # Calcular el resultado basado en la disparidad
         promedio_columnas = np.mean(disparity_SGBM_cropped, axis=0)
-        group_size = len(promedio_columnas) // 3
+        group_size = len(promedio_columnas) // 7
         averaged_promedios = []
 
         for i in range(0, len(promedio_columnas), group_size):
             group = promedio_columnas[i:i + group_size]
             average = sum(group) / len(group)
             averaged_promedios.append(average)
-        print(averaged_promedios)
+        for i in range(len(averaged_promedios)):
+            if averaged_promedios[i] < 40:
+                averaged_promedios[i] = 0
+        todos_son_cero = all(valor == 0 for valor in averaged_promedios)
         min_value = min(averaged_promedios)
-        min_indices = [i for i, value in enumerate(averaged_promedios) if value == min_value]
-
-        if len(min_indices) == 3:
-            selected_index = 1
+        if(todos_son_cero):
+            min_position = 3
         else:
-            selected_index = random.choice(min_indices)
-
-        resultado = -3 if selected_index == 0 else (0 if selected_index == 1 else 3)
-        return str(resultado)
+            min_position = averaged_promedios.index(min_value)
+        
+        
+        
+        return min_position
     except Exception as e:
         return 0
 def obtain_angle_from_bboxes(bboxes, threshold=None):
@@ -142,30 +141,35 @@ def obtain_angle_from_bboxes(bboxes, threshold=None):
             if detection['confidence'] < threshold:
                 continue
         
-        if center_x <= 274:
+        if center_x <= 80:
             angles_election[0] += 1
-        elif center_x <= 549:
+        elif center_x <= 160:
             angles_election[1] += 1
-        elif center_x <= 823:
+        elif center_x <= 320:
             angles_election[2] += 1
-        elif center_x <= 1098:
+        elif center_x <= 480:
             angles_election[3] += 1
-        elif center_x <= 1373:
+        elif center_x <= 640:
             angles_election[4] += 1
-        elif center_x <= 1647:
+        elif center_x <= 800:
             angles_election[5] += 1
         else:
             angles_election[6] += 1
-    
     selected_angle = angles_election.index(max(angles_election))
-    return str(selected_angle)
+    return selected_angle
 
 def obtain_final_angle(angle1, angle2, w1, w2):
-    weighted_angle = int(float(angle1) * w1 + float(angle2) * w2)//2
+    weighted_angle = (angle1 * w1 + angle2 * w2)
     
-    angle_map = {-3: -45, -2: -30, -1: -15, 0: 0, 1: 15, 2: 30, 3: 45}
-    final_angle = angle_map.get(weighted_angle, 0)
+    rounded_weighted_angle = round(weighted_angle)
     
+    angle_map = {0: -45, 1: -30, 2: -15, 3: 0, 4: 15, 5: 30, 6: 45}
+    final_angle = angle_map.get(rounded_weighted_angle, 0)
+    print("angle1" + str(angle1))
+    print("angle2" + str(angle2))
+    print("w1" + str(w1))
+    print("w2" + str(w2))
+    print("final_angle" + str(final_angle))
     return final_angle
 
 
@@ -225,19 +229,26 @@ while True:
                                 img_pil = cv.imdecode(nparr, cv.IMREAD_COLOR)
                                 results = model.predict(source=img_pil)
                                 detections = results[0].boxes.xyxy.cpu().numpy()
+                                if len(detections) == 0:
+                                    angle_yolo = 3
+                                else:
+                                    angle_yolo = obtain_angle_from_bboxes(detections)
                                 confidences = results[0].boxes.conf.cpu().numpy()
-                                angle_yolo = obtain_angle_from_bboxes(detections)
                                 angle_stereo = obtain_angle_from_stereo(img1, img2)
                                 w1 = calcule_weigth(1)
                                 w2 = calcule_weigth(2)
+                                if(angle_stereo == 3 and angle_yolo == 3):
+                                    w1 = 0
+                                    w2 = 0
                                 final_angle = obtain_final_angle(angle_stereo, angle_yolo, w1, w2)
+                                
                                 momentum = 0.3
                                 next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                                 inference_queue.insert(0, final_angle)
                                 data = round(next_angle, 2)
-                                print("weight 1: " + str(w1))
-                                print("weight 2: " + str(w2))
-                                print("angle: " + str(next_angle))
+                                print("w1: " + str(w1))
+                                print("w2: " + str(w2))
+                                print("next_angle: " + str(next_angle))
                                 client_socket.send(str(data).encode())
                                 img_counter = 0
                                 img1 = []
@@ -245,6 +256,7 @@ while True:
                                 img_pil =[]
                                 contclear += 1
                                 cont += 1
+                                final_angle = 0
                             else:
                                 if img_counter == 0:
                                     img1 = cv.imdecode(nparr, cv.IMREAD_GRAYSCALE)
@@ -278,3 +290,5 @@ while True:
     except Exception as e:
         print(f"Error: {e}")
         continue
+    print("Limpiando memoria")
+    gc.collect()

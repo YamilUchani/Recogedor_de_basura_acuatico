@@ -1,4 +1,4 @@
-
+using System;
 using System.Net.Sockets;
 using System.Text;
 using UnityEngine;
@@ -50,53 +50,20 @@ public class depthclient : MonoBehaviour
         byte[] marker = System.Text.Encoding.ASCII.GetBytes("END_OF_IMAGE");
         marker.CopyTo(dataWithMarker, data.Length);
         stream.Write(dataWithMarker, 0, dataWithMarker.Length);
+        
         if(i==3)
         {
+            i=0;
             data = new byte[2048];
             bytes = stream.Read(data, 0, data.Length);
+           
             message = Encoding.ASCII.GetString(data, 0, bytes);
             mov_auto.GirarHaciaAnguloAutonoma(float.Parse(message));
             data = null;
-            i=0;
+            
         }
         cont++;
     }
-    public void ResetDepthClient()
-    {
-        // Cierra la conexión TCP si está abierta
-        if (client != null && client.Connected)
-        {
-            stream.Close();
-            client.Close();
-        }
-
-        // Reinicia las variables y objetos necesarios
-        lastSendTime = 0;
-        currentIndex = 0;
-        imageQueue.Clear();
-        i = 0;
-        angle = "";
-        message = "";
-        nextContTime = 0;
-        contant = 0;
-        cont = 0;
-        
-        // Reinicia las texturas y RenderTextures si es necesario
-        for (int j = 0; j < renderTextures.Length; j++)
-        {
-            if (renderTextures[j] != null)
-                Destroy(renderTextures[j]);
-            renderTextures[j] = new RenderTexture(480, 270, 24);
-            textures[j] = new Texture2D(480, 270, TextureFormat.RGB24, false);
-            cameras[j].targetTexture = renderTextures[j];
-        }
-
-        // También puedes agregar cualquier otro reinicio necesario aquí
-
-        // Llama a la función OnEnable para restablecer la conexión TCP
-        OnEnable();
-    }
-
 
     void Update()
     {
@@ -106,29 +73,26 @@ public class depthclient : MonoBehaviour
             SendMessage();
 
         }
-        if(binary)
-        {
-            stream.Close();
-            client.Close();
-        }
     }
 
     void SendMessage()
     {
         if(i<=2)
         {
-            RenderTexture rt = new RenderTexture(192,108, 24);
-            Texture2D screenShot = new Texture2D(192,108, TextureFormat.RGB24, false);
+            
+            RenderTexture rt = new RenderTexture(960,540, 24);
+            Texture2D screenShot = new Texture2D(960,540, TextureFormat.RGB24, false);
             cameras[i].targetTexture = rt;
             cameras[i].Render();
             RenderTexture.active = rt;
-            screenShot.ReadPixels(new Rect(0, 0, 192,108), 0, 0);
+            screenShot.ReadPixels(new Rect(0, 0, 960,540), 0, 0);
             byte[] data = screenShot.EncodeToPNG();
             imageQueue.Enqueue(data);
             cameras[i].targetTexture = null;
             RenderTexture.active = null;
             Destroy(rt);
             i++;
+            
             
         }
         // Comprueba si hay imágenes en la cola y envía una a la vez
@@ -141,5 +105,10 @@ public class depthclient : MonoBehaviour
             }));
         }
         
+    }
+    private void OnDestroy()
+    {
+        Debug.Log("Limpiando memoria");
+        GC.SuppressFinalize(this);
     }
 }
