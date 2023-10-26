@@ -9,24 +9,27 @@ public class initserver : MonoBehaviour
     public bool servercomplete;
     public float intcontac;
     public bool instaserver;
+    public bool startenabled;
+    public Process serverProcess;
     private void OnEnable() 
     {
-        Process.Start("cmd.exe", "/K cd /D E:\\Repositorios\\Simulation_aquatic\\Recogedor_de_basura_acuatico\\Robot_acuatico_autonomo\\server && python .\\depthserver.py");
+        serverProcess = Process.Start("cmd.exe", "/K cd /D E:\\Repositorios\\Simulation_aquatic\\Recogedor_de_basura_acuatico\\Robot_acuatico_autonomo\\server && python .\\depthserver.py");
         servercomplete = true;
         intcontac = Time.time +10f;
+
     }
     private void Update() {
         if(servercomplete)
         {
-            
             if(Time.time>=intcontac)
             {
                 if(!instaserver)
                 {
-                    UnityEngine.Debug.Log("Hola pew");
+                    
                     instancia = Instantiate(prefab, new Vector3(0, 0, 0), Quaternion.identity);
                     instaserver = true;
                     game.Again();
+                    startenabled=true;
                 }
                 
             }
@@ -34,7 +37,7 @@ public class initserver : MonoBehaviour
         else
         {
             Destroy(instancia);
-            intcontac = Time.time +35f;
+            intcontac = Time.time +120f;
             servercomplete = true;
             instaserver = false;
         }

@@ -17,6 +17,7 @@ from ultralytics import YOLO
 import requests
 import select  # Importa la biblioteca select
 import random
+import sys
 import gc
 contant = 0
 cont = 0
@@ -24,6 +25,9 @@ client_socket = None
 client_address = None
 server_socket = None
 initserver = False
+def restart_program():
+    python = sys.executable
+    os.execl(python, python, * sys.argv)
 def timer():
     global contant
     global cont
@@ -60,9 +64,9 @@ def calcule_weigth(number):
     archivos_en_carpeta = os.listdir(carpeta_momentum)
 
     if(number == 1):
-        weigth = 0.1 + len(archivos_en_carpeta) //25 * 0.1
+        weigth = 0.1 + len(archivos_en_carpeta) //20 * 0.1
     elif(number == 2):
-        weigth = 0.9 + len(archivos_en_carpeta) //25 * 0.1
+        weigth = 0.9 - len(archivos_en_carpeta) //20 * 0.1
     return weigth
 # Useful functions
 def clear_console():
@@ -193,6 +197,7 @@ nextContTime = time.time() +10.0
 # Main loop
 while True:
     try:
+        
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         server_socket.bind((host, port))
         server_socket.listen(5)
@@ -211,6 +216,9 @@ while True:
             chunk = client_socket.recv(bytes_to_receive)
             initserver = False
             if not chunk:
+                print("Limpiando memoria")
+                gc.collect()
+                restart_program()
                 break
             data += chunk
 
@@ -274,21 +282,29 @@ while True:
                         continue
 
                     except IOError:
+                        print("Limpiando memoria")
+                        gc.collect()
+                        restart_program()
                         continue
 
                 data = b''
                 img_chunk = []
-
+        
     except ConnectionResetError:
+        print("Limpiando memoria")
+        gc.collect()
+        restart_program()
         continue
 
     except KeyboardInterrupt:
-        print("Server closed")
-        server_socket.close()
+        print("Limpiando memoria")
+        gc.collect()
+        restart_program()
         break
 
     except Exception as e:
-        print(f"Error: {e}")
+        print("Limpiando memoria")
+        gc.collect()
+        restart_program()
         continue
-    print("Limpiando memoria")
-    gc.collect()
+    

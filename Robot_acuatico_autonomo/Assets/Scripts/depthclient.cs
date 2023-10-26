@@ -59,6 +59,7 @@ public class depthclient : MonoBehaviour
            
             message = Encoding.ASCII.GetString(data, 0, bytes);
             mov_auto.GirarHaciaAnguloAutonoma(float.Parse(message));
+
             data = null;
             
         }
