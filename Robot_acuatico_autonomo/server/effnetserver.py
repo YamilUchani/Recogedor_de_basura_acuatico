@@ -189,14 +189,22 @@ while True:
                         print(angle_effnet)
                         w1 = calcule_weigth(1)
                         w2 = calcule_weigth(2)
-                        if(angle_effnet == 3 and angle_yolo == 3):
+                        if(angle_effnet == 3):
                             w1 = 0
+                            w2 = 1
+                            if(angle_yolo == 3):
+                                w1 = 0
+                                w2 = 0
+                        elif(angle_yolo == 3):
+                            w1 = 1
                             w2 = 0
                         final_angle = obtain_final_angle(angle_effnet, angle_yolo, w1, w2)
                         
                         momentum = 0.3
                         next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                         inference_queue.insert(0, final_angle)
+                        if(angle_yolo = 3 and angle_effnet == 3):
+                            next_angle = 0
                         data = round(next_angle, 2)
                         print("next_angle: " + str(next_angle))
                         client_socket.send(str(data).encode())
