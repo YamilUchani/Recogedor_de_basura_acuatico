@@ -60,9 +60,9 @@ def calcule_weigth(number):
     archivos_en_carpeta = os.listdir(carpeta_momentum)
 
     if(number == 1):
-        weigth = 0.1 + len(archivos_en_carpeta) //25 * 0.1
+        weigth = 0.1 + len(archivos_en_carpeta) //20 * 0.1
     elif(number == 2):
-        weigth = 0.9 + len(archivos_en_carpeta) //25 * 0.1
+        weigth = 0.9 - len(archivos_en_carpeta) //20 * 0.1
     return weigth
 # Useful functions
 def clear_console():
