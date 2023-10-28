@@ -203,7 +203,7 @@ while True:
                         momentum = 0.3
                         next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                         inference_queue.insert(0, final_angle)
-                        if(angle_yolo = 3 and angle_effnet == 3):
+                        if(angle_yolo == 3 and angle_effnet == 3):
                             next_angle = 0
                         data = round(next_angle, 2)
                         print("next_angle: " + str(next_angle))
