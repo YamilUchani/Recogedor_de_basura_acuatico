@@ -49,7 +49,7 @@ public class time : MonoBehaviour
                 
 
             }
-            if(cont.cantidadDeParticulas<30 && minutos >2)
+            if(cont.cantidadDeParticulas<130 && minutos >2)
             {
                 string rutaArchivo =  momentumFolder + "/time"+conta.ToString()+".txt";
                 File.WriteAllText(rutaArchivo, texto);

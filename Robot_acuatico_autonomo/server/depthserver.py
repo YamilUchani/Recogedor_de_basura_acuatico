@@ -245,14 +245,22 @@ while True:
                                 angle_stereo = obtain_angle_from_stereo(img1, img2)
                                 w1 = calcule_weigth(1)
                                 w2 = calcule_weigth(2)
-                                if(angle_stereo == 3 and angle_yolo == 3):
+                                if(angle_stereo == 3): 
                                     w1 = 0
+                                    w2 = 1
+                                    if(angle_yolo == 3):
+                                        w1 = 0
+                                        w2 = 0
+                                elif(angle_yolo == 3):
+                                    w1 = 1
                                     w2 = 0
                                 final_angle = obtain_final_angle(angle_stereo, angle_yolo, w1, w2)
                                 
                                 momentum = 0.3
                                 next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                                 inference_queue.insert(0, final_angle)
+                                if(angle_yolo == 3 and angle_stereo == 3):
+                                    next_angle = 0
                                 data = round(next_angle, 2)
                                 print("w1: " + str(w1))
                                 print("w2: " + str(w2))

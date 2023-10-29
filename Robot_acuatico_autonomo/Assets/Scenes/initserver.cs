@@ -37,7 +37,7 @@ public class initserver : MonoBehaviour
         else
         {
             Destroy(instancia);
-            intcontac = Time.time +120f;
+            intcontac = Time.time +240f;
             servercomplete = true;
             instaserver = false;
         }
