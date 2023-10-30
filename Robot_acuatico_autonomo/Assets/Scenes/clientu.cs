@@ -23,6 +23,8 @@ public int contador;
     string message;
     public Movimiento_autonomo mov_auto;
     public Camera Camino;
+    public int cont;
+    public int contant;
 
     //Variables para dibujar los bbox respectivos
 
@@ -32,6 +34,7 @@ public int contador;
     private bool draw;
     private int lineCount = 0;
     private string valorFinal;
+    
     void OnEnable()
     {
         
@@ -51,11 +54,11 @@ public int contador;
         data = new byte[4096];
         int bytes = stream.Read(data, 0, data.Length);
         message = Encoding.ASCII.GetString(data, 0, bytes);
+        cont ++;
         data=null;
         boxes.Clear();
         draw = false;
         string[] lines = message.Split('\n');
-        
         string[] parts = lines[lines.Length - 1].Split('^');
         string valorFinal = parts[1];  // El valor deseado se encuentra en parts[1]
         // Elimina el carácter '^' si es necesario
@@ -169,7 +172,6 @@ void DrawRectangle(Rect area, float thickness, Color color)
 
     GUI.color = Color.white;
 }
-    
 
 }
 

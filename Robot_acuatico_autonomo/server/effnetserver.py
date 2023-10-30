@@ -20,6 +20,7 @@ import random
 import gc
 contant = 0
 cont = 0
+firstconect = False
 client_socket = None
 client_address = None
 server_socket = None
@@ -30,27 +31,25 @@ def timer():
     global server_socket
     global client_socket
     global initserver
-    # Este es el bucle que se repetirá cada 3 segundos
+    # Este es el bucle que se repetirá cada 20 segundos
     while True:
-        time.sleep(5)
+        time.sleep(30)
         print(cont)
         print(contant)
-        if contant+1  <= cont:
-            
-            print("El servidor está conectado")
-            contant = cont
-        else:
-            print("Reconnecting with the client...")
-            server_socket.close()
-            client_socket.close()
-
-    
-        
-
-    # Esta es la creación del thread con la función timer
-    t = threading.Thread(target=timer)
-    # Este es el inicio del thread
-    t.start()
+        if(firstconect == True):
+            if contant+1  <= cont:
+                
+                print("El servidor está conectado")
+                contant = cont
+            else:
+                print("Reconnecting with the client...")
+                server_socket.close()
+                client_socket.close()
+                firstconect = False
+# Esta es la creación del thread con la función timer
+t = threading.Thread(target=timer)
+# Este es el inicio del thread
+t.start()
 def calcule_weigth(number):
     # Ruta actual del script
     script_directory = os.path.dirname(os.path.realpath(__file__))
@@ -137,7 +136,7 @@ state_dict = torch.load("steering_estimator.pt" , map_location=torch.device('cpu
 steering_estimator.load_state_dict(state_dict)
 steering_estimator.eval()
 # Main loop
-# Main loop
+firstconect = False
 while True:
     try:
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -147,7 +146,7 @@ while True:
 
         client_socket, client_address = server_socket.accept()
         print(f"Connection established with {client_address}")
-
+        firstconect = True
         data = b''
         bytes_to_receive = 1024
 
@@ -206,6 +205,7 @@ while True:
                         if(angle_yolo == 3 and angle_effnet == 3):
                             next_angle = 0
                         data = round(next_angle, 2)
+                        cont += 1
                         print("next_angle: " + str(next_angle))
                         client_socket.send(str(data).encode())
                         img_pil =[]

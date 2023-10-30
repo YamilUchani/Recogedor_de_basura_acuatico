@@ -47,10 +47,10 @@ def timer():
     
         
 
-    # Esta es la creación del thread con la función timer
-    t = threading.Thread(target=timer)
-    # Este es el inicio del thread
-    t.start()
+# Esta es la creación del thread con la función timer
+t = threading.Thread(target=timer)
+# Este es el inicio del thread
+t.start()
 def calcule_weigth(number):
     # Ruta actual del script
     script_directory = os.path.dirname(os.path.realpath(__file__))

@@ -24,8 +24,8 @@ public class effnetclient : MonoBehaviour
     public string message;
     public bool binary;
     private float nextContTime;
-    private int contant;
-    private int cont;
+    public int contant;
+    public int cont;
     public rest reseting;
     void OnEnable()
     {
@@ -49,6 +49,7 @@ public class effnetclient : MonoBehaviour
         marker.CopyTo(dataWithMarker, data.Length);
         stream.Write(dataWithMarker, 0, dataWithMarker.Length);
         data = new byte[2048];
+        cont++;
         bytes = stream.Read(data, 0, data.Length);
         message = Encoding.ASCII.GetString(data, 0, bytes);
         mov_auto.GirarHaciaAnguloAutonoma(float.Parse(message));
@@ -74,20 +75,13 @@ public class effnetclient : MonoBehaviour
         RenderTexture.active = rt;
         screenShot.ReadPixels(new Rect(0, 0, 960,540), 0, 0);
         byte[] data = screenShot.EncodeToPNG();
-        imageQueue.Enqueue(data);
         cameras.targetTexture = null;
         RenderTexture.active = null;
         Destroy(rt);
-        // Comprueba si hay imágenes en la cola y envía una a la vez
-        if (imageQueue.Count > 0)
+        System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback((state) =>
         {
-            byte[] imageData = imageQueue.Dequeue();
-            System.Threading.ThreadPool.QueueUserWorkItem(new System.Threading.WaitCallback((state) =>
-            {
-                SetupTCP(imageData);
-            }));
-        }
-        
+                SetupTCP(data);
+        }));
     }
     private void OnDestroy()
     {
