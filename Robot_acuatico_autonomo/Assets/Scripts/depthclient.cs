@@ -24,8 +24,8 @@ public class depthclient : MonoBehaviour
     public string message;
     public bool binary;
     private float nextContTime;
-    private int contant;
-    private int cont;
+    public int contant;
+    public int cont;
     public rest reseting;
     void OnEnable()
     {

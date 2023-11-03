@@ -23,9 +23,16 @@ public class Movimiento_autonomo : MonoBehaviour
     private TimeSpan tiempoEspera = TimeSpan.FromSeconds(5); // Cambia el tiempo de espera según tus necesidades
     private float tiempoEspe = 1.0f; // Cambia este valor a la cantidad de segundos que desee
     private float tiempoUltimaDeteccion = 0.0f;
+    private float tiempodecambio = 0.0f;
     private Vector3 direccionMovimiento;
-    public initserver intvalid;
+    public modality1 intvalid1;
+    public modality2 intvalid2;
+    public modality3 intvalid3;
+    public modality4 intvalid4;
     private bool modad4;
+    private bool modad3;
+    private bool modad2;
+    private bool modad1;
     private void OnEnable()
     {
         rb = GetComponent<Rigidbody>();
@@ -51,30 +58,122 @@ public class Movimiento_autonomo : MonoBehaviour
                 case 0:
                     MoverEnDireccionControlada();
                     autonomous = false;
-                    modad4=false;
+                    modad3=false;
+                    modad1=false;
+                    modad2=false;
                     break;
                 case 1:
                     MoverEnDireccionAleatoria();
-                    autonomous = false;
-                    modad4=false;
+
+                    if (Time.time>= tiempodecambio)
+                    {
+                        
+                        modad3=false;
+                        modad2=false;
+                        modad4=false;
+                        autonomous = true;
+                        if(!modad1)
+                        {
+                            intvalid1.enabled = true;
+                            intvalid2.enabled = false;
+                            intvalid3.enabled = false;
+                            intvalid4.enabled = false;
+                            modad1=true;
+                        }
+                        if (Mathf.Abs(angulodeseado- angulorango) <= toleranciaAngular)
+                        {
+                            calculando = false;
+                        }
+                        else
+                        {
+                            float direccionGiro = Mathf.Sign(angulodeseado- angulorango) * -1;
+                            rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
+                        }
+                        
+                    }
                     break;
                 case 2:
                     MoverEnDireccionAleatoria();
 
-                    autonomous = true;
-                    if(!modad4)
+                    if (Time.time>= tiempodecambio)
                     {
-                        intvalid.enabled = true;
-                        modad4=true;
+                        
+                        modad3=false;
+                        modad1=false;
+                        modad4=false;
+                        autonomous = true;
+                        if(!modad2)
+                        {
+                            intvalid1.enabled = false;
+                            intvalid2.enabled = true;
+                            intvalid3.enabled = false;
+                            intvalid4.enabled = false;
+                            modad2=true;
+                        }
+                        if (Mathf.Abs(angulodeseado- angulorango) <= toleranciaAngular)
+                        {
+                            calculando = false;
+                        }
+                        else
+                        {
+                            float direccionGiro = Mathf.Sign(angulodeseado- angulorango) * -1;
+                            rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
+                        }
+                        
                     }
-                    if (Mathf.Abs(angulodeseado- angulorango) <= toleranciaAngular)
+                    break;
+                case 3:
+                    MoverEnDireccionAleatoria();
+                    if (Time.time>= tiempodecambio)
                     {
-                        calculando = false;
+                        autonomous = true;
+                        modad1=false;
+                        modad2=false;
+                        modad4=false;
+                        if(!modad3)
+                        {
+                            intvalid1.enabled = false;
+                            intvalid2.enabled = false;
+                            intvalid3.enabled = true;
+                            intvalid4.enabled = false;
+                            modad3=true;
+                        }
+                        if (Mathf.Abs(angulodeseado- angulorango) <= toleranciaAngular)
+                        {
+                            calculando = false;
+                        }
+                        else
+                        {
+                            float direccionGiro = Mathf.Sign(angulodeseado- angulorango) * -1;
+                            rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
+                        }
                     }
-                    else
+                    break;
+                case 4:
+                    MoverEnDireccionAleatoria();
+                    if (Time.time>= tiempodecambio)
                     {
-                        float direccionGiro = Mathf.Sign(angulodeseado- angulorango) * -1;
-                        rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
+                        autonomous = true;
+                        modad1=false;
+                        modad2=false;
+                        modad3=false;
+                        if(!modad4)
+                        {
+                            intvalid1.enabled = false;
+                            intvalid2.enabled = false;
+                            intvalid3.enabled = false;
+                            intvalid4.enabled = true;
+                            modad4=true;
+                        }
+                        if (Mathf.Abs(angulodeseado- angulorango) <= toleranciaAngular)
+                        {
+                            calculando = false;
+                        }
+                        else
+                        {
+                            float direccionGiro = Mathf.Sign(angulodeseado- angulorango) * -1;
+                            rb.angularVelocity = transform.up * direccionGiro * velocidadAngular;
+                        }
                     }
                     break;
                 default:
@@ -168,11 +267,17 @@ public class Movimiento_autonomo : MonoBehaviour
 
     public void model_change(int numberlist)
     {
+        tiempodecambio = Time.time + 15f;
+        intvalid1.enabled = false;
+        intvalid2.enabled = false;
+        intvalid3.enabled = false;
+        intvalid4.enabled = false;
         elec = numberlist;
     }
 
     public void GirarHaciaAnguloAutonoma(float anguloconduccion)
     {
+        
         if (autonomous)
         {
             angulorango = angulodeseado + anguloconduccion; 
