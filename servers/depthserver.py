@@ -13,6 +13,7 @@ import os
 import glob
 import ultralytics
 ultralytics.checks()
+from collections import deque
 from ultralytics import YOLO
 import requests
 import select  # Importa la biblioteca select
@@ -31,9 +32,11 @@ def timer():
     global server_socket
     global client_socket
     global initserver
+    global firstconect  # Agrega esta línea
+
     # Este es el bucle que se repetirá cada 3 segundos
     while True:
-        time.sleep(60)
+        time.sleep(120)
         print(cont)
         print(contant)
         if(firstconect == True):
@@ -167,6 +170,7 @@ CATEGORIES = ["0", "1", "2", "3", "4", "5", "6"]
 model = YOLO('best.pt')
 img_counter = 0
 inference_queue = []
+inference_queue = deque(maxlen=10) 
 img_pil =[]
 img1 = []
 img2 = []
@@ -234,6 +238,8 @@ while True:
                                 momentum = 0.3
                                 next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                                 inference_queue.insert(0, final_angle)
+                                if(len(inference_queue) > 9):
+                                    inference_queue.pop()
                                 data = round(next_angle, 2)
                                 print("w1: " + str(w1))
                                 print("w2: " + str(w2))
