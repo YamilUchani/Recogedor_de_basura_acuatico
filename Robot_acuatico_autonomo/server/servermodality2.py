@@ -102,6 +102,7 @@ CATEGORIES = ["0", "1", "2", "3", "4", "5", "6"]
 model = YOLO('best.pt')
 img_counter = 0
 inference_queue = []
+inference_queue = deque(maxlen=10) 
 img_pil =[]
 angle_stereo = 0
 angle_yolo = 0

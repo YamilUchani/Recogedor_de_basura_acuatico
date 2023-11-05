@@ -61,7 +61,7 @@ public class time : MonoBehaviour
             // Muestra el tiempo en formato de tiempo en el TextMeshPro.
             string texto = string.Format("Time: {0:D2}:{1:D2}:{2:D2}\nVelocity: {3:F2}x", horas, minutos, segundos, Time.timeScale);
             textoCronometro.text = texto;
-            if(minutos ==10 && segundos>0)
+            if(minutos ==20 && segundos>0)
             {
                 switch (movauto.elec) 
                 {
@@ -86,23 +86,23 @@ public class time : MonoBehaviour
                 Debug.Log("Valor guardado en el archivo: " + texto);
                 cont.finishtime=true;
                 switch (movauto.elec) 
-            {
-                case 1:
-                    conta1++;
-                    break;
-                case 2:
-                    conta2++;
-                    break;
-                case 3:
-                    conta3++;
-                    break;
-                case 4:
-                    conta4++;
-                    break;
-                default:
-                    Debug.Log("Modo Manual");
-                    break;
-            }
+                {
+                    case 1:
+                        conta1++;
+                        break;
+                    case 2:
+                        conta2++;
+                        break;
+                    case 3:
+                        conta3++;
+                        break;
+                    case 4:
+                        conta4++;
+                        break;
+                    default:
+                        Debug.Log("Modo Manual");
+                        break;
+                }
                 
 
             }
@@ -131,23 +131,23 @@ public class time : MonoBehaviour
                 Debug.Log("Valor guardado en el archivo: " + texto);
                 cont.cnt=true;
                 switch (movauto.elec) 
-            {
-                case 1:
-                    conta1++;
-                    break;
-                case 2:
-                    conta2++;
-                    break;
-                case 3:
-                    conta3++;
-                    break;
-                case 4:
-                    conta4++;
-                    break;
-                default:
-                    Debug.Log("Modo Manual");
-                    break;
-            }
+                {
+                    case 1:
+                        conta1++;
+                        break;
+                    case 2:
+                        conta2++;
+                        break;
+                    case 3:
+                        conta3++;
+                        break;
+                    case 4:
+                        conta4++;
+                        break;
+                    default:
+                        Debug.Log("Modo Manual");
+                        break;
+                }
                 
             }
 
