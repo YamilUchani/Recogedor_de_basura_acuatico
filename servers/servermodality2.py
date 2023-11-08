@@ -158,8 +158,8 @@ while True:
                             angle_yolo = obtain_angle_from_bboxes(detections)
                         final_angle = obtain_final_angle(angle_yolo)
                         momentum = 0.3
-                        next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                         inference_queue.insert(0, final_angle)
+                        next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                         if(len(inference_queue) > 9):
                             inference_queue.pop()
                         if(angle_yolo == 3):

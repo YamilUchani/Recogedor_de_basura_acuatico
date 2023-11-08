@@ -13,6 +13,8 @@ public class time : MonoBehaviour
     public int conta2;
     public int conta3;
     public int conta4;
+    public Transform objeto1; // El primer objeto
+    public Transform objeto2; // El segundo objeto
     public Text textoCronometro;
     public float tiempoTranscurrido = 0f;
     string basePath;
@@ -57,9 +59,13 @@ public class time : MonoBehaviour
             int horas = Mathf.FloorToInt(tiempoTranscurrido / 3600);
             int minutos = Mathf.FloorToInt((tiempoTranscurrido % 3600) / 60);
             int segundos = Mathf.FloorToInt(tiempoTranscurrido % 60);
+            // Calcula la distancia en el eje X
+            float distanciaX = Mathf.Max(0, Mathf.Abs(objeto1.position.x - objeto2.position.x) - 0.7f);
 
+            // Calcula la distancia en el eje Y y asegúrate de que los valores negativos sean cero
+            float distanciaY = Mathf.Max(0, Mathf.Abs(objeto1.position.z - objeto2.position.z - 0.8f));
             // Muestra el tiempo en formato de tiempo en el TextMeshPro.
-            string texto = string.Format("Time: {0:D2}:{1:D2}:{2:D2}\nVelocity: {3:F2}x", horas, minutos, segundos, Time.timeScale);
+            string texto = string.Format("Time: {0:D2}:{1:D2}:{2:D2}\nVelocity: {3:F2}x\nAngle: {4:F2}\nX: {5:F2} Y: {6:F2}", horas, minutos, segundos, Time.timeScale, movauto.angle_predict, distanciaX, distanciaY);
             textoCronometro.text = texto;
             if(minutos ==20 && segundos>0)
             {

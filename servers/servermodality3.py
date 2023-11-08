@@ -191,8 +191,8 @@ while True:
                         final_angle = obtain_final_angle(angle_effnet, angle_yolo, w1, w2)
                         
                         momentum = 0.3
-                        next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                         inference_queue.insert(0, final_angle)
+                        next_angle = sum(element * (momentum ** i) for i, element in enumerate(inference_queue))
                         if(len(inference_queue) > 9):
                             inference_queue.pop()
                         if(angle_yolo == 3 and angle_effnet == 3):

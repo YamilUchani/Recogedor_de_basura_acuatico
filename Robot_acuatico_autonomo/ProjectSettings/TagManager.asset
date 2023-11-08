@@ -13,6 +13,7 @@ TagManager:
   - camprin
   - client
   - MovimientoAutonomo
+  - point
   layers:
   - Default
   - TransparentFX

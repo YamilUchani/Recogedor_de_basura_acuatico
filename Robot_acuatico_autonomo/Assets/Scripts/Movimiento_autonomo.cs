@@ -9,6 +9,7 @@ public class Movimiento_autonomo : MonoBehaviour
     public float anguloObjetivo;
     private bool girando;
     private bool calculando;
+    public float angle_predict;
     public int elec;
     public float velocidadMovimiento = 5f;
     public float velocidadAngular = 5f;
@@ -277,7 +278,7 @@ public class Movimiento_autonomo : MonoBehaviour
 
     public void GirarHaciaAnguloAutonoma(float anguloconduccion)
     {
-        
+        angle_predict = anguloconduccion;   
         if (autonomous)
         {
             angulorango = angulodeseado + anguloconduccion; 
