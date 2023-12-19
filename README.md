@@ -1,5 +1,6 @@
 # Cross-View Gait Recognition Based on U-Net
 
+## Table for content
 <div align="center" style="background-color: #6495ED; padding: 10px;">
   <a href="#description" style="color: #FF00FF;"><b>Description</b></a> |
   <a href="#our-approach" style="color: #FF00FF;"><b>Our Approach</b></a> |
@@ -8,7 +9,12 @@
   <a href="#citing" style="color: #FF00FF;"><b>Citing</b></a>
 </div>
 
+## Additional Images
 
+<p align="center">
+  <img src="RecyclingRush/cad_design.png" alt="CAD Design" width="400" style="margin-right: 20px;"/>
+  <img src="RecyclingRush/simulator.png" alt="Simulator" width="400"/>
+</p>
 
 Last Updated: April 27th, 2021
 
