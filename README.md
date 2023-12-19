@@ -2,14 +2,15 @@
 
 Last Updated: April 27th, 2021
 
----
-## Table for content
+## Table of Contents
 <div align="center" style="background-color: #6495ED; padding: 10px;">
   <a href="#description" style="color: #FF00FF;"><b>Description</b></a> |
-  <a href="#our-approach" style="color: #FF00FF;"><b>Our Approach</b></a> |
-  <a href="#results" style="color: #FF00FF;"><b>Results</b></a> |
-  <a href="#getting-started" style="color: #FF00FF;"><b>Getting Started</b></a> |
-  <a href="#citing" style="color: #FF00FF;"><b>Citing</b></a>
+  <a href="#features" style="color: #FF00FF;"><b>Features</b></a> |
+  <a href="#installation" style="color: #FF00FF;"><b>Installation</b></a> |
+  <a href="#usage" style="color: #FF00FF;"><b>Usage</b></a> |
+  <a href="#contributions" style="color: #FF00FF;"><b>Contributions</b></a> |
+  <a href="#license" style="color: #FF00FF;"><b>License</b></a> |
+  <a href="#contact" style="color: #FF00FF;"><b>Contact</b></a>
 </div>
 
 ## Additional Images
@@ -24,60 +25,108 @@ Last Updated: April 27th, 2021
 </p>
 
 
-
 ## Description
+This project is an aquatic simulator developed in Unity with the primary goal of simulating an underwater environment where a virtual agent collects water lentils. The simulator incorporates advanced features, such as the use of external Python servers for integrating object detection models based on YOLOv5 and ResNet. Additionally, stereo cameras are utilized to enhance the agent's perception of the environment.
 
-Inspired by the successes of GANs in image translation tasks, this project proposes a gait recognition technique using a conditional generative model to generate view-invariant features. The method is evaluated on the CASIA gait database B, showcasing outstanding performance, especially in carrying-bag and wearing-coat sequences.
+## Key Features
+- **Water Lentil Collection:** The virtual agent is designed to efficiently collect water lentils in a simulated aquatic environment.
 
-## Our Approach
+- **Integration of Detection Models:** External Python servers are employed to integrate object detection models based on YOLOv5 and ResNet. This enables the agent to detect and react to objects in its surroundings.
 
-### Framework
+- **Stereo Cameras:** A stereo camera setup is implemented to improve the three-dimensional perception of the environment and facilitate decision-making for the agent.
 
-![Framework](.readme/Framework.svg)
+## Installation
+### System Requirements
+- [Unity](https://unity.com/)
+- [Python](https://www.python.org/)
 
-### Conditional GAN (CGAN)
+### Installation Steps
+1. Clone this repository to your local machine:
 
-#### Generator
-![Generator](.readme/U-Gait2.svg)
+    ```bash
+    git clone https://github.com/your_username/repository-name.git
+    cd repository-name
+    ```
 
-#### Discriminator
-![Discriminator](.readme/Discriminator2.svg)
+2. Configure the Unity environment to load the project.
 
-## Results
+3. Install Python dependencies for the detection models:
 
-Qualitative results include original and generated Gait Energy Image (GEI) representations, along with a comparison with other approaches based on the correct classification rate (CCR).
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-- Original GEI representations for subject 120:
-  ![Original GEI](.readme/Subject120OriginalGEI.png)
+### Inspect Subfolders:
 
-- Generated GEI representations for subject 120:
-  ![Generated GEI](.readme/Subject120GeneratedGEI.png)
+- **RecyclingRush:** Use the pre-packaged simulator by running the executable file inside this folder.
 
-- Generated GEI representations from multiple subjects:
-  ![Generated GEI](.readme/Gen_mul.gif)
+- **Robot_acuatico_autonomo:** Open this folder in Unity for modification.
 
-- Comparison with other approaches based on CCR:
-  ![CCR Comparison](.readme/PlotCCR.svg)
+- **servers:** Contains Python models; no further action needed during this installation step.
 
-## Getting Started
+### Initialize Simulator:
 
-You can find the notebook [here](notebooks/Gait_U_Net2.ipynb) or open it on [Google Colab](https://colab.research.google.com/drive/1GXSScKJ5uOJLZ-9aseO3vXLYen_DLJ9p#forceEdit=true&sandboxMode=true).
+1. Run the pre-packaged simulator (.exe) located in the "RecyclingRush" folder.
+2. This will create a folder named "!RecyclingRush" in your "Documents" directory.
 
-### Prerequisites
+### Copy Servers Folder:
 
-- Tensorflow 2.x
-- Keras
-- OpenCV
-- Numpy
-- Matplotlib
+1. Inside the newly created "!RecyclingRush" folder, copy the entire "servers" folder.
+2. This step is crucial for both the simulator and the program to utilize the Python models.
 
-## Built With
+### Unity Project Setup:
 
-- [CASIA](http://www.cbsr.ia.ac.cn/english/Gait%20Databases.asp) - The dataset used
-- [Pix2Pix](https://www.tensorflow.org/tutorials/generative/pix2pix) - Based on
-- GoogleColab - The virtual machine used in the experiments
+1. Open Unity and load the Unity project by navigating to the "Robot_acuatico_autonomo" folder.
+2. If the project does not automatically initialize, follow these steps:
+    - Click on "File" in the Unity editor.
+    - Choose "Open Project."
+    - Navigate to the "Robot_acuatico_autonomo" folder and open the project.
+3. Now, you have the Unity project ready for modification.
 
-## Citing
+## Usage
 
-Please, cite this work as follows:
+### Simulator:
+
+- Run the pre-packaged simulator (.exe) from the "RecyclingRush" folder to interact with the virtual environment.
+
+### Python Models:
+
+- The Python models in the "servers" folder are used for water lentil and obstacle detection by the simulator.
+
+### Unity Project:
+
+- Open and modify the Unity project located in the "Robot_acuatico_autonomo" folder according to your requirements.
+
+## Additional Notes
+
+- Ensure that your system meets the requirements for running the simulator and Python models.
+
+- Customize the Unity project as needed, considering the environmental variables and parameters defined within the project.
+
+- For any questions or issues, contact the development team using the provided contact information in the README.
+
+
+## Contributions
+If you wish to contribute to this project, please follow these guidelines:
+
+1. Fork the repository.
+
+2. Create a branch for your contribution:
+
+    ```bash
+    git checkout -b feature/new-feature
+    ```
+
+3. Develop and test your changes.
+
+4. Submit a pull request to the main branch of the original repository.
+
+## License
+This project is licensed under the [License Name]. Refer to the LICENSE file for more details.
+
+## Contact
+For questions or comments, you can reach out to the development team:
+
+- **Developer Name:** [Name]
+- **Email:** [email@example.com]
 
