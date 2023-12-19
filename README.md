@@ -1,11 +1,11 @@
 # Cross-View Gait Recognition Based on U-Net
 
 <div align="center" style="background-color: #6495ED; padding: 10px;">
-  <a href="#description" style="color: #FFFFFF;"><b>Description</b></a> |
-  <a href="#our-approach" style="color: #FFFFFF;"><b>Our Approach</b></a> |
-  <a href="#results" style="color: #FFFFFF;"><b>Results</b></a> |
-  <a href="#getting-started" style="color: #FFFFFF;"><b>Getting Started</b></a> |
-  <a href="#citing" style="color: #FFFFFF;"><b>Citing</b></a>
+  <a href="#description" style="color: #FF00FF;"><b>Description</b></a> |
+  <a href="#our-approach" style="color: #FF00FF;"><b>Our Approach</b></a> |
+  <a href="#results" style="color: #FF00FF;"><b>Results</b></a> |
+  <a href="#getting-started" style="color: #FF00FF;"><b>Getting Started</b></a> |
+  <a href="#citing" style="color: #FF00FF;"><b>Citing</b></a>
 </div>
 
 
