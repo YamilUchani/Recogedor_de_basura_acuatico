@@ -1,93 +1,89 @@
 using System.Collections;
 using UnityEngine;
-/*
-Estas librerias son las utilizadas para la comunicacion entre Unity y Python. 
-Tomando en cuenta el puerto y la IP asignada, la cual tiene que ser la misma en ambos archivos
-*/
-//Este namespace se encarga de habilitar los protocolos para la red
-using System.Net;
-//Esta clase del namespace Net se encarga de el envio y recibo de datos
-using System.Net.Sockets;
-//Esta clase se encarga de la creacion de subprocesos, los cuales permitiran el envio y recibo de datos en mas de un subproceso.
-using System.Threading;
+using UnityEditor;
+using System.IO;
 using System.Text;
 public class Envio_imagenes : MonoBehaviour
 {
-        /*
-    Este script se trata de un script que mandara una imagen como informacion 
-    */
-    //Esta variable es el subproceso en el cual se realizara el envio y recibo de datos
-    Thread mThread;
-    public int connectionPort=2500;
-    IPAddress localdd;
-    TcpClient client;
-    TcpListener listener;
-    ThreadStart ts;
-    public bool envio;
+    public float enfriamiento=5000;
+    public float tiempoenfriamiento=0;
     public Camera Camino;
     Texture2D image;
     private bool activado;
+    private bool contador=false;
+    public int FileCounter;
+    private int screenWidth;
+    private int screenHeight;
+    public GameObject bote;
+    private string timeFolderPath;
     byte[] bytes;
 
+    string time;
 
-    private void Start()
-    {
-        //Inicio de creacion de un camino para comunicacion para las dos camaras
-        ts = new ThreadStart(GetInfo);
-        mThread=new Thread(ts);
-        mThread.Start(); 
-        activado=true;  
-    }
-    void GetInfo()
-    {
-        listener= new TcpListener(IPAddress.Any, connectionPort);
-        listener.Start();        
-        client=listener.AcceptTcpClient();
-        envio=true;
-        while(envio)
-        {
-            Enviodedatos();
-        }
-        listener.Stop();
-    }
-    void Enviodedatos()
-    {   try
-        {
-            NetworkStream nwStream= client.GetStream();
-            byte[] buffer=new byte[client.ReceiveBufferSize];
-            //Confirmacion del cliente
-            int confirmacion=nwStream.Read(buffer,0,client.ReceiveBufferSize);
-            string dataconfirmacion=Encoding.UTF8.GetString(buffer,0,confirmacion);
-            nwStream.Write(bytes,0,bytes.Length);
-        } 
-        catch
-        {
-            Debug.Log("El visor del camino se ha desconectado");
-            envio=false;
-            activado=false;
-        }
-    }  
     public void FixedUpdate()
     {
-        RenderTexture activeRenderTextureTwo = RenderTexture.active;
-        RenderTexture.active = Camino.targetTexture;
-        Camino.Render();
-        image = new Texture2D(Camino.targetTexture.width, Camino.targetTexture.height);
-        image.ReadPixels(new Rect(0, 0, Camino.targetTexture.width, Camino.targetTexture.height), 0, 0);
-        image.Apply();
-        RenderTexture.active = activeRenderTextureTwo;
-        bytes = image.EncodeToPNG();
-        Destroy(image);
-        if(!activado)
+        if(contador)
         {
-            mThread.Abort();
-            ts = new ThreadStart(GetInfo);
-            mThread=new Thread(ts);
-            mThread.Start();
-            activado=true;
+            if(bote.GetComponent<Movimiento>().movHorizontal!=0 || bote.GetComponent<Movimiento>().movVertical!=0)
+            {
+                tiempoenfriamiento=tiempoenfriamiento+1000f*Time.deltaTime;
+                if(tiempoenfriamiento>=enfriamiento)
+                {
+                    tiempoenfriamiento=0f;
+                    //asdasdasdas
+                    screenWidth = Camino.pixelWidth;
+                    screenHeight = Camino.pixelHeight;
+                    RenderTexture rt = new RenderTexture(screenWidth, screenHeight, 24); // Usar las variables
+                    Texture2D image  = new Texture2D(screenWidth, screenHeight, TextureFormat.RGB24, false); // Usar las variables
+                    Camino.targetTexture = rt;
+                    Camino.Render();
+                    RenderTexture.active = rt;
+                    //asdasdas
+                    image.ReadPixels(new Rect(0, 0, Camino.targetTexture.width, Camino.targetTexture.height), 0, 0);
+                    image.Apply();
+                    RenderTexture.active = rt;
+                    bytes = image.EncodeToPNG();
+                    Destroy(image);
+                    string imagePath = Path.Combine(timeFolderPath, "Image" + FileCounter + "angle" + bote.GetComponent<Movimiento>().anguloenvio + "velocity" + bote.GetComponent<Movimiento>().velocidadenvio + ".png");
+                    File.WriteAllBytes(imagePath, bytes);
+                    FileCounter++;
+                }
+            }
+        } 
+    }    
+    public void Captura()
+    {
+        if(contador==true)
+        {
+            contador=false;
+            FileCounter=0;
+        }
+        else
+        {
+            time = System.DateTime.UtcNow.ToLocalTime().ToString("dd_MM_yyyy_HH_mm_ss");
+            
+            // Obtén el directorio de Documentos del sistema operativo
+            string documentsPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.MyDocuments);
+            
+            // Define la ruta de las carpetas
+            string recyclingRushPath = Path.Combine(documentsPath, "!Recycling Rush");
+            string selfDrivingPath = Path.Combine(recyclingRushPath, "Self-Driving");
+            
+            // Verifica si las carpetas existen, si no, las crea
+            if (!Directory.Exists(recyclingRushPath))
+            {
+                Directory.CreateDirectory(recyclingRushPath);
+            }
+            if (!Directory.Exists(selfDrivingPath))
+            {
+                Directory.CreateDirectory(selfDrivingPath);
+            }
+            
+            // Crea la carpeta con el nombre de la variable 'time'
+            timeFolderPath = Path.Combine(selfDrivingPath, time);
+            Directory.CreateDirectory(timeFolderPath);
+            
+            contador=true;
         }
     }
-    //Las funciones encargadas de enviar los datos de puerto e IP para la comunicacion de los dos caminos Thread
-    
-    
 }

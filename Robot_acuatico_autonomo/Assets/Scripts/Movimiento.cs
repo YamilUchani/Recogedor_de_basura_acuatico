@@ -1,105 +1,122 @@
 using UnityEngine;
 using System.Net;
-//Esta clase del namespace Net se encarga de el envio y recibo de datos
-using System.Net.Sockets;
-//Esta clase se encarga de la creacion de subprocesos, los cuales permitiran el envio y recibo de datos en mas de un subproceso.
-using System.Threading;
 using System.Text;
 public class Movimiento : MonoBehaviour
 {
-    Thread mThread;
-    public int connectionPort=2100;
-    IPAddress localadd;
-    TcpClient cleint;
-    TcpListener listener;
-    ThreadStart ts;
     public GameObject cam;
-    public float aceleracion=500f;
+    public GameObject ang;
+    public float aceleracion=50f;
     public float aceleracionangular=5f;
     public float aceleracionactual=0f;
     public float aceleracionangularactual=0f;
-    private float tiemporespuesta;
-    public float giro=0f;
     public Rigidbody rb;
+    public Rigidbody rbw;
     public int movHorizontal=0;
-    public int movVertical=0;
-    private bool running;
-    private int bytesRead;
-    private byte[] mensaje;
-    private byte[] buffer;
-    private bool activo=true;
+    public float movVertical=0;
+    public float anguloreal=0;
+    public float velocidadreal=0;
+    public float anguloUI=0;
+    public float aumentogiro;
+    public float velocidadUI=0;
+    public int region;
+    private int valorx;
+    private int valorz;
+    public string anguloenvio;
+    public string velocidadenvio;
+    
     private void Start()
     {
-        rb=GetComponent<Rigidbody>();   
-        ts = new ThreadStart(GetInfo);
-        mThread=new Thread(ts);
-        mThread.Start(); 
-        activo=true;
-    }
-    void GetInfo()
-    {
-        listener= new TcpListener(IPAddress.Any, connectionPort);
-        listener.Start();
-        cleint=listener.AcceptTcpClient();
-        running=true;
-        while(running)
-        {
-            recibodedatos();
-        }
-        listener.Stop();
-    }
-    private void recibodedatos()
-    {
-        try
-        {
-            NetworkStream nwStream=cleint.GetStream();
-            nwStream.Write(mensaje,0,mensaje.Length); 
-            buffer=new byte[cleint.ReceiveBufferSize];
-            bytesRead=nwStream.Read(buffer,0,cleint.ReceiveBufferSize);
-        }
-        catch
-        {
-            Debug.Log("El control de movimiento se ha desconectado");
-            running=false;
-            activo=false;
-        }
-        string Dato=Encoding.UTF8.GetString(buffer,0,bytesRead);
-        if(Dato!=null)
-        {
-            switch (Dato)
-            {
-                case "derecha":
-                    movHorizontal=1;
-                    break;
-                case "izquierda":
-                     movHorizontal=-1;
-                    break;
-                case "arriba":
-                    movVertical=1;
-                    break;
-                case "abajo":
-                     movVertical=-1;
-                    break;    
-            }
-        }
         
+        rb=GetComponent<Rigidbody>();   
+        rbw=ang.GetComponent<Rigidbody>();
     }
     private void FixedUpdate()
     {
-        mensaje=Encoding.ASCII.GetBytes("Confirmacion"); 
+        Vector3 rotacionActual = ang.transform.localEulerAngles;
+        movVertical = Input.GetAxis("Vertical");
+        movHorizontal = (int)Input.GetAxis("Horizontal");
         aceleracionactual=aceleracion*movVertical;
-        aceleracionangularactual=aceleracionangular*movHorizontal;
+        
         rb.AddForce((transform.position-cam.transform.position)*aceleracionactual);
-        rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
-        movHorizontal=0;
-        movVertical=0;
-        if(!activo)
+        if(ang.transform.localEulerAngles.y<24 || ang.transform.localEulerAngles.y>336)
         {
-            mThread.Abort();
-            ts = new ThreadStart(GetInfo);
-            mThread=new Thread(ts);
-            mThread.Start();
-            activo=true;
+            if(movHorizontal!=0)
+            {
+                aumentogiro+=0.01f;
+                anguloreal=ang.transform.localEulerAngles.y;
+            }
+            
         }
+        aceleracionangularactual=aceleracionangular*movHorizontal*aumentogiro;
+        rb.AddTorque(Vector3.up*aceleracionangularactual*Time.deltaTime);
+        rbw.AddTorque(Vector3.up*aceleracionangularactual*0.21f*Time.deltaTime);
+        
+        velocidadreal=rb.velocity.magnitude;
+        if(anguloreal<=360 && anguloreal>200)
+        {
+            anguloreal=-360+anguloreal;
+        }
+        velocidadreal= Mathf.Abs(velocidadreal);
+        anguloUI=Mathf.Round(anguloreal * 100f) / 100f;
+        anguloreal=Mathf.Round(anguloreal * 10000f) / 10000f;
+        velocidadreal=Mathf.Round(velocidadreal * 10000f) / 10000f;
+        velocidadUI= Mathf.Round(velocidadreal * 100f) / 100f;
+        anguloenvio=anguloreal.ToString();
+        if (anguloreal > 0)
+            anguloenvio = anguloenvio.Insert(0, "p");
+        else if (anguloreal==0)
+        {
+            anguloenvio= anguloenvio.Insert(0, "z");
+        }
+        else
+            anguloenvio = anguloenvio.Replace("-", "n");
+
+        if (anguloenvio.Contains(","))
+            anguloenvio = anguloenvio.Replace(",", "c");
+        
+        velocidadenvio=velocidadreal.ToString();
+        if (velocidadreal==0)
+        {
+            velocidadenvio= velocidadenvio.Insert(0, "z");
+        }
+        if (velocidadenvio.Contains(","))
+            velocidadenvio = velocidadenvio.Replace(",", "c");
+        if (movHorizontal==0)
+        {
+            
+            
+            if(anguloreal>0.9f)
+            {
+                anguloreal-=0.3f;
+            }
+            else if(anguloreal<-0.9f)
+            {
+                anguloreal+=0.3f;
+            }
+            else
+            {
+                anguloreal=0;
+                
+            }
+            if (aumentogiro>0)
+            {
+                aumentogiro-=0.05f;
+            }
+            else
+            {
+                aumentogiro=0;
+            }
+            
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A))
+            {
+                ang.transform.localEulerAngles = new Vector3(rotacionActual.x,0,rotacionActual.z);
+                anguloreal=0;
+            }
+            else
+            {
+                ang.transform.localEulerAngles = new Vector3(rotacionActual.x,anguloreal,rotacionActual.z);
+            }
+        }
+        
     }          
 }
